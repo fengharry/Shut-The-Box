@@ -3,6 +3,8 @@ using namespace std;
 
 std::random_device dev;
 std::mt19937 rng(dev());
+std::uniform_int_distribution<std::mt19937::result_type> double_dice(0,35);
+std::uniform_int_distribution<std::mt19937::result_type> single_dice(1, 6);
 
 string ComboStrategy_to_string(ComboStrategy s) {
     if (s == LARGEST_NUMBER) return "Largest Number";
@@ -10,8 +12,7 @@ string ComboStrategy_to_string(ComboStrategy s) {
     else return "Unknown Strategy";
 }
 
-int roll_double() {
-    std::uniform_int_distribution<std::mt19937::result_type> double_dice(0,35);
+uint32_t roll_double() {
 
     int raw_probability = double_dice(rng);
     if(raw_probability == 0) return 2;
@@ -26,101 +27,148 @@ int roll_double() {
     else if (raw_probability <= 34) return 11;
     else if (raw_probability == 35) return 12;
 
-    return -1;
+    return 0;
 }
 
-int roll_single() {
-    std::uniform_int_distribution<std::mt19937::result_type> single_dice(1, 6);
+uint32_t roll_single() {
     return single_dice(rng);
 }
 
 void Game::initialize_game() {
-    initial_score = 45;
-    num_available = 9;
-    for(int i = 1; i <= 9; ++i) {
+    initial_score = 0;
+    num_available = num_numbers;
+    for(uint32_t i = 1; i <= num_numbers; ++i) {
         available_numbers[i] = true;
+        initial_score += i;
     }
 }
 
-void Game::initialize_game_position(unordered_set<int> taken_numbers) {
+void Game::initialize_game_position(unordered_set<uint32_t> taken_numbers) {
     initialize_game();
     for(auto & num : taken_numbers) {
-        if(9 < num || num < 1) std::cerr << "Error: Number too big for default game";
+        if(num_numbers < num || num < 1) std::cerr << "Error: Number too big for default game";
         initial_score -= num;
         available_numbers[num] = false;
         num_available--;
     }
 }
 
-Game::Game() { initialize_game(); }
+Game::Game(uint32_t num_numbers_in): num_numbers(num_numbers_in) { 
+    initialize_game(); 
+    probabilities[1] = 1.0/6.0;
+    probabilities[2] = 1.0/36.0;
+    probabilities[3] = 2.0/36.0;
+    probabilities[4] = 3.0/36.0;
+    probabilities[5] = 4.0/36.0;
+    probabilities[6] = 5.0/36.0;
+    probabilities[7] = 6.0/36.0;
+    probabilities[8] = 5.0/36.0;
+    probabilities[9] = 4.0/36.0;
+    probabilities[10] = 3.0/36.0;
+    probabilities[11] = 2.0/36.0;
+    probabilities[12] = 1.0/36.0;
+}
 
-vector<vector<int>> Game::get_dp(int roll_num) {
-    vector<vector<int>> dp(10, vector<int>(roll_num + 1, 0));
-    for(int i = 1; i < 10; i++) {
+vector<vector<uint32_t>> Game::get_dp(uint32_t roll_num) {
+    vector<vector<uint32_t>> dp(num_numbers + 1, vector<uint32_t>(roll_num + 1, 0));
+    set_dp(roll_num, dp);
+    return dp;
+}
+
+void Game::set_dp(uint32_t roll_num, vector<vector<uint32_t>> &dp) {
+    dp = vector<vector<uint32_t>>(num_numbers + 1, vector<uint32_t>(roll_num + 1, 0));
+    for(uint32_t i = 1; i <= num_numbers; i++) {
         if (!available_numbers[i] || roll_num < i) {
-            for(int j = 0; j < roll_num + 1; j++) {
+            for(uint32_t j = 0; j < roll_num + 1; j++) {
                 dp[i][j] = dp[i-1][j];
             }
         } else {
-            for(int j = 0; j < i; j++) {
+            for(uint32_t j = 0; j < i; j++) {
                 dp[i][j] = dp[i-1][j];
             }
             dp[i][i] = dp[i-1][i] + 1;
-            for(int j = i+1; j < roll_num + 1; j++) {
+            for(uint32_t j = i+1; j < roll_num + 1; j++) {
                 dp[i][j] = dp[i-1][j] + dp[i-1][j-i];
             }
         }
     }
-    return dp;
 }
 
-int Game::get_num_combinations(int roll_num) {
-    vector<vector<int>> dp = get_dp(roll_num);
-    return dp[9][roll_num];
+uint32_t Game::get_num_combinations(uint32_t roll_num) {
+    vector<vector<uint32_t>> dp;
+    set_dp(roll_num, dp);
+    return dp[num_numbers][roll_num];
 }
 
-unordered_set<int> Game::get_combo_1(int roll_num) {
-    vector<vector<int>> dp = get_dp(roll_num);
+unordered_set<uint32_t> Game::get_combo_1(uint32_t roll_num) {
+    unordered_set<uint32_t> combo;
+    set_combo_1(roll_num, combo);
+    return combo;
+}
+void Game::set_combo_1(uint32_t roll_num, unordered_set<uint32_t>& combo) {
+    vector<vector<uint32_t>> dp;
+    set_dp(roll_num, dp);
 
-    unordered_set<int> result;
-    if(dp[9][roll_num] == 0) return result;
+    if(dp[num_numbers][roll_num] == 0) return;
     
-    int remaining_space = roll_num;
-    for(int i = 9; i > 0; i--) {
+    uint32_t remaining_space = roll_num;
+    for(uint32_t i = num_numbers; i > 0; i--) {
         if (dp[i-1][remaining_space] < dp[i][remaining_space]) {
             remaining_space -= i;
-            result.insert(i);
+            combo.insert(i);
         }
     }
-    if(remaining_space != 0) return unordered_set<int>();
-    return result;
+    if(remaining_space != 0) combo.clear();
 }
 
-unordered_set<int> Game::get_combo_2(int roll_num) {
-    vector<vector<int>> dp = get_dp(roll_num);
 
-    unordered_set<int> result;
-    if(dp[9][roll_num] == 0) return result;
+unordered_set<uint32_t> Game::get_combo_2(uint32_t roll_num) {
+    unordered_set<uint32_t> combo;
+    set_combo_2(roll_num, combo);
+    return combo;
+}
+void Game::set_combo_2(uint32_t roll_num, unordered_set<uint32_t>& combo) {
+    vector<vector<uint32_t>> dp;
+    set_dp(roll_num, dp);
+
+    if(dp[num_numbers][roll_num] == 0) return;
     
-    int remaining_space = roll_num;
-    for(int i = 9; i > 0; i--) {
+    uint32_t remaining_space = roll_num;
+    for(uint32_t i = num_numbers; i > 0; i--) {
         if (dp[i-1][remaining_space] == 0 && dp[i][remaining_space] > 0) {
             remaining_space -= i;
-            result.insert(i);
+            combo.insert(i);
         }
     }
-    if(remaining_space != 0) return unordered_set<int>();
-    return result;
+    if(remaining_space != 0) combo.clear();
 }
 
-vector<unordered_set<int>> Game::get_all_possible_combos(int roll_num) {
-    vector<vector<int>> dp = get_dp(roll_num);
-    vector<unordered_set<int>> result;
-    if(dp[9][roll_num] == 0) return {};
+
+unordered_set<uint32_t> Game::get_combo_controller(uint32_t roll_num, ComboStrategy strategy) {
+    unordered_set<uint32_t> combo;
+    set_combo_controller(roll_num, combo, strategy);
+    return combo;
+}
+void Game::set_combo_controller(uint32_t roll_num, unordered_set<uint32_t>& combo, ComboStrategy strategy) {
+    if (strategy == LARGEST_NUMBER) set_combo_1(roll_num, combo);
+    else if (strategy == MOST_NUMBERS) set_combo_2(roll_num, combo);
+}
+
+
+
+vector<unordered_set<uint32_t>> Game::get_all_possible_combos(uint32_t roll_num) {
+    vector<unordered_set<uint32_t>> combos;
+    set_all_possible_combos(roll_num, combos);
+    return combos;
+}
+void Game::set_all_possible_combos(uint32_t roll_num, vector<unordered_set<uint32_t>>& combos) {
+    vector<vector<uint32_t>> dp;
+    set_dp(roll_num, dp);
+    if(dp[num_numbers][roll_num] == 0) return;
 
     queue<CombinationPath> combinations;
     
-    for(int i = 9; i > 0; i--) {
+    for(uint32_t i = num_numbers; i > 0; i--) {
         if (dp[i-1][roll_num] < dp[i][roll_num]) {
             combinations.push({i-1, roll_num - i, {i}});
         }
@@ -134,10 +182,10 @@ vector<unordered_set<int>> Game::get_all_possible_combos(int roll_num) {
         // } cout << "\n";
         combinations.pop();
         if (c.remaining_space <= 0) {
-            result.push_back(c.numbers);
+            combos.push_back(c.numbers);
             continue;
         }
-        for(int i = c.start_idx; i > 0; i--) {
+        for(uint32_t i = c.start_idx; i > 0; i--) {
             if (dp[i-1][c.remaining_space] < dp[i][c.remaining_space]) {
                 c.numbers.insert(i);
                 combinations.push({i-1, c.remaining_space - i, c.numbers});
@@ -145,14 +193,14 @@ vector<unordered_set<int>> Game::get_all_possible_combos(int roll_num) {
             }
         }
     }
-    return result;
 }
 
-vector<int> Game::generate_sequence() {
-    vector<int> sequence;
-    int sum = 0;
+
+vector<uint32_t> Game::generate_sequence() {
+    vector<uint32_t> sequence;
+    uint32_t sum = 0;
     while (sum < 44) {
-        int roll_num = roll_double();
+        uint32_t roll_num = roll_double();
         sum += roll_num;
         sequence.push_back(roll_num);
     }
@@ -164,24 +212,24 @@ vector<int> Game::generate_sequence() {
 
 
 
-int Game::strategy_game_simulation(ComboStrategy strategy, bool is_verbose) {
+uint32_t Game::strategy_game_simulation(ComboStrategy strategy, bool is_verbose) {
     initialize_game();
-    int score = initial_score;
+    uint32_t score = initial_score;
 
-    vector<int> seq = generate_sequence();
+    vector<uint32_t> seq = generate_sequence();
     for(auto & roll_num : seq) {
         if(is_verbose) {
             cout << "| ";
-            for(int i = 1; i < 10; i++) {
+            for(uint32_t i = 1; i <= num_numbers; i++) {
                 if(available_numbers[i]) cout << i << " | ";
                 else cout << "  | ";
             }
             cout << "\n";
         }
 
-        unordered_set<int> numbers;
-        if(strategy == LARGEST_NUMBER) numbers = get_combo_1(roll_num);
-        else if(strategy == MOST_NUMBERS) numbers = get_combo_2(roll_num);
+        unordered_set<uint32_t> numbers;
+        set_combo_controller(roll_num, numbers, strategy);
+
         if(numbers.size() == 0) {
             if(is_verbose) cout << "You Lost...\n\n\n";
             return score; 
@@ -200,16 +248,16 @@ int Game::strategy_game_simulation(ComboStrategy strategy, bool is_verbose) {
     return score;
 }
 
-void Game::full_strategy_simulation(ostream &out, ComboStrategy strategy, int num_games, int progress_check) {
+void Game::full_strategy_simulation(ostream &out, ComboStrategy strategy, uint32_t num_games, uint32_t progress_check) {
     if(num_games <= 0) return;
 
     cout << "\033[32mBeginning Strategy Simulation (" << ComboStrategy_to_string(strategy) << ")...\033[0m\n";
 
-    int num_wins = 0;
+    uint32_t num_wins = 0;
     double total_score = 0;
-    for(int i = 0; i < num_games; i++) {
+    for(uint32_t i = 0; i < num_games; i++) {
         if(i % progress_check == 0) cout << " Simulated " << i << " Games\n";
-        int score = strategy_game_simulation(strategy, false);
+        uint32_t score = strategy_game_simulation(strategy, false);
         num_wins += score == 0 ? 1 : 0;
         total_score += score;
     }
@@ -219,34 +267,36 @@ void Game::full_strategy_simulation(ostream &out, ComboStrategy strategy, int nu
     out << "Strategy: " << ComboStrategy_to_string(strategy) << "\n";
     out << "Number of Games Simulated: " << num_games << "\n";
     out << "Number of Wins: " << num_wins << "\n";
-    out << "Odds of Victory: " << double(num_wins) / double(num_games) * 100 << "%\n";
+    out << "Win Probability: " << double(num_wins) / double(num_games) * 100 << "%\n";
     out << "Average Score: " << total_score / double(num_games) << "\n";
 }
 
 
 
-int Game::optimal_strategy_game_simulation(bool is_verbose) {
+uint32_t Game::hindsight_game_simulation(bool is_verbose) {
     initialize_game();
-    vector<int> seq = generate_sequence();
-    return optimal_step(seq, 0, initial_score, is_verbose);
+    vector<uint32_t> seq = generate_sequence();
+    return hindsight_step(seq, 0, initial_score, is_verbose);
 }
 
-int Game::optimal_step(vector<int> &seq, size_t idx, int curr_score, bool is_verbose) {
-    if (curr_score <= 0 || curr_score == seq[idx]) {
+uint32_t Game::hindsight_step(vector<uint32_t> &seq, size_t idx, uint32_t curr_score, bool is_verbose) {
+    if (curr_score == 0 || curr_score == seq[idx]) {
         if(is_verbose) cout << "Won!!\n";
         return 0;
     }
-    if (idx == seq.size() - 1) {
+
+    if (idx >= seq.size() - 1) {
         if(is_verbose) cout << "Lost, Score: " << curr_score << "\n";
         return curr_score;
     }
 
-    vector<unordered_set<int>> combos = get_all_possible_combos(seq[idx]);
+    vector<unordered_set<uint32_t>> combos;
+    set_all_possible_combos(seq[idx], combos);
 
     if (is_verbose) {
         cout << "Sequence Number: " << seq[idx] << "\n";
         cout << "| ";
-        for(int i = 1; i < 10; i++) {
+        for(uint32_t i = 1; i <= num_numbers; i++) {
             if(available_numbers[i]) cout << i << " | ";
             else cout << "  | ";
         }
@@ -265,18 +315,18 @@ int Game::optimal_step(vector<int> &seq, size_t idx, int curr_score, bool is_ver
         return curr_score;
     }
 
-    int min_score = min(45, curr_score);
+    uint32_t min_score = curr_score;
     for(auto & combo : combos) {
         for (auto & num : combo) {
             curr_score -= num;
             available_numbers[num] = false;
             num_available--;
         }
-        int score = optimal_step(seq, idx+1, curr_score, is_verbose);
+        uint32_t score = hindsight_step(seq, idx+1, curr_score, is_verbose);
         if (score < min_score) min_score = score;
 
         if(is_verbose) cout << "Minimum Score: " << min_score << "\n";
-        if(min_score == 0) return min_score;
+        if(min_score == 0) return 0;
         for (auto & num : combo) {
             curr_score += num;
             available_numbers[num] = true;
@@ -286,33 +336,191 @@ int Game::optimal_step(vector<int> &seq, size_t idx, int curr_score, bool is_ver
     return min_score;
 }
 
-void Game::full_optimal_simulation(ostream &out, int num_games, int progress_check) {
+void Game::full_hindsight_simulation(ostream &out, uint32_t num_games, uint32_t progress_check) {
     if(num_games <= 0) return;
 
-    cout << "\033[32mBeginning Optimal Simulation...\033[0m\n";
+    cout << "\033[32mBeginning Hindsight Simulation...\033[0m\n";
 
-    int num_wins = 0;
+    uint32_t num_wins = 0;
     double total_score = 0;
-    for(int i = 0; i < num_games; i++) {
+    for(uint32_t i = 0; i < num_games; i++) {
         if(i % progress_check == 0) cout << " Simulated " << i << " Games\n";
-        int score = optimal_strategy_game_simulation(false);
+        uint32_t score = hindsight_game_simulation(false);
         num_wins += score == 0 ? 1 : 0;
         total_score += score;
     }
-    cout << "\033[34mFinished Optimal Simulation.\033[0m\n";
+    cout << "\033[34mFinished Hindsight Simulation.\033[0m\n";
 
-    out << "----- Optimal Simulation Results -----\n";
+    out << "----- Hindsight Simulation Results -----\n";
     out << "Number of Games Simulated: " << num_games << "\n";
     out << "Number of Wins: " << num_wins << "\n";
-    out << "Odds of Victory: " << double(num_wins) / double(num_games) * 100 << "%\n";
+    out << "Win Probability: " << double(num_wins) / double(num_games) * 100 << "%\n";
     out << "Average Score: " << total_score / double(num_games) << "\n";
 }
 
 
+
+Results Game::probability_of_strategy_victory(unordered_set<uint32_t> taken_numbers, ComboStrategy strategy, std::ostream &out) {
+    cout << "\033[32mBeginning Strategy Probability Simulation (" << ComboStrategy_to_string(strategy) << ")...\033[0m\n";
+    initialize_game_position(taken_numbers);
+    Results r = probability_of_strategy_victory_step(initial_score, strategy, true);
+    cout << "\033[34mFinished Strategy Probability Simulation...\033[0m\n";
+    out << "----- Strategy Probability Results (" << ComboStrategy_to_string(strategy) << ") -----\n";
+    out << "Average Score: " << r.avg_score << "\n";
+    out << "Win Probability: " << r.win_probability * 100 << "%\n";
+    out << "Best Next Decisions:\n";
+    for(uint32_t i = 2; i <= 12; i++) {
+        out << "Roll " << i << " --> ";
+        if(r.next_combos[i].size() == 0) out << "Lose\n";
+        else {
+            out << "Take ";
+            for (auto & num : r.next_combos[i]) {
+                out << num << " ";
+            }
+            out << "\n";
+            out << "  Average Score: " << r.next_avg_scores[i] << "\n";
+            out << "  Win Probability: " << r.next_win_probabilities[i] * 100 << "%\n";
+        }
+    }
+    return r;
+}
+
+Results Game::probability_of_strategy_victory_step(uint32_t score_in, ComboStrategy strategy, bool is_first_step) {
+    if (score_in == 0) return {1.0, 0};
+    else if (num_available == 1) return {probabilities[score_in], (1 - probabilities[score_in]) * score_in};
+
+    Results result;
+
+    uint32_t curr_score = score_in;
+    for(uint32_t roll_num = 2; roll_num <= 12; roll_num++) {
+        if(roll_num == score_in) {
+            result.win_probability += probabilities[roll_num];
+            continue;
+        } else if (roll_num > score_in) {
+            result.avg_score += probabilities[roll_num] * score_in;
+            continue;
+        }
+
+        unordered_set<uint32_t> combo;
+        set_combo_controller(roll_num, combo, strategy);
+
+        if(combo.size() == 0) {
+            result.avg_score += probabilities[roll_num] * score_in;
+            continue;
+        }
+        for (auto & num : combo) {
+            curr_score -= num;
+            available_numbers[num] = false;
+            num_available--;
+        }
+        Results r = probability_of_strategy_victory_step(curr_score, strategy);
+
+        for (auto & num : combo) {
+            curr_score += num;
+            available_numbers[num] = true;
+            num_available++;
+        }
+        if (is_first_step) {
+            result.next_combos[roll_num] = combo;
+            result.next_avg_scores[roll_num] = r.avg_score;
+            result.next_win_probabilities[roll_num] = r.win_probability;
+        }   
+        result.win_probability += probabilities[roll_num] * r.win_probability;
+        result.avg_score += probabilities[roll_num] * r.avg_score;
+    }
+    return result;
+}
+
+
+Results Game::probability_of_optimal_victory(unordered_set<uint32_t> taken_numbers, std::ostream &out) {
+    cout << "\033[32mBeginning Optimal Probability Simulation...\033[0m\n";
+    initialize_game_position(taken_numbers);
+    Results r = probability_of_optimal_victory_step(initial_score, true);
+    cout << "\033[34mFinished Optimal Probability Simulation...\033[0m\n";
+    out << "----- Optimal Probability Results -----\n";
+    out << "Average Score: " << r.avg_score << "\n";
+    out << "Win Probability: " << r.win_probability * 100 << "%\n";
+    out << "Best Next Decisions:\n";
+    for(uint32_t i = 2; i <= 12; i++) {
+        out << "Roll " << i << " --> ";
+        if(r.next_combos[i].size() == 0) out << "Lose\n";
+        else {
+            out << "Take ";
+            for (auto & num : r.next_combos[i]) {
+                out << num << " ";
+            }
+            out << "\n";
+            out << "  Average Score: " << r.next_avg_scores[i] << "\n";
+            out << "  Win Probability: " << r.next_win_probabilities[i] * 100 << "%\n";
+        }
+    }
+    return r;
+
+}
+
+Results Game::probability_of_optimal_victory_step(uint32_t score_in, bool is_first_step) {
+    if (score_in == 0) return {1.0, 0};
+    else if (num_available == 1) return {probabilities[score_in], (1 - probabilities[score_in]) * score_in};
+
+    Results result;
+    
+    uint32_t curr_score = score_in;
+    for(uint32_t roll_num = 2; roll_num <= 12; roll_num++) {
+        if(roll_num == score_in) {
+            result.win_probability += probabilities[roll_num];
+            continue;
+        } else if (roll_num > score_in) {
+            result.avg_score += probabilities[roll_num] * score_in;
+            continue;
+        }
+
+        vector<unordered_set<uint32_t>> combos;
+        set_all_possible_combos(roll_num, combos);
+
+        if(combos.size() == 0) {
+            result.avg_score += probabilities[roll_num] * score_in;
+            continue;
+        }
+
+        uint32_t min_score = score_in;
+        double max_prob = 0;
+        for(auto & combo : combos) {
+            for (auto & num : combo) {
+                curr_score -= num;
+                available_numbers[num] = false;
+                num_available--;
+            }
+            Results r = probability_of_optimal_victory_step(curr_score);
+            if(r.win_probability > max_prob) {
+                max_prob = r.win_probability;
+                min_score = r.avg_score;
+                if(is_first_step) result.next_combos[roll_num] = combo;
+            }
+
+            for (auto & num : combo) {
+                curr_score += num;
+                available_numbers[num] = true;
+                num_available++;
+            }
+        }
+        if (is_first_step) {
+            result.next_win_probabilities[roll_num] = max_prob;
+            result.next_avg_scores[roll_num] = min_score;
+        }
+        result.win_probability += probabilities[roll_num] * max_prob;
+        result.avg_score += probabilities[roll_num] * min_score;
+    }
+    return result;
+}
+
+
+
+
 int main() {
     Game g;
-    ofstream optimal_out("optimal_results.txt");
+    ofstream hindsight_out("hindsight_results.txt");
     ofstream largest_number_out("largest_number_results.txt");
-    g.full_strategy_simulation(largest_number_out, ComboStrategy::LARGEST_NUMBER, 1000000, 100000);
-    g.full_optimal_simulation(optimal_out, 1000000, 100000);
+    g.full_strategy_simulation(largest_number_out, ComboStrategy::LARGEST_NUMBER, 10000, 10000);
+    g.full_hindsight_simulation(hindsight_out, 10000, 10000);
+    Results r = g.probability_of_optimal_victory();
 }

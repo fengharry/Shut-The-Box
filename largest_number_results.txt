@@ -1,6 +1,6 @@
 ----- Strategy Simulation Results -----
 Strategy: Largest Number
-Number of Games Simulated: 1000000
-Number of Wins: 73172
-Odds of Victory: 7.3172%
-Average Score: 11.3749
+Number of Games Simulated: 10000
+Number of Wins: 747
+Win Probability: 7.47%
+Average Score: 11.2844

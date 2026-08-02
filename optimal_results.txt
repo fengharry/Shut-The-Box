@@ -1,5 +1,0 @@
------ Optimal Simulation Results -----
-Number of Games Simulated: 1000000
-Number of Wins: 96914
-Odds of Victory: 9.6914%
-Average Score: 9.1432
