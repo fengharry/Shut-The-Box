@@ -1,6 +1,0 @@
------ Strategy Simulation Results -----
-Strategy: Largest Number
-Number of Games Simulated: 10000
-Number of Wins: 747
-Win Probability: 7.47%
-Average Score: 11.2844
