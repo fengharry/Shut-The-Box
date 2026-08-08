@@ -118,7 +118,8 @@ void ShutTheBox::initialize_game(unordered_set<uint32_t> face_up_tiles_in) {
     }
 }
 
-ShutTheBox::ShutTheBox(uint32_t num_tiles_in): strategy_name("Largest Number") { 
+ShutTheBox::ShutTheBox(uint32_t num_tiles_in, string strategy_name_in, string strategy_csv_file_in): 
+strategy_name(strategy_name_in), strategy_csv_file_name(strategy_csv_file_in), optimal_csv_file_name("../results/optimal.csv") { 
     for(uint32_t tile = 1; tile <= num_tiles_in; tile++) {
         tiles.insert(tile);
         sorted_tiles.push_back(tile);
@@ -150,8 +151,8 @@ ShutTheBox::ShutTheBox(uint32_t num_tiles_in): strategy_name("Largest Number") {
     dice_probabilities[2][12] = 1.0/36.0;
 }
 
-ShutTheBox::ShutTheBox(unordered_set<uint32_t> tiles_in): 
-    strategy_name("Largest Number"), tiles(tiles_in) { 
+ShutTheBox::ShutTheBox(unordered_set<uint32_t> tiles_in, string strategy_name_in, string strategy_csv_file_in): 
+strategy_name(strategy_name_in), strategy_csv_file_name(strategy_csv_file_in), optimal_csv_file_name("../results/optimal.csv"), tiles(tiles_in) { 
     for(const uint32_t tile : tiles) {
         sorted_tiles.push_back(tile);
         empty_position += "   |";
@@ -163,8 +164,8 @@ ShutTheBox::ShutTheBox(unordered_set<uint32_t> tiles_in):
     initialize_game(); 
 }
 
-ShutTheBox::ShutTheBox(unordered_set<uint32_t> tiles_in, unordered_map<uint32_t, unordered_map<uint32_t, double>> dice_probabilities_in): 
-    ShutTheBox(tiles_in) { 
+ShutTheBox::ShutTheBox(unordered_set<uint32_t> tiles_in, unordered_map<uint32_t, unordered_map<uint32_t, double>> dice_probabilities_in, 
+string strategy_name_in, string strategy_csv_file_in): ShutTheBox(tiles_in, strategy_name_in, strategy_csv_file_in) { 
     dice_probabilities = dice_probabilities_in;
 }
 
@@ -213,7 +214,7 @@ void ShutTheBox::set_tile_combinations_dp(const uint32_t roll_num, vector<vector
 uint32_t ShutTheBox::get_num_combinations(const uint32_t roll_num) {
     vector<vector<uint32_t>> tile_combinations_dp;
     set_tile_combinations_dp(roll_num, tile_combinations_dp);
-    return tile_combinations_dp[tiles.size()][roll_num];
+    return tile_combinations_dp[largest_tile][roll_num];
 }
 
 unordered_set<uint32_t> ShutTheBox::get_combination(const uint32_t roll_num) {
@@ -222,42 +223,10 @@ unordered_set<uint32_t> ShutTheBox::get_combination(const uint32_t roll_num) {
     return tile_combination;
 }
 void ShutTheBox::set_combination(const uint32_t roll_num, unordered_set<uint32_t>& tile_combination) {
-    vector<vector<uint32_t>> tile_combinations_dp;
-    set_tile_combinations_dp(roll_num, tile_combinations_dp);
-
-    if(tile_combinations_dp[tiles.size()][roll_num] == 0) return;
-    
-    uint32_t remaining_space = roll_num;
-    for(uint32_t i = tiles.size(); i > 0; i--) {
-        if (tile_combinations_dp[i-1][remaining_space] < tile_combinations_dp[i][remaining_space]) {
-            remaining_space -= i;
-            tile_combination.insert(i);
-        }
-    }
-    if(remaining_space != 0) tile_combination.clear();
+    vector<unordered_set<uint32_t>> tile_combinations;
+    set_all_possible_tile_combinations(roll_num, tile_combinations);
+    tile_combination = *tile_combinations.begin();
 }
-
-
-// unordered_set<uint32_t> ShutTheBox::get_combination_2(const uint32_t roll_num) {
-//     unordered_set<uint32_t> tile_combination;
-//     set_combination_2(roll_num, tile_combination);
-//     return tile_combination;
-// }
-// void ShutTheBox::set_combination(const uint32_t roll_num, unordered_set<uint32_t>& tile_combination) {
-//     vector<vector<uint32_t>> tile_combinations_dp;
-//     set_tile_combinations_dp(roll_num, tile_combinations_dp);
-
-//     if(tile_combinations_dp[tiles.size()][roll_num] == 0) return;
-    
-//     uint32_t remaining_space = roll_num;
-//     for(uint32_t i = tiles.size(); i > 0; i--) {
-//         if (tile_combinations_dp[i-1][remaining_space] == 0 && tile_combinations_dp[i][remaining_space] > 0) {
-//             remaining_space -= i;
-//             tile_combination.insert(i);
-//         }
-//     }
-//     if(remaining_space != 0) tile_combination.clear();
-// }
 
 
 
@@ -494,29 +463,20 @@ void ShutTheBox::print_results(Results results, string title, ostream &out) cons
     }
 }
 
-Results ShutTheBox::probability_of_strategy_victory() {
-    return probability_of_strategy_victory(tiles, std::cout);
+Results ShutTheBox::probability_of_strategy_victory(std::ostream &out) {
+    return probability_of_strategy_victory(strategy_csv_file_name, tiles, out);
 }
 
-Results ShutTheBox::probability_of_strategy_victory(std::ostream &out, bool is_output_csv) {
-    if(is_output_csv) return probability_of_strategy_victory(out, tiles);
-    else return probability_of_strategy_victory(tiles, out);
-}
-
-Results ShutTheBox::probability_of_strategy_victory(std::ostream &csv_out, std::ostream &out) {
-    return probability_of_strategy_victory(csv_out, tiles, out);
+Results ShutTheBox::probability_of_strategy_victory(const string csv_file_name, std::ostream &out) {
+    return probability_of_strategy_victory(csv_file_name, tiles, out);
 }
 
 Results ShutTheBox::probability_of_strategy_victory(unordered_set<uint32_t> face_up_tiles_in, std::ostream &out) {
-    cout << "\033[32mBeginning Strategy Probability Simulation (" << strategy_name << ")...\033[0m\n";
-    initialize_game(face_up_tiles_in);
-    Results results = probability_of_strategy_victory_step(initial_score);
-    cout << "\033[34mFinished Strategy Probability Simulation...\033[0m\n";
-    print_results(results, "Strategy Probability Results (" + strategy_name + ")", out);
-    return results;
+    return probability_of_strategy_victory(strategy_csv_file_name, face_up_tiles_in, out);
 }
 
-Results ShutTheBox::probability_of_strategy_victory(std::ostream &csv_out, unordered_set<uint32_t> face_up_tiles_in, std::ostream &out) {
+Results ShutTheBox::probability_of_strategy_victory(const string csv_file_name, unordered_set<uint32_t> face_up_tiles_in, std::ostream &out) {
+    std::ofstream csv_out(csv_file_name);
     cout << "\033[32mBeginning Strategy Probability Simulation (" << strategy_name << ")...\033[0m\n";
     initialize_game(face_up_tiles_in);
 
@@ -559,6 +519,7 @@ Results ShutTheBox::probability_of_strategy_victory_step(uint32_t score_in) {
 
     uint32_t curr_score = score_in;
     for(uint32_t roll_num = 2; roll_num <= 12; roll_num++) {
+        cout << roll_num << "\n";
         if(roll_num == score_in) {
             results.win_probability += dice_probabilities[2][roll_num];
             continue;
@@ -670,30 +631,20 @@ Results ShutTheBox::probability_of_strategy_victory_step(std::ostream &csv_out, 
 
 
 
-
-
-Results ShutTheBox::probability_of_optimal_victory() {
-    return probability_of_optimal_victory(tiles);
+Results ShutTheBox::probability_of_optimal_victory(std::ostream &out) {
+    return probability_of_optimal_victory(optimal_csv_file_name, tiles, out);
 }
 
-Results ShutTheBox::probability_of_optimal_victory(std::ostream &out, bool is_output_csv) {
-    if (is_output_csv) return probability_of_optimal_victory(out, tiles);
-    else return probability_of_optimal_victory(tiles, out);
-}
-
-Results ShutTheBox::probability_of_optimal_victory(std::ostream &csv_out, std::ostream &out) {
-    return probability_of_optimal_victory(csv_out, tiles, out);
+Results ShutTheBox::probability_of_optimal_victory(const string csv_file_name, std::ostream &out) {
+    return probability_of_optimal_victory(csv_file_name, tiles, out);
 }
 
 Results ShutTheBox::probability_of_optimal_victory(unordered_set<uint32_t> face_up_tiles_in, std::ostream &out) {
-    cout << "\033[32mBeginning Optimal Probability Simulation...\033[0m\n";
-    initialize_game(face_up_tiles_in);
-    Results results = probability_of_optimal_victory_step(initial_score);
-    print_results(results, "Optimal Probability Results", out);
-    return results;
+    return probability_of_optimal_victory(optimal_csv_file_name, face_up_tiles_in, out);
 }
 
-Results ShutTheBox::probability_of_optimal_victory(std::ostream &csv_out, unordered_set<uint32_t> face_up_tiles_in, std::ostream &out) {
+Results ShutTheBox::probability_of_optimal_victory(const string csv_file_name, unordered_set<uint32_t> face_up_tiles_in, std::ostream &out) {
+    std::ofstream csv_out(csv_file_name);
     cout << "\033[32mBeginning Optimal Probability Simulation...\033[0m\n";
     initialize_game(face_up_tiles_in);
     csv_out << "Position,Win Probability,Average Score,1,2,3,4,5,6,7,8,9,10,11,12\n";
@@ -852,23 +803,4 @@ Results ShutTheBox::probability_of_optimal_victory_step(ostream &csv_out, uint32
     }
 
     return results;
-}
-
-
-
-int main() {
-    ShutTheBox g;
-    // g.initialize_game({1, 9});
-    // ofstream hindsight_out("hindsight_results.txt");
-    // ofstream largest_number_out("largest_number_results.txt");
-    ofstream largest_number_csv_out("largest_number.csv");
-    //ofstream optimal_csv_out("optimal_probabilities.csv");
-    // g.full_strategy_simulation(10000, 10000, largest_number_out);
-    // g.full_hindsight_simulation(10000, 10000, hindsight_out);
-    g.probability_of_strategy_victory(largest_number_csv_out, true);
-    //g.probability_of_optimal_victory(optimal_csv_out);
-    // unordered_set<uint32_t> r = g.get_combination(10);
-    // for (uint32_t t : r) {
-    //     cout << t << " ";
-    // }
 }

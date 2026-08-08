@@ -28,6 +28,8 @@ struct Results {
 class ShutTheBox {
     protected:
         string strategy_name = "";
+        string strategy_csv_file_name = "";
+        string optimal_csv_file_name = "";
         
         string empty_position = "|";
         unordered_set<string> all_positions;
@@ -53,9 +55,10 @@ class ShutTheBox {
         virtual void initialize_game();
         virtual void initialize_game(unordered_set<uint32_t> face_up_tiles_in);
 
-        ShutTheBox(uint32_t num_tiles_in=9);
-        ShutTheBox(unordered_set<uint32_t> tiles_in);
-        ShutTheBox(unordered_set<uint32_t> tiles_in, unordered_map<uint32_t, unordered_map<uint32_t, double>> dice_probabilities_in);
+        ShutTheBox(uint32_t num_tiles_in=9, string strategy_name_in="Base", string strategy_csv_file_in="results/base.csv");
+        ShutTheBox(unordered_set<uint32_t> tiles_in, string strategy_name_in="Base", string strategy_csv_file_in="results/base.csv");
+        ShutTheBox(unordered_set<uint32_t> tiles_in, unordered_map<uint32_t, unordered_map<uint32_t, double>> dice_probabilities_in, 
+                    string strategy_name_in="Base", string strategy_csv_file_in="results/base.csv");
 
         string get_curr_position();
         void set_curr_position(string &position);
@@ -65,11 +68,11 @@ class ShutTheBox {
 
         uint32_t get_num_combinations(const uint32_t roll_num);
 
-        virtual unordered_set<uint32_t> get_combination(const uint32_t roll_num);
-        virtual void set_combination(const uint32_t roll_num, unordered_set<uint32_t>& combo);
+        unordered_set<uint32_t> get_combination(const uint32_t roll_num);
+        virtual void set_combination(const uint32_t roll_num, unordered_set<uint32_t>& tile_combination);
 
         vector<unordered_set<uint32_t>> get_all_possible_tile_combinations(const uint32_t roll_num);
-        void set_all_possible_tile_combinations(const uint32_t roll_num, vector<unordered_set<uint32_t>>& combos);
+        void set_all_possible_tile_combinations(const uint32_t roll_num, vector<unordered_set<uint32_t>>& tile_combinations);
 
         vector<uint32_t> get_generated_sequence();
         void set_generated_sequence(vector<uint32_t>& seq);
@@ -88,20 +91,18 @@ class ShutTheBox {
 
 
 
-        Results probability_of_strategy_victory();
-        Results probability_of_strategy_victory(std::ostream &out, bool is_output_csv);
-        Results probability_of_strategy_victory(std::ostream &csv_out, std::ostream &out=std::cout);
+        Results probability_of_strategy_victory(std::ostream &out=std::cout);
+        Results probability_of_strategy_victory(const string csv_file_name, std::ostream &out=std::cout);
         Results probability_of_strategy_victory(unordered_set<uint32_t> face_up_tiles_in, std::ostream &out=std::cout);
-        Results probability_of_strategy_victory(std::ostream &csv_out, unordered_set<uint32_t> face_up_tiles_in, std::ostream &out=std::cout);
+        Results probability_of_strategy_victory(const string csv_file_name, unordered_set<uint32_t> face_up_tiles_in, std::ostream &out=std::cout);
         
         Results probability_of_strategy_victory_step(uint32_t score_in=false);
         Results probability_of_strategy_victory_step(std::ostream &csv_out, uint32_t score_in, unordered_set<string> &visited);
 
-        Results probability_of_optimal_victory();
-        Results probability_of_optimal_victory(std::ostream &out, bool is_output_csv);
-        Results probability_of_optimal_victory(std::ostream &csv_out, std::ostream &out=std::cout);
+        Results probability_of_optimal_victory(std::ostream &out=std::cout);
+        Results probability_of_optimal_victory(const string csv_file_name, std::ostream &out=std::cout);
         Results probability_of_optimal_victory(unordered_set<uint32_t> face_up_tiles_in, std::ostream &out=std::cout);
-        Results probability_of_optimal_victory(std::ostream &csv_out, unordered_set<uint32_t> face_up_tiles_in, std::ostream &out=std::cout);
+        Results probability_of_optimal_victory(const string csv_file_name, unordered_set<uint32_t> face_up_tiles_in, std::ostream &out=std::cout);
 
         Results probability_of_optimal_victory_step(uint32_t score_in=false);
         Results probability_of_optimal_victory_step(std::ostream &csv_out, uint32_t score_in, unordered_set<string> &visited);
