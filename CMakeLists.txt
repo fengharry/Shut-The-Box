@@ -4,16 +4,16 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 # Project description
 project(
-    cmake_cpp_project
+    Shut_The_Box
     VERSION 1.0
-    DESCRIPTION "A CMake/C++ template project"
+    DESCRIPTION "Shut the Box"
     LANGUAGES CXX)
 
 # Process the src and apps directories
-add_subdirectory(Strategies)
+add_subdirectory(ShutTheBox)
 
 add_executable(main main.cpp)
-target_link_libraries(main PUBLIC Strategies)
+target_link_libraries(main PUBLIC ShutTheBox)
 
 # Force the generation of a compile_commands.json file to provide autocompletion for IDEs
 set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE CACHE BOOL "" FORCE)

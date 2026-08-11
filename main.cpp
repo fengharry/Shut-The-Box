@@ -1,5 +1,5 @@
-#include "Strategies/MostNumbers.hpp"
-#include "Strategies/LargestNumber.hpp"
+#include "ShutTheBox/MostNumbers.hpp"
+#include "ShutTheBox/LargestNumber.hpp"
 using namespace std;
 
 int main() {
