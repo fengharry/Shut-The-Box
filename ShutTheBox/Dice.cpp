@@ -6,7 +6,7 @@ std::mt19937 rng(dev());
 
 Dice::Dice() {
     for (uint32_t roll_num = 0; roll_num <= 6; roll_num++) {
-        if(roll_num == 0) {
+        if (roll_num == 0) {
             single_die_probabilities_vector.push_back(0);
         }
         else {
@@ -55,7 +55,7 @@ uint32_t Dice::roll(uint32_t num_dice) {
 }
 
 void Dice::set_probabilities(uint32_t num_dice) {
-    if(num_dice <= 1 || has_probabilities[num_dice]) return;
+    if (num_dice <= 1 || has_probabilities[num_dice]) return;
     else set_probabilities(num_dice-1);
 
     for (const auto &prev_dice : probabilities[num_dice-1]) {
@@ -72,7 +72,7 @@ void Dice::set_probabilities(uint32_t num_dice) {
 }
 
 double Dice::get_probability(uint32_t roll_num, uint32_t num_dice) {
-    if(!has_probabilities[num_dice]) set_probabilities(num_dice);
+    if (!has_probabilities[num_dice]) set_probabilities(num_dice);
     return probabilities[num_dice][roll_num];
 }
 
@@ -84,15 +84,15 @@ vector<uint32_t> Dice::get_possible_rolls(uint32_t num_dice_min, uint32_t num_di
 
 void Dice::set_to_possible_rolls(uint32_t num_dice_min, uint32_t num_dice_max, vector<uint32_t> &possible_rolls) {
     possible_rolls.clear();
-    if(!has_probabilities[num_dice_min]) set_probabilities(num_dice_min);
-    if(num_dice_min == num_dice_max) {
+    if (!has_probabilities[num_dice_min]) set_probabilities(num_dice_min);
+    if (num_dice_min == num_dice_max) {
         for (const auto roll : probabilities[num_dice_min]) {
             possible_rolls.push_back(roll.first);
         }
     } else {
         unordered_set<uint32_t> rolls_set;
         for (uint32_t num_dice = num_dice_min; num_dice <= num_dice_max; num_dice++) {
-            if(!has_probabilities[num_dice]) set_probabilities(num_dice);
+            if (!has_probabilities[num_dice]) set_probabilities(num_dice);
             for (const auto roll : probabilities[num_dice]) {
                 rolls_set.insert(roll.first);
             }

@@ -1,10 +1,12 @@
-#include "ShutTheBox/MostNumbers.hpp"
-#include "ShutTheBox/LargestNumber.hpp"
+#include "ShutTheBox/ShutTheBox.hpp"
+#include "Strategies/StrategyList.hpp"
 using namespace std;
 
 int main() {
-    MostNumbers m;
-    LargestNumber g;
-    g.probability_of_strategy_victory();
-    m.probability_of_strategy_victory();
+    ShutTheBox g;
+    LargestNumber l;
+    // MostNumbers m;
+    g.probability_of_strategy_victory(&l);
+    // g.probability_of_strategy_victory(&m);
+    // g.probability_of_optimal_victory();
 }

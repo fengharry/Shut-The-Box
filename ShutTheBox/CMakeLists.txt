@@ -5,7 +5,7 @@ file(GLOB shut_the_box_FILES ${CMAKE_CURRENT_SOURCE_DIR} "*.cpp" "*.hpp")
 add_library(ShutTheBox SHARED ${shut_the_box_FILES})
 
 # Define the include directory for these libraries
-# target_include_directories(ShutTheBox PUBLIC ${CMAKE_SOURCE_DIR}/utils PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} )
+target_include_directories(ShutTheBox PUBLIC ${CMAKE_SOURCE_DIR}/Strategies )
 
 # Set the C++ standard to use for these libraries
 target_compile_features(ShutTheBox PUBLIC cxx_std_11)

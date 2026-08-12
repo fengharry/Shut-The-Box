@@ -9,6 +9,7 @@
 #include <vector>
 #include <queue>
 #include "Dice.hpp"
+#include "../Strategies/StrategyList.hpp"
 using namespace std;
 
 struct CombinationPath {
@@ -27,15 +28,17 @@ struct Results {
 
 class ShutTheBox {
     protected:
-        string strategy_name = "";
-        string strategy_csv_file_name = "";
         string optimal_csv_file_name = "";
         
         string empty_position = "|";
+        Results empty_results = {1.0, 0};
+
         unordered_set<string> all_positions;
         vector<uint32_t> sorted_tiles;
         uint32_t largest_tile = 0;
         uint32_t tile_sum = 0;
+
+        
 
         unordered_set<uint32_t> tiles;
         Dice dice;
@@ -79,7 +82,7 @@ class ShutTheBox {
          * @param csv_out the output stream of the csv file
          * @param reached_positions an unordered set of valid positions
          */
-        void csv_record_unreachable_positions(std::ostream &csv_out, unordered_set<string> &reached_positions);
+        void csv_record_unreachable_positions(std::ostream &csv_out, unordered_map<string, Results> &reached_positions);
 
         /**
          * Records a given position and its results in a csv file.
@@ -116,7 +119,7 @@ class ShutTheBox {
          * @param strategy_name_in the name of the object's strategy
          * @param strategy_csv_file_in the path of the object's csv_file
          */
-        ShutTheBox(uint32_t num_tiles_in=9, string strategy_name_in="Base", string strategy_csv_file_in="results/base.csv");
+        ShutTheBox(uint32_t num_tiles_in=9);
 
         /**
          * Constructs a ShutTheBox object.
@@ -129,7 +132,7 @@ class ShutTheBox {
          * @param strategy_name_in the name of the object's strategy
          * @param strategy_csv_file_in the path of the object's csv_file
          */
-        ShutTheBox(unordered_set<uint32_t> tiles_in, string strategy_name_in="Base", string strategy_csv_file_in="results/base.csv");
+        ShutTheBox(unordered_set<uint32_t> tiles_in);
 
         /**
          * Constructs a ShutTheBox object.
@@ -145,8 +148,7 @@ class ShutTheBox {
          * @param strategy_name_in the name of the object's strategy
          * @param strategy_csv_file_in the path of the object's csv_file
          */
-        ShutTheBox(unordered_set<uint32_t> tiles_in, unordered_map<uint32_t, double> single_die_probabilities_in, 
-                    string strategy_name_in="Base", string strategy_csv_file_in="results/base.csv");
+        ShutTheBox(unordered_set<uint32_t> tiles_in, unordered_map<uint32_t, double> single_die_probabilities_in);
         
         /**
          * Gets the current position of the game as a string.
@@ -208,7 +210,7 @@ class ShutTheBox {
         
         /**
          * Gets the combination that fits the strategy of the 
-         * current class. This function, or more specifically set_to_combination,
+         * current class. This function, or more specifically set_to_strategy_combination,
          * will vary from child to child, and will use the 2D vector 
          * as described by get_tile_combinations_dp. However, the general
          * algorithm for obtaining a combination remains the same:
@@ -230,20 +232,20 @@ class ShutTheBox {
          * @param roll_num the total value that's been rolled by the dice
          * @return an unordered_set of the chosen tile combination
          */
-        unordered_set<uint32_t> get_combination(const uint32_t roll_num);
+        unordered_set<uint32_t> get_strategy_combination(Strategy *strategy, const uint32_t roll_num);
 
         /**
-         * Sets tile_combination to the combination as described in get_combination.
+         * Sets tile_combination to the combination as described in get_strategy_combination.
          * 
          * @param roll_num the total value that's been rolled by the dice
          * @param tile_combination a reference to an unordered_set
          */
-        virtual void set_to_combination(const uint32_t roll_num, unordered_set<uint32_t> &tile_combination);
+        virtual void set_to_strategy_combination(Strategy *strategy, const uint32_t roll_num, unordered_set<uint32_t> &tile_combination);
 
 
         /**
          * Gets all possible combinations that sum to roll_num in the same way
-         * as described in get_combination.
+         * as described in get_strategy_combination.
          * 
          * @param roll_num the total value that's been rolled by the dice
          * @return an vector of unordered_sets containing all possible combinations
@@ -252,7 +254,7 @@ class ShutTheBox {
 
         /**
          * Sets tile_combinations to all possible combinations that sum to roll_num 
-         * in the same way as described in get_combination.
+         * in the same way as described in get_strategy_combination.
          * 
          * @param roll_num the total value that's been rolled by the dice
          * @param tile_combinations a reference to a vector of unordered_sets
@@ -303,7 +305,7 @@ class ShutTheBox {
          * @param is_verbose a boolean of whether or not the simulation should print
          *  out a comprehensive log of the game
          */
-        uint32_t strategy_game_simulation(bool is_verbose=true);
+        uint32_t strategy_game_simulation(Strategy *strategy, bool is_verbose=true);
 
         /**
          * Simulates a number of games based on the strategy of the current class.
@@ -314,7 +316,7 @@ class ShutTheBox {
          *  will let the user know how many games have been simulated so far
          * @param out the output stream of the final results
          */
-        void full_strategy_simulation(uint32_t num_games=100000, uint32_t progress_check=10000, std::ostream &out=std::cout);
+        void full_strategy_simulation(Strategy *strategy, uint32_t num_games=100000, uint32_t progress_check=10000, std::ostream &out=std::cout);
 
         /**
          * Simulates a game assuming that the player has full knowledge
@@ -359,21 +361,17 @@ class ShutTheBox {
 
 
 
-        Results probability_of_strategy_victory(std::ostream &out=std::cout);
-        Results probability_of_strategy_victory(const string csv_file_name, std::ostream &out=std::cout);
-        Results probability_of_strategy_victory(unordered_set<uint32_t> face_up_tiles_in, std::ostream &out=std::cout);
-        
-        virtual Results probability_of_strategy_victory(const string csv_file_name, unordered_set<uint32_t> face_up_tiles_in, std::ostream &out=std::cout); 
-        virtual Results probability_of_strategy_victory_step(uint32_t score_in=false);
-        virtual Results probability_of_strategy_victory_step(std::ostream &csv_out, uint32_t score_in, unordered_set<string> &visited);
+        Results probability_of_strategy_victory(Strategy *strategy, std::ostream &out=std::cout);
+        virtual Results probability_of_strategy_victory(Strategy *strategy, unordered_set<uint32_t> face_up_tiles_in, std::ostream &out=std::cout); 
+        virtual Results probability_of_strategy_victory_step(Strategy *strategy, uint32_t score_in, unordered_map<string, Results> &visited);
+        virtual Results probability_of_strategy_victory_step(Strategy *strategy, std::ostream &csv_out, 
+            uint32_t score_in, unordered_map<string, Results> &visited);
 
         Results probability_of_optimal_victory(std::ostream &out=std::cout);
-        Results probability_of_optimal_victory(const string csv_file_name, std::ostream &out=std::cout);
-        Results probability_of_optimal_victory(unordered_set<uint32_t> face_up_tiles_in, std::ostream &out=std::cout);
+        virtual Results probability_of_optimal_victory(unordered_set<uint32_t> face_up_tiles_in, std::ostream &out=std::cout);
         
-        virtual Results probability_of_optimal_victory(const string csv_file_name, unordered_set<uint32_t> face_up_tiles_in, std::ostream &out=std::cout);
-        virtual Results probability_of_optimal_victory_step(uint32_t score_in=false);
-        virtual Results probability_of_optimal_victory_step(std::ostream &csv_out, uint32_t score_in, unordered_set<string> &visited);
+        virtual Results probability_of_optimal_victory_step(uint32_t score_in, unordered_map<string, Results> &visited);
+        virtual Results probability_of_optimal_victory_step(std::ostream &csv_out, uint32_t score_in, unordered_map<string, Results> &visited);
 };
 
 #endif
