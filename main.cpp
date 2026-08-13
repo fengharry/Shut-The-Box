@@ -3,13 +3,13 @@
 using namespace std;
 
 int main() {
-    ShutTheBox g;
+    ShutTheBox g(12);
     SaveOne o;
     LargestNumber l;
     MostNumbers m;
-    g.probability_of_strategy_victory(&o, "save_one_9.csv");
-    g.probability_of_strategy_victory(&l, "largest_number_9.csv");
-    g.probability_of_strategy_victory(&m, "most_numbers_9.csv");
-    // g.probability_of_optimal_victory();
-    // g.probability_of_optimal_victory(cout, false);
+    g.probability_of_strategy_victory(&o, "save_one_12.csv");
+    g.probability_of_strategy_victory(&l, "largest_number_12.csv");
+    g.probability_of_strategy_victory(&m, "most_numbers_12.csv");
+    g.probability_of_optimal_victory();
+    g.probability_of_optimal_victory(AVERAGE_SCORE, 100, cout);
 }

@@ -1,513 +1,513 @@
 Position,Win Probability,Average Score,1,2,3,4,5,6,7,8,9,10,11,12
-|   |   |   |   |   |   |   |   |   |,1.0,0,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   |   |   |   |   |   |   |,0.166667,0.833333,1,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   |   |   |   |   |   | 9 |,0.101852,8.14815,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,9,1 9,N/A,N/A
-|   |   |   |   |   |   |   |   | 9 |,0.111111,8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,9,N/A,N/A,N/A
-|   |   |   |   |   |   |   | 8 |   |,0.138889,6.88889,N/A,N/A,N/A,N/A,N/A,N/A,N/A,8,N/A,N/A,N/A,N/A
-| 1 |   |   |   |   |   |   | 8 | 9 |,0.0380658,14.5947,N/A,N/A,N/A,N/A,N/A,N/A,N/A,8,1 8,1 9,N/A,N/A
-|   |   |   |   |   |   |   | 8 | 9 |,0.0308642,14.6265,N/A,N/A,N/A,N/A,N/A,N/A,N/A,8,9,N/A,N/A,N/A
-|   |   |   |   |   |   | 7 |   |   |,0.166667,5.83333,N/A,N/A,N/A,N/A,N/A,N/A,7,N/A,N/A,N/A,N/A,N/A
-|   |   |   |   |   |   | 7 |   | 9 |,0.037037,13.537,N/A,N/A,N/A,N/A,N/A,N/A,7,N/A,9,N/A,N/A,N/A
-|   |   |   |   |   |   | 7 | 8 |   |,0.0462963,12.375,N/A,N/A,N/A,N/A,N/A,N/A,7,8,N/A,N/A,N/A,N/A
-| 1 |   |   |   |   |   | 7 | 8 | 9 |,0.0186043,19.4993,N/A,N/A,N/A,N/A,N/A,N/A,7,1 7,1 8,1 9,N/A,N/A
-|   |   |   |   |   |   | 7 | 8 | 9 |,0.0154321,19.6929,N/A,N/A,N/A,N/A,N/A,N/A,7,8,9,N/A,N/A,N/A
-|   |   |   |   |   | 6 |   |   |   |,0.138889,5.16667,N/A,N/A,N/A,N/A,N/A,6,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   |   |   |   | 6 |   |   | 9 |,0.0308642,12.9352,N/A,N/A,N/A,N/A,N/A,6,N/A,N/A,9,N/A,N/A,N/A
-|   |   |   |   |   | 6 |   | 8 |   |,0.0385802,11.7855,N/A,N/A,N/A,N/A,N/A,6,N/A,8,N/A,N/A,N/A,N/A
-|   |   |   |   |   | 6 |   | 8 | 9 |,0.0128601,19.1931,N/A,N/A,N/A,N/A,N/A,6,N/A,8,9,N/A,N/A,N/A
-|   |   |   |   |   | 6 | 7 |   |   |,0.0462963,10.6991,N/A,N/A,N/A,N/A,N/A,6,7,N/A,N/A,N/A,N/A,N/A
-|   |   |   |   |   | 6 | 7 |   | 9 |,0.0154321,18.0581,N/A,N/A,N/A,N/A,N/A,6,7,N/A,9,N/A,N/A,N/A
-|   |   |   |   |   | 6 | 7 | 8 |   |,0.0192901,16.8356,N/A,N/A,N/A,N/A,N/A,6,7,8,N/A,N/A,N/A,N/A
-| 1 |   |   |   |   | 6 | 7 | 8 | 9 |,0.0102643,23.26,N/A,N/A,N/A,N/A,N/A,6,1 6,1 7,1 8,1 9,N/A,N/A
-|   |   |   |   |   | 6 | 7 | 8 | 9 |,0.00857339,23.646,N/A,N/A,N/A,N/A,N/A,6,7,8,9,N/A,N/A,N/A
-|   |   |   |   | 5 |   |   |   |   |,0.111111,4.44444,N/A,N/A,N/A,N/A,5,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   |   |   | 5 |   |   |   | 9 |,0.0246914,12.2716,N/A,N/A,N/A,N/A,5,N/A,N/A,N/A,9,N/A,N/A,N/A
-|   |   |   |   | 5 |   |   | 8 |   |,0.0308642,11.1327,N/A,N/A,N/A,N/A,5,N/A,N/A,8,N/A,N/A,N/A,N/A
-|   |   |   |   | 5 |   |   | 8 | 9 |,0.0102881,18.6221,N/A,N/A,N/A,N/A,5,N/A,N/A,8,9,N/A,N/A,N/A
-|   |   |   |   | 5 |   | 7 |   |   |,0.0648148,9.72222,N/A,N/A,N/A,N/A,5,N/A,7,N/A,N/A,N/A,N/A,5 7
-|   |   |   |   | 5 |   | 7 |   | 9 |,0.0185185,17.1019,N/A,N/A,N/A,N/A,5,N/A,7,N/A,9,N/A,N/A,5 7
-|   |   |   |   | 5 |   | 7 | 8 |   |,0.0231481,15.8832,N/A,N/A,N/A,N/A,5,N/A,7,8,N/A,N/A,N/A,5 7
-|   |   |   |   | 5 |   | 7 | 8 | 9 |,0.00943073,22.727,N/A,N/A,N/A,N/A,5,N/A,7,8,9,N/A,N/A,5 7
-|   |   |   |   | 5 | 6 |   |   |   |,0.0864198,8.83025,N/A,N/A,N/A,N/A,5,6,N/A,N/A,N/A,N/A,5 6,N/A
-|   |   |   |   | 5 | 6 |   |   | 9 |,0.0226337,16.2339,N/A,N/A,N/A,N/A,5,6,N/A,N/A,9,N/A,5 6,N/A
-|   |   |   |   | 5 | 6 |   | 8 |   |,0.0282922,15.0204,N/A,N/A,N/A,N/A,5,6,N/A,8,N/A,N/A,5 6,N/A
-|   |   |   |   | 5 | 6 |   | 8 | 9 |,0.0108596,21.8996,N/A,N/A,N/A,N/A,5,6,N/A,8,9,N/A,5 6,N/A
-|   |   |   |   | 5 | 6 | 7 |   |   |,0.0416667,13.4784,N/A,N/A,N/A,N/A,5,6,7,N/A,N/A,N/A,5 6,5 7
-|   |   |   |   | 5 | 6 | 7 |   | 9 |,0.0156036,20.1963,N/A,N/A,N/A,N/A,5,6,7,N/A,9,N/A,5 6,5 7
-|   |   |   |   | 5 | 6 | 7 | 8 |   |,0.0195045,18.8558,N/A,N/A,N/A,N/A,5,6,7,8,N/A,N/A,5 6,5 7
-| 1 |   |   |   | 5 | 6 | 7 | 8 | 9 |,0.0102326,24.1437,N/A,N/A,N/A,N/A,5,1 5,1 6,1 7,1 8,1 9,5 6,1 5 6
-|   |   |   |   | 5 | 6 | 7 | 8 | 9 |,0.00962125,24.7111,N/A,N/A,N/A,N/A,5,6,7,8,9,N/A,5 6,5 7
-|   |   |   | 4 |   |   |   |   |   |,0.0833333,3.66667,N/A,N/A,N/A,4,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   |   | 4 |   |   |   |   | 9 |,0.0185185,11.5463,N/A,N/A,N/A,4,N/A,N/A,N/A,N/A,9,N/A,N/A,N/A
-|   |   |   | 4 |   |   |   | 8 |   |,0.0509259,10.0833,N/A,N/A,N/A,4,N/A,N/A,N/A,8,N/A,N/A,N/A,4 8
-|   |   |   | 4 |   |   |   | 8 | 9 |,0.0138889,17.5818,N/A,N/A,N/A,4,N/A,N/A,N/A,8,9,N/A,N/A,4 8
-|   |   |   | 4 |   |   | 7 |   |   |,0.0833333,8.73611,N/A,N/A,N/A,4,N/A,N/A,7,N/A,N/A,N/A,4 7,N/A
-|   |   |   | 4 |   |   | 7 |   | 9 |,0.0216049,16.1343,N/A,N/A,N/A,4,N/A,N/A,7,N/A,9,N/A,4 7,N/A
-|   |   |   | 4 |   |   | 7 | 8 |   |,0.0362654,14.4977,N/A,N/A,N/A,4,N/A,N/A,7,8,N/A,N/A,4 7,4 8
-|   |   |   | 4 |   |   | 7 | 8 | 9 |,0.0133745,21.2784,N/A,N/A,N/A,4,N/A,N/A,7,8,9,N/A,4 7,4 8
-|   |   |   | 4 |   | 6 |   |   |   |,0.106481,7.88426,N/A,N/A,N/A,4,N/A,6,N/A,N/A,N/A,4 6,N/A,N/A
-|   |   |   | 4 |   | 6 |   |   | 9 |,0.0262346,15.3076,N/A,N/A,N/A,4,N/A,6,N/A,N/A,9,4 6,N/A,N/A
-|   |   |   | 4 |   | 6 |   | 8 |   |,0.0405093,13.6952,N/A,N/A,N/A,4,N/A,6,N/A,8,N/A,4 6,N/A,4 8
-|   |   |   | 4 |   | 6 |   | 8 | 9 |,0.0145748,20.5173,N/A,N/A,N/A,4,N/A,6,N/A,8,9,4 6,N/A,4 8
-|   |   |   | 4 |   | 6 | 7 |   |   |,0.054784,12.2199,N/A,N/A,N/A,4,N/A,6,7,N/A,N/A,4 6,4 7,N/A
-|   |   |   | 4 |   | 6 | 7 |   | 9 |,0.0195473,18.8903,N/A,N/A,N/A,4,N/A,6,7,N/A,9,4 6,4 7,N/A
-|   |   |   | 4 |   | 6 | 7 | 8 |   |,0.0282922,17.0184,N/A,N/A,N/A,4,N/A,6,7,8,N/A,4 6,4 7,4 8
-|   |   |   | 4 |   | 6 | 7 | 8 | 9 |,0.0132888,22.68,N/A,N/A,N/A,4,N/A,6,7,8,9,4 6,4 7,4 8
-|   |   |   | 4 | 5 |   |   |   | 9 |,0.0164609,15.6944,N/A,N/A,N/A,4,5,N/A,N/A,N/A,4 5,N/A,N/A,N/A
-|   |   |   | 4 | 5 |   |   | 8 | 9 |,0.00880201,21.3734,N/A,N/A,N/A,4,5,N/A,N/A,8,4 5,N/A,N/A,4 8
-|   |   |   | 4 | 5 |   | 7 |   | 9 |,0.0126886,19.4513,N/A,N/A,N/A,4,5,N/A,7,N/A,4 5,N/A,4 7,5 7
-|   |   |   | 4 | 5 |   | 7 | 8 | 9 |,0.0081733,24.3164,N/A,N/A,N/A,4,5,N/A,7,8,4 5,N/A,4 7,5 7
-|   |   |   | 4 | 5 | 6 |   |   | 9 |,0.0136031,18.3348,N/A,N/A,N/A,4,5,6,N/A,N/A,4 5,4 6,5 6,N/A
-|   |   |   | 4 | 5 | 6 |   | 8 | 9 |,0.00932277,22.7318,N/A,N/A,N/A,4,5,6,N/A,8,4 5,4 6,5 6,4 8
-| 1 |   |   | 4 | 5 | 6 | 7 | 8 | 9 |,0.00917482,24.8595,N/A,N/A,N/A,4,1 4,1 5,1 6,1 7,4 5,1 4 5,1 4 6,1 5 6
-|   |   |   | 4 | 5 | 6 | 7 |   | 9 |,0.0126886,21.1814,N/A,N/A,N/A,4,5,6,7,N/A,4 5,4 6,5 6,5 7
-|   |   |   | 4 | 5 | 6 | 7 | 8 | 9 |,0.00961595,24.2103,N/A,N/A,N/A,4,5,6,7,8,4 5,4 6,5 6,5 7
-|   |   | 3 |   |   |   |   |   |   |,0.0555556,2.83333,N/A,N/A,3,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 |   |   |   |   |   | 9 |,0.0401235,10.4259,N/A,N/A,3,N/A,N/A,N/A,N/A,N/A,9,N/A,N/A,3 9
-|   |   | 3 |   |   |   |   | 8 |   |,0.0709877,9.02623,N/A,N/A,3,N/A,N/A,N/A,N/A,8,N/A,N/A,3 8,N/A
-|   |   | 3 |   |   |   |   | 8 | 9 |,0.0252058,16.1216,N/A,N/A,3,N/A,N/A,N/A,N/A,8,9,N/A,3 8,3 9
-|   |   | 3 |   |   |   | 7 |   |   |,0.101852,7.74074,N/A,N/A,3,N/A,N/A,N/A,7,N/A,N/A,3 7,N/A,N/A
-|   |   | 3 |   |   |   | 7 |   | 9 |,0.0339506,14.7341,N/A,N/A,3,N/A,N/A,N/A,7,N/A,9,3 7,N/A,3 9
-|   |   | 3 |   |   |   | 7 | 8 |   |,0.0493827,13.1651,N/A,N/A,3,N/A,N/A,N/A,7,8,N/A,3 7,3 8,N/A
-|   |   | 3 |   |   |   | 7 | 8 | 9 |,0.0211763,19.3549,N/A,N/A,3,N/A,N/A,N/A,7,8,9,3 7,3 8,3 9
-|   |   | 3 |   |   | 6 |   |   | 9 |,0.0234911,15.1991,N/A,N/A,3,N/A,N/A,6,N/A,N/A,3 6,N/A,N/A,3 9
-|   |   | 3 |   |   | 6 |   | 8 | 9 |,0.0136936,20.3653,N/A,N/A,3,N/A,N/A,6,N/A,8,3 6,N/A,3 8,3 9
-|   |   | 3 |   |   | 6 | 7 |   | 9 |,0.0174611,18.8787,N/A,N/A,3,N/A,N/A,6,7,N/A,3 6,3 7,N/A,3 9
-|   |   | 3 |   |   | 6 | 7 | 8 | 9 |,0.0123044,22.6098,N/A,N/A,3,N/A,N/A,6,7,8,3 6,3 7,3 8,3 9
-|   |   | 3 |   | 5 |   |   | 8 |   |,0.0350652,13.0473,N/A,N/A,3,N/A,5,N/A,N/A,3 5,N/A,N/A,3 8,N/A
-|   |   | 3 |   | 5 |   |   | 8 | 9 |,0.0137841,19.798,N/A,N/A,3,N/A,5,N/A,N/A,3 5,9,N/A,3 8,3 9
-|   |   | 3 |   | 5 |   | 7 | 8 |   |,0.0271919,16.2626,N/A,N/A,3,N/A,5,N/A,7,3 5,N/A,3 7,3 8,5 7
-|   |   | 3 |   | 5 |   | 7 | 8 | 9 |,0.0129252,22.2047,N/A,N/A,3,N/A,5,N/A,7,3 5,9,3 7,3 8,5 7
-|   |   | 3 |   | 5 | 6 |   | 8 | 9 |,0.00915474,23.4713,N/A,N/A,3,N/A,5,6,N/A,3 5,3 6,N/A,5 6,3 9
-|   |   | 3 |   | 5 | 6 | 7 | 8 | 9 |,0.00992304,24.3785,N/A,N/A,3,N/A,5,6,7,3 5,3 6,3 7,5 6,5 7
-|   |   | 3 | 4 |   |   | 7 |   |   |,0.0509259,10.3434,N/A,N/A,3,4,N/A,N/A,3 4,N/A,N/A,3 7,4 7,N/A
-|   |   | 3 | 4 |   |   | 7 |   | 9 |,0.0219479,16.897,N/A,N/A,3,4,N/A,N/A,3 4,N/A,9,3 7,4 7,3 9
-|   |   | 3 | 4 |   |   | 7 | 8 |   |,0.0319359,15.5139,N/A,N/A,3,4,N/A,N/A,3 4,8,N/A,3 7,4 7,4 8
-|   |   | 3 | 4 |   |   | 7 | 8 | 9 |,0.0151773,21.5289,N/A,N/A,3,4,N/A,N/A,3 4,8,9,3 7,4 7,4 8
-|   |   | 3 | 4 |   | 6 | 7 |   | 9 |,0.016218,20.2391,N/A,N/A,3,4,N/A,6,3 4,N/A,3 6,4 6,4 7,3 9
-|   |   | 3 | 4 |   | 6 | 7 | 8 | 9 |,0.0120495,23.6581,N/A,N/A,3,4,N/A,6,3 4,8,3 6,4 6,4 7,4 8
-| 1 |   | 3 | 4 | 5 | 6 | 7 | 8 | 9 |,0.0106339,24.3276,N/A,N/A,3,1 3,1 4,1 5,3 4,1 3 4,1 3 5,1 4 5,1 4 6,3 4 5
-|   |   | 3 | 4 | 5 |   | 7 | 8 | 9 |,0.0109278,23.9151,N/A,N/A,3,4,5,N/A,3 4,3 5,4 5,3 7,4 7,3 4 5
-|   |   | 3 | 4 | 5 | 6 | 7 | 8 | 9 |,0.0111925,23.9775,N/A,N/A,3,4,5,6,3 4,3 5,4 5,4 6,5 6,3 4 5
-|   | 2 |   |   |   |   |   |   |   |,0.0277778,1.94444,N/A,2,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   |   |   |   |   |   | 9 |,0.0617284,9.29938,N/A,2,N/A,N/A,N/A,N/A,N/A,N/A,9,N/A,2 9,N/A
-|   | 2 |   |   |   |   |   | 8 |   |,0.0910494,7.96142,N/A,2,N/A,N/A,N/A,N/A,N/A,8,N/A,2 8,N/A,N/A
-|   | 2 |   |   |   |   |   | 8 | 9 |,0.0365226,14.7152,N/A,2,N/A,N/A,N/A,N/A,N/A,8,9,2 8,2 9,N/A
-|   | 2 |   |   |   |   | 7 |   | 9 |,0.0329218,14.6389,N/A,2,N/A,N/A,N/A,N/A,7,N/A,2 7,N/A,2 9,N/A
-|   | 2 |   |   |   |   | 7 | 8 | 9 |,0.020176,19.3068,N/A,2,N/A,N/A,N/A,N/A,7,8,2 7,2 8,2 9,N/A
-|   | 2 |   |   |   | 6 |   | 8 |   |,0.0445816,12.5983,N/A,2,N/A,N/A,N/A,6,N/A,2 6,N/A,2 8,N/A,N/A
-|   | 2 |   |   |   | 6 |   | 8 | 9 |,0.0193854,18.852,N/A,2,N/A,N/A,N/A,6,N/A,2 6,9,2 8,2 9,N/A
-|   | 2 |   |   |   | 6 | 7 | 8 | 9 |,0.0122012,22.6771,N/A,2,N/A,N/A,N/A,6,7,2 6,2 7,2 8,2 9,N/A
-|   | 2 |   |   | 5 |   | 7 |   | 9 |,0.0184042,18.0197,N/A,2,N/A,N/A,5,N/A,2 5,N/A,2 7,N/A,2 9,5 7
-|   | 2 |   |   | 5 |   | 7 | 8 | 9 |,0.0126188,21.9579,N/A,2,N/A,N/A,5,N/A,2 5,8,2 7,2 8,2 9,5 7
-|   | 2 |   |   | 5 | 6 | 7 | 8 | 9 |,0.0102806,24.2048,N/A,2,N/A,N/A,5,6,2 5,2 6,2 7,2 8,5 6,5 7
-|   | 2 |   | 4 |   | 6 |   | 8 |   |,0.0287173,15.3224,N/A,2,N/A,4,N/A,2 4,N/A,2 6,N/A,4 6,N/A,2 4 6
-|   | 2 |   | 4 |   | 6 |   | 8 | 9 |,0.0150777,21.0111,N/A,2,N/A,4,N/A,2 4,N/A,2 6,9,4 6,2 9,2 4 6
-|   | 2 |   | 4 |   | 6 | 7 | 8 | 9 |,0.0117535,23.7441,N/A,2,N/A,4,N/A,2 4,7,2 6,2 7,4 6,4 7,2 4 6
-|   | 2 |   | 4 | 5 | 6 | 7 | 8 | 9 |,0.0102615,24.4894,N/A,2,N/A,4,5,2 4,2 5,2 6,4 5,4 6,2 4 5,2 4 6
-| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |,0.0102278,24.2282,N/A,2,1 2,1 3,2 3,1 2 3,1 2 4,1 3 4,2 3 4,1 2 3 4,1 2 3 5,1 2 4 5
-|   |   |   | 4 | 5 | 6 |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   |   | 4 | 5 | 6 |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   |   | 4 | 5 | 6 | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   |   | 4 | 5 | 6 | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 |   |   | 6 |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 |   |   | 6 |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 |   |   | 6 | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 |   | 5 |   | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 |   | 5 | 6 |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 |   | 5 | 6 |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 |   | 5 | 6 | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 | 4 |   |   |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 | 4 |   | 6 |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 |   |   | 6 | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 | 4 |   | 6 |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 | 4 |   | 6 | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 | 4 | 5 |   |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 | 4 | 5 |   |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 | 4 | 5 |   | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 | 4 | 5 |   | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 | 4 | 5 |   |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 | 4 | 5 | 6 |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 | 4 | 5 | 6 |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 | 4 | 5 | 6 | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 | 4 | 5 | 6 | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 | 4 | 5 | 6 |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   |   |   | 6 |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   |   | 5 |   |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   |   | 5 |   |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 | 4 | 5 |   |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   |   | 5 | 6 | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   | 4 |   |   |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   | 4 |   |   |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   | 4 |   |   |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   | 4 |   |   | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   |   | 5 |   |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   | 4 |   |   | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   | 4 |   |   | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   | 4 |   |   | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   | 4 |   | 6 |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   | 4 |   | 6 |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   |   | 5 |   | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   | 4 |   | 6 | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   | 4 |   | 6 | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   | 4 | 5 |   |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   | 4 | 5 |   |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   | 4 | 5 |   |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   | 4 | 5 |   |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   | 4 | 5 |   | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   | 4 | 5 |   | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   | 4 | 5 | 6 |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   | 4 | 5 | 6 | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 |   | 5 | 6 | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   | 4 | 5 | 6 | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   | 4 | 5 | 6 | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 |   |   |   |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 |   |   |   |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 |   |   |   | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 | 4 |   | 6 | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 |   |   | 6 |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 |   |   | 6 |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 |   |   | 6 | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 |   |   | 6 | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 |   |   | 6 | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 |   | 5 |   |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 |   | 5 |   |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   |   | 5 |   |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 |   | 5 |   |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 |   | 5 |   | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 |   | 5 |   | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 |   | 5 |   | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 |   | 5 | 6 |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 |   | 5 | 6 |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 |   | 5 | 6 | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 |   | 5 | 6 | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 |   | 5 | 6 | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 | 4 |   |   |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 | 4 |   | 6 |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 | 4 |   |   |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 | 4 |   |   |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 | 4 |   |   | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   | 4 | 5 | 6 |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 | 4 |   |   | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 | 4 |   | 6 |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 | 4 |   | 6 |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 | 4 |   | 6 |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   |   | 5 | 6 |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 | 4 |   | 6 | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   |   | 5 | 6 |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 | 4 |   | 6 | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 | 4 |   | 6 | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 | 4 | 5 |   | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 | 4 | 5 |   | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 | 4 | 5 |   |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 | 4 | 5 | 6 |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 | 4 | 5 | 6 |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 | 4 | 5 | 6 |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 | 4 | 5 | 6 |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   |   |   | 6 | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 | 4 | 5 | 6 | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   |   |   |   |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   |   | 4 | 5 |   |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 | 4 |   |   |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   |   |   |   |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   |   |   |   | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 |   |   | 6 | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   |   |   |   | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 |   |   |   | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   | 4 | 5 | 6 |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 |   | 5 |   |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   |   |   | 6 |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   |   | 5 | 6 | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   | 4 | 5 | 6 |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   |   |   | 6 | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   |   |   | 6 | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   | 4 | 5 | 6 | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 |   | 5 |   | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 |   | 5 | 6 |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 | 4 | 5 | 6 | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 |   | 5 | 6 | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   |   |   | 6 | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   |   | 5 |   | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 | 4 |   | 6 | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   |   | 5 |   |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   |   | 5 |   |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   | 4 |   |   | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   |   | 5 | 6 |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   |   | 5 |   |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   |   |   | 6 |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   | 4 |   |   |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 |   | 5 |   | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 |   | 5 | 6 | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   |   | 5 |   | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   |   | 5 | 6 |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   |   | 5 | 6 |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   |   | 5 | 6 | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 |   | 5 | 6 |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 | 4 |   |   |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   | 4 |   |   |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 | 4 | 5 | 6 |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 | 4 |   |   | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 | 4 |   |   | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   |   |   | 6 |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   | 4 |   |   | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 | 4 |   |   | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 |   |   |   | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   |   | 5 | 6 | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   | 4 |   | 6 |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 |   | 5 |   |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   | 4 |   | 6 | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   |   | 5 | 6 | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 |   | 5 | 6 | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 |   | 5 | 6 | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   | 4 | 5 |   | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   | 4 |   | 6 | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 |   |   |   | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 | 4 | 5 |   | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   | 4 |   | 6 | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   |   |   |   |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 | 4 | 5 |   | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   |   | 5 | 6 | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   | 4 | 5 |   |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   | 4 | 5 |   | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   |   | 5 | 6 |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 |   |   |   |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   | 4 | 5 |   | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   |   | 5 | 6 | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   |   | 5 | 6 |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   |   | 5 |   |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   | 4 | 5 |   | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   | 4 | 5 | 6 | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 | 4 |   | 6 | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   | 4 |   |   | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 | 4 | 5 | 6 | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   | 4 | 5 | 6 | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   |   | 5 |   | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   |   | 5 |   | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 |   |   |   |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   | 4 | 5 | 6 |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 |   | 5 |   |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 |   | 5 |   |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 |   | 5 |   | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 |   |   |   | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   |   |   |   | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   |   | 5 |   | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 | 4 | 5 | 6 |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 |   | 5 |   | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   | 4 | 5 | 6 |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 | 4 |   | 6 |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   | 4 |   | 6 |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   | 4 | 5 |   | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   |   | 5 |   | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 | 4 |   | 6 |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   |   | 5 |   |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 |   |   |   | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 | 4 |   |   | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 | 4 |   | 6 | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 | 4 |   |   |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 |   | 5 | 6 | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 |   |   | 6 |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   | 4 |   |   |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 | 4 | 5 | 6 | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 | 4 |   |   | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   | 4 | 5 | 6 |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 | 4 |   | 6 | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   |   |   | 6 |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 | 4 |   | 6 |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 |   |   |   |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   | 4 |   | 6 | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 |   | 5 |   | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 | 4 |   | 6 | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 | 4 | 5 |   |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 | 4 | 5 |   |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 |   | 5 |   |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 | 4 | 5 |   | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 | 4 | 5 |   | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   |   | 5 |   |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 |   |   | 6 | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 |   | 5 | 6 | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 | 4 | 5 | 6 | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 | 4 |   |   | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   | 4 | 5 |   |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   | 4 |   |   |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 | 4 | 5 | 6 |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 |   |   | 6 | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   | 4 | 5 | 6 |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 | 4 | 5 |   | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 | 4 | 5 |   |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   |   |   | 6 | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   | 4 | 5 |   | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 |   | 5 | 6 |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 | 4 |   |   | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 |   |   | 6 |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   | 4 |   |   |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 | 4 |   | 6 | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 | 4 | 5 | 6 |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 |   | 5 |   |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   | 4 | 5 |   |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 |   | 5 | 6 |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 |   |   | 6 |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   |   | 4 | 5 |   |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 |   |   |   |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   | 4 |   | 6 |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 |   | 5 | 6 |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 |   |   | 6 | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 | 4 |   | 6 | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   |   |   | 6 | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   |   | 5 | 6 |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   | 4 |   |   | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 |   | 5 |   |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   | 4 |   | 6 | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 | 4 |   | 6 |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 | 4 |   | 6 | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   |   |   |   | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   |   |   |   |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 | 4 | 5 |   |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   | 4 | 5 | 6 | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 | 4 |   |   |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   | 4 |   | 6 |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 |   |   | 6 | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 | 4 |   |   |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 | 4 |   | 6 |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   | 4 | 5 |   | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 | 4 |   |   |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 |   |   | 6 | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 | 4 |   |   |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 | 4 |   |   |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 | 4 | 5 |   |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 |   | 5 | 6 | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 | 4 | 5 | 6 |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 | 4 |   |   |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   | 4 | 5 | 6 |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 |   |   |   |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 | 4 | 5 |   |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   | 4 | 5 | 6 |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 | 4 | 5 |   | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 | 4 | 5 |   | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 |   | 5 | 6 |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 | 4 | 5 | 6 |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 |   | 5 |   | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   | 4 | 5 |   |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 |   |   |   | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   |   |   | 6 | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   |   |   |   | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 |   |   | 6 | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 |   | 5 |   | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 |   |   | 6 |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 |   |   |   | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   | 4 |   | 6 | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   | 4 |   |   | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 | 4 | 5 | 6 | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   | 4 | 5 |   |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 | 4 | 5 | 6 |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   | 4 |   | 6 | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 | 4 |   | 6 |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   |   | 5 | 6 |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 | 4 | 5 |   | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 | 4 | 5 |   | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 | 4 | 5 |   |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   |   | 5 |   | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 |   | 5 |   |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 | 4 |   | 6 | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 |   |   | 6 |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 | 4 |   | 6 |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 | 4 |   | 6 |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 | 4 |   | 6 |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 | 4 |   |   |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 | 4 |   |   | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 | 4 |   |   | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   |   | 4 | 5 |   | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   |   | 5 | 6 |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   |   |   | 6 |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 | 4 |   |   |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 | 4 |   |   |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 |   | 5 | 6 | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   |   | 5 |   |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 |   | 5 | 6 | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   | 4 |   |   |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 |   | 5 | 6 |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 |   | 5 | 6 |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   |   |   |   | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 |   | 5 | 6 |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 |   | 5 |   | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 | 4 | 5 |   | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 |   | 5 |   | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 | 4 | 5 |   |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 |   | 5 |   | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 | 4 | 5 | 6 | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 |   | 5 |   |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 |   |   | 6 | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 | 4 | 5 |   | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 |   |   | 6 |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 |   |   | 6 |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 |   |   | 6 |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 |   | 5 | 6 |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   |   |   |   | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 | 4 | 5 | 6 | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 |   |   | 6 |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   |   | 5 | 6 | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   |   | 5 |   | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 |   |   |   | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 |   |   |   | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 |   |   |   | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 |   |   |   | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   | 4 | 5 |   |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   |   | 5 |   | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 |   |   |   |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   |   |   |   |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   | 4 |   |   | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 |   |   |   |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 | 4 | 5 |   |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 |   |   |   |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   | 4 | 5 |   | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   | 4 | 5 | 6 | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   |   | 5 | 6 | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   | 4 | 5 | 6 |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   |   | 4 | 5 |   | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   | 4 |   |   |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 | 4 | 5 | 6 | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   | 4 | 5 |   | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   | 4 | 5 |   |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 |   |   |   |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 |   | 5 |   |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   | 4 | 5 |   |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   |   |   | 6 | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   | 4 |   |   |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 | 4 | 5 | 6 |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   | 4 |   | 6 | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   | 4 |   | 6 | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   | 4 |   | 6 |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 | 4 |   |   | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   |   |   | 6 |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 | 4 | 5 |   |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   | 4 |   | 6 |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   | 4 | 5 |   | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 | 4 | 5 | 6 |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   | 4 |   | 6 |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   |   | 5 | 6 | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   | 4 |   |   | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   | 4 |   |   |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 |   |   | 6 |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   | 4 |   | 6 |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   |   | 5 | 6 |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   |   | 3 | 4 |   | 6 |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 | 3 |   |   | 6 | 7 | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   |   | 5 | 6 |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   |   | 5 |   |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   | 4 |   |   | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   |   |   | 6 | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 | 2 |   | 4 | 5 | 6 | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 |   |   |   |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   |   |   | 6 | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   |   |   | 6 |   | 8 | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 |   | 5 |   |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   |   |   | 6 |   | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   |   |   | 6 |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 |   | 5 | 6 | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   |   |   |   | 7 | 8 |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 |   | 4 | 5 | 6 |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   | 4 | 5 | 6 | 7 |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   |   |   |   |   | 7 |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-|   | 2 | 3 |   | 5 | 6 |   |   | 9 |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-| 1 |   | 3 | 4 | 5 |   |   |   |   |,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+,1.0,0,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1,0.166667,0.833333,1,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 9,0.101852,8.14815,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,9,1 9,N/A,N/A
+9,0.111111,8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,9,N/A,N/A,N/A
+8,0.138889,6.88889,N/A,N/A,N/A,N/A,N/A,N/A,N/A,8,N/A,N/A,N/A,N/A
+1 8 9,0.0380658,14.5947,N/A,N/A,N/A,N/A,N/A,N/A,N/A,8,1 8,1 9,N/A,N/A
+8 9,0.0308642,14.6265,N/A,N/A,N/A,N/A,N/A,N/A,N/A,8,9,N/A,N/A,N/A
+7,0.166667,5.83333,N/A,N/A,N/A,N/A,N/A,N/A,7,N/A,N/A,N/A,N/A,N/A
+7 9,0.037037,13.537,N/A,N/A,N/A,N/A,N/A,N/A,7,N/A,9,N/A,N/A,N/A
+7 8,0.0462963,12.375,N/A,N/A,N/A,N/A,N/A,N/A,7,8,N/A,N/A,N/A,N/A
+1 7 8 9,0.0186043,19.4993,N/A,N/A,N/A,N/A,N/A,N/A,7,1 7,1 8,1 9,N/A,N/A
+7 8 9,0.0154321,19.6929,N/A,N/A,N/A,N/A,N/A,N/A,7,8,9,N/A,N/A,N/A
+6,0.138889,5.16667,N/A,N/A,N/A,N/A,N/A,6,N/A,N/A,N/A,N/A,N/A,N/A
+6 9,0.0308642,12.9352,N/A,N/A,N/A,N/A,N/A,6,N/A,N/A,9,N/A,N/A,N/A
+6 8,0.0385802,11.7855,N/A,N/A,N/A,N/A,N/A,6,N/A,8,N/A,N/A,N/A,N/A
+6 8 9,0.0128601,19.1931,N/A,N/A,N/A,N/A,N/A,6,N/A,8,9,N/A,N/A,N/A
+6 7,0.0462963,10.6991,N/A,N/A,N/A,N/A,N/A,6,7,N/A,N/A,N/A,N/A,N/A
+6 7 9,0.0154321,18.0581,N/A,N/A,N/A,N/A,N/A,6,7,N/A,9,N/A,N/A,N/A
+6 7 8,0.0192901,16.8356,N/A,N/A,N/A,N/A,N/A,6,7,8,N/A,N/A,N/A,N/A
+1 6 7 8 9,0.0102643,23.26,N/A,N/A,N/A,N/A,N/A,6,1 6,1 7,1 8,1 9,N/A,N/A
+6 7 8 9,0.00857339,23.646,N/A,N/A,N/A,N/A,N/A,6,7,8,9,N/A,N/A,N/A
+5,0.111111,4.44444,N/A,N/A,N/A,N/A,5,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+5 9,0.0246914,12.2716,N/A,N/A,N/A,N/A,5,N/A,N/A,N/A,9,N/A,N/A,N/A
+5 8,0.0308642,11.1327,N/A,N/A,N/A,N/A,5,N/A,N/A,8,N/A,N/A,N/A,N/A
+5 8 9,0.0102881,18.6221,N/A,N/A,N/A,N/A,5,N/A,N/A,8,9,N/A,N/A,N/A
+5 7,0.0648148,9.72222,N/A,N/A,N/A,N/A,5,N/A,7,N/A,N/A,N/A,N/A,5 7
+5 7 9,0.0185185,17.1019,N/A,N/A,N/A,N/A,5,N/A,7,N/A,9,N/A,N/A,5 7
+5 7 8,0.0231481,15.8832,N/A,N/A,N/A,N/A,5,N/A,7,8,N/A,N/A,N/A,5 7
+5 7 8 9,0.00943073,22.727,N/A,N/A,N/A,N/A,5,N/A,7,8,9,N/A,N/A,5 7
+5 6,0.0864198,8.83025,N/A,N/A,N/A,N/A,5,6,N/A,N/A,N/A,N/A,5 6,N/A
+5 6 9,0.0226337,16.2339,N/A,N/A,N/A,N/A,5,6,N/A,N/A,9,N/A,5 6,N/A
+5 6 8,0.0282922,15.0204,N/A,N/A,N/A,N/A,5,6,N/A,8,N/A,N/A,5 6,N/A
+5 6 8 9,0.0108596,21.8996,N/A,N/A,N/A,N/A,5,6,N/A,8,9,N/A,5 6,N/A
+5 6 7,0.0416667,13.4784,N/A,N/A,N/A,N/A,5,6,7,N/A,N/A,N/A,5 6,5 7
+5 6 7 9,0.0156036,20.1963,N/A,N/A,N/A,N/A,5,6,7,N/A,9,N/A,5 6,5 7
+5 6 7 8,0.0195045,18.8558,N/A,N/A,N/A,N/A,5,6,7,8,N/A,N/A,5 6,5 7
+1 5 6 7 8 9,0.0102326,24.1437,N/A,N/A,N/A,N/A,5,1 5,1 6,1 7,1 8,1 9,5 6,1 5 6
+5 6 7 8 9,0.00962125,24.7111,N/A,N/A,N/A,N/A,5,6,7,8,9,N/A,5 6,5 7
+4,0.0833333,3.66667,N/A,N/A,N/A,4,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+4 9,0.0185185,11.5463,N/A,N/A,N/A,4,N/A,N/A,N/A,N/A,9,N/A,N/A,N/A
+4 8,0.0509259,10.0833,N/A,N/A,N/A,4,N/A,N/A,N/A,8,N/A,N/A,N/A,4 8
+4 8 9,0.0138889,17.5818,N/A,N/A,N/A,4,N/A,N/A,N/A,8,9,N/A,N/A,4 8
+4 7,0.0833333,8.73611,N/A,N/A,N/A,4,N/A,N/A,7,N/A,N/A,N/A,4 7,N/A
+4 7 9,0.0216049,16.1343,N/A,N/A,N/A,4,N/A,N/A,7,N/A,9,N/A,4 7,N/A
+4 7 8,0.0362654,14.4977,N/A,N/A,N/A,4,N/A,N/A,7,8,N/A,N/A,4 7,4 8
+4 7 8 9,0.0133745,21.2784,N/A,N/A,N/A,4,N/A,N/A,7,8,9,N/A,4 7,4 8
+4 6,0.106481,7.88426,N/A,N/A,N/A,4,N/A,6,N/A,N/A,N/A,4 6,N/A,N/A
+4 6 9,0.0262346,15.3076,N/A,N/A,N/A,4,N/A,6,N/A,N/A,9,4 6,N/A,N/A
+4 6 8,0.0405093,13.6952,N/A,N/A,N/A,4,N/A,6,N/A,8,N/A,4 6,N/A,4 8
+4 6 8 9,0.0145748,20.5173,N/A,N/A,N/A,4,N/A,6,N/A,8,9,4 6,N/A,4 8
+4 6 7,0.054784,12.2199,N/A,N/A,N/A,4,N/A,6,7,N/A,N/A,4 6,4 7,N/A
+4 6 7 9,0.0195473,18.8903,N/A,N/A,N/A,4,N/A,6,7,N/A,9,4 6,4 7,N/A
+4 6 7 8,0.0282922,17.0184,N/A,N/A,N/A,4,N/A,6,7,8,N/A,4 6,4 7,4 8
+4 6 7 8 9,0.0132888,22.68,N/A,N/A,N/A,4,N/A,6,7,8,9,4 6,4 7,4 8
+4 5 9,0.0164609,15.6944,N/A,N/A,N/A,4,5,N/A,N/A,N/A,4 5,N/A,N/A,N/A
+4 5 8 9,0.00880201,21.3734,N/A,N/A,N/A,4,5,N/A,N/A,8,4 5,N/A,N/A,4 8
+4 5 7 9,0.0126886,19.4513,N/A,N/A,N/A,4,5,N/A,7,N/A,4 5,N/A,4 7,5 7
+4 5 7 8 9,0.0081733,24.3164,N/A,N/A,N/A,4,5,N/A,7,8,4 5,N/A,4 7,5 7
+4 5 6 9,0.0136031,18.3348,N/A,N/A,N/A,4,5,6,N/A,N/A,4 5,4 6,5 6,N/A
+4 5 6 8 9,0.00932277,22.7318,N/A,N/A,N/A,4,5,6,N/A,8,4 5,4 6,5 6,4 8
+1 4 5 6 7 8 9,0.00917482,24.8595,N/A,N/A,N/A,4,1 4,1 5,1 6,1 7,4 5,1 4 5,1 4 6,1 5 6
+4 5 6 7 9,0.0126886,21.1814,N/A,N/A,N/A,4,5,6,7,N/A,4 5,4 6,5 6,5 7
+4 5 6 7 8 9,0.00961595,24.2103,N/A,N/A,N/A,4,5,6,7,8,4 5,4 6,5 6,5 7
+3,0.0555556,2.83333,N/A,N/A,3,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 9,0.0401235,10.4259,N/A,N/A,3,N/A,N/A,N/A,N/A,N/A,9,N/A,N/A,3 9
+3 8,0.0709877,9.02623,N/A,N/A,3,N/A,N/A,N/A,N/A,8,N/A,N/A,3 8,N/A
+3 8 9,0.0252058,16.1216,N/A,N/A,3,N/A,N/A,N/A,N/A,8,9,N/A,3 8,3 9
+3 7,0.101852,7.74074,N/A,N/A,3,N/A,N/A,N/A,7,N/A,N/A,3 7,N/A,N/A
+3 7 9,0.0339506,14.7341,N/A,N/A,3,N/A,N/A,N/A,7,N/A,9,3 7,N/A,3 9
+3 7 8,0.0493827,13.1651,N/A,N/A,3,N/A,N/A,N/A,7,8,N/A,3 7,3 8,N/A
+3 7 8 9,0.0211763,19.3549,N/A,N/A,3,N/A,N/A,N/A,7,8,9,3 7,3 8,3 9
+3 6 9,0.0234911,15.1991,N/A,N/A,3,N/A,N/A,6,N/A,N/A,3 6,N/A,N/A,3 9
+3 6 8 9,0.0136936,20.3653,N/A,N/A,3,N/A,N/A,6,N/A,8,3 6,N/A,3 8,3 9
+3 6 7 9,0.0174611,18.8787,N/A,N/A,3,N/A,N/A,6,7,N/A,3 6,3 7,N/A,3 9
+3 6 7 8 9,0.0123044,22.6098,N/A,N/A,3,N/A,N/A,6,7,8,3 6,3 7,3 8,3 9
+3 5 8,0.0350652,13.0473,N/A,N/A,3,N/A,5,N/A,N/A,3 5,N/A,N/A,3 8,N/A
+3 5 8 9,0.0137841,19.798,N/A,N/A,3,N/A,5,N/A,N/A,3 5,9,N/A,3 8,3 9
+3 5 7 8,0.0271919,16.2626,N/A,N/A,3,N/A,5,N/A,7,3 5,N/A,3 7,3 8,5 7
+3 5 7 8 9,0.0129252,22.2047,N/A,N/A,3,N/A,5,N/A,7,3 5,9,3 7,3 8,5 7
+3 5 6 8 9,0.00915474,23.4713,N/A,N/A,3,N/A,5,6,N/A,3 5,3 6,N/A,5 6,3 9
+3 5 6 7 8 9,0.00992304,24.3785,N/A,N/A,3,N/A,5,6,7,3 5,3 6,3 7,5 6,5 7
+3 4 7,0.0509259,10.3434,N/A,N/A,3,4,N/A,N/A,3 4,N/A,N/A,3 7,4 7,N/A
+3 4 7 9,0.0219479,16.897,N/A,N/A,3,4,N/A,N/A,3 4,N/A,9,3 7,4 7,3 9
+3 4 7 8,0.0319359,15.5139,N/A,N/A,3,4,N/A,N/A,3 4,8,N/A,3 7,4 7,4 8
+3 4 7 8 9,0.0151773,21.5289,N/A,N/A,3,4,N/A,N/A,3 4,8,9,3 7,4 7,4 8
+3 4 6 7 9,0.016218,20.2391,N/A,N/A,3,4,N/A,6,3 4,N/A,3 6,4 6,4 7,3 9
+3 4 6 7 8 9,0.0120495,23.6581,N/A,N/A,3,4,N/A,6,3 4,8,3 6,4 6,4 7,4 8
+1 3 4 5 6 7 8 9,0.0106339,24.3276,N/A,N/A,3,1 3,1 4,1 5,3 4,1 3 4,1 3 5,1 4 5,1 4 6,3 4 5
+3 4 5 7 8 9,0.0109278,23.9151,N/A,N/A,3,4,5,N/A,3 4,3 5,4 5,3 7,4 7,3 4 5
+3 4 5 6 7 8 9,0.0111925,23.9775,N/A,N/A,3,4,5,6,3 4,3 5,4 5,4 6,5 6,3 4 5
+2,0.0277778,1.94444,N/A,2,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 9,0.0617284,9.29938,N/A,2,N/A,N/A,N/A,N/A,N/A,N/A,9,N/A,2 9,N/A
+2 8,0.0910494,7.96142,N/A,2,N/A,N/A,N/A,N/A,N/A,8,N/A,2 8,N/A,N/A
+2 8 9,0.0365226,14.7152,N/A,2,N/A,N/A,N/A,N/A,N/A,8,9,2 8,2 9,N/A
+2 7 9,0.0329218,14.6389,N/A,2,N/A,N/A,N/A,N/A,7,N/A,2 7,N/A,2 9,N/A
+2 7 8 9,0.020176,19.3068,N/A,2,N/A,N/A,N/A,N/A,7,8,2 7,2 8,2 9,N/A
+2 6 8,0.0445816,12.5983,N/A,2,N/A,N/A,N/A,6,N/A,2 6,N/A,2 8,N/A,N/A
+2 6 8 9,0.0193854,18.852,N/A,2,N/A,N/A,N/A,6,N/A,2 6,9,2 8,2 9,N/A
+2 6 7 8 9,0.0122012,22.6771,N/A,2,N/A,N/A,N/A,6,7,2 6,2 7,2 8,2 9,N/A
+2 5 7 9,0.0184042,18.0197,N/A,2,N/A,N/A,5,N/A,2 5,N/A,2 7,N/A,2 9,5 7
+2 5 7 8 9,0.0126188,21.9579,N/A,2,N/A,N/A,5,N/A,2 5,8,2 7,2 8,2 9,5 7
+2 5 6 7 8 9,0.0102806,24.2048,N/A,2,N/A,N/A,5,6,2 5,2 6,2 7,2 8,5 6,5 7
+2 4 6 8,0.0287173,15.3224,N/A,2,N/A,4,N/A,2 4,N/A,2 6,N/A,4 6,N/A,2 4 6
+2 4 6 8 9,0.0150777,21.0111,N/A,2,N/A,4,N/A,2 4,N/A,2 6,9,4 6,2 9,2 4 6
+2 4 6 7 8 9,0.0117535,23.7441,N/A,2,N/A,4,N/A,2 4,7,2 6,2 7,4 6,4 7,2 4 6
+2 4 5 6 7 8 9,0.0102615,24.4894,N/A,2,N/A,4,5,2 4,2 5,2 6,4 5,4 6,2 4 5,2 4 6
+1 2 3 4 5 6 7 8 9,0.0102278,24.2282,N/A,2,1 2,1 3,2 3,1 2 3,1 2 4,1 3 4,2 3 4,1 2 3 4,1 2 3 5,1 2 4 5
+4 5 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+4 5 6,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+4 5 6 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 6,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 6 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 5 6 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 4 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 4 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 4 6 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 4 6 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 4 5,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 4 5 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 4 5 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 4 5 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 4 5 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 4 5 6,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 4 5 6 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 4 5 6 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 4 5 6 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 6,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 6 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 6 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 6 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 5 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 5 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 5 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 5 6,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 5 6 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 5 6 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 6 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 5 6 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 5 6 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 5 6 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 4 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 4 6,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 4 6 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 5 6,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 4 6 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 4 5 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 4 5 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 4 5 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 4 5 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 4 5 6,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 4 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 4 5 6 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 4 5 6 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 4 6 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 4 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 4 5 6 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 4 5 6 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 4 5 6 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 4 5 6 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 4 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 6 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 6 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 4 5 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 6 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 5,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 5 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 5 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+4 5 6 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 5 6 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 5 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 5 6 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 5 6 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 5 6 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 5 6 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 5 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 5 6 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 4 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 4 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 4 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 5 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 4 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 4 6 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 4 6 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 4 6 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 4 6 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 4 6 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 4 5 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 4 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 4 5 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 4 5 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 4 5 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 4 6 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 4 5 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 4 5 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 4 5 6 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 4 5 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 4 5 6 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 4 6 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 4 5 6 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 4 5 6 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 4 5 6 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 4 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 4 6,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 6 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 4 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 6 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 4 5 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 5,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 5 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 6 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 5 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 4 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 5,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 5 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 6 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 5 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 5 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 4 6 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 5 6,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 5 6 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 4 5,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 5 6 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 5 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 4 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 4 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 4,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 4 6,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 4 6 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 4 6 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 4 5 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 6 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 4 5 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+4 5 6 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 4 5 6 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 4 5 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 5 6 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 4 5 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 5,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 4 5 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 5 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 5 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 5 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 4 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 4 5 6,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 6 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 4 5 6 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 5 6 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 5 6 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 4 6 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 4 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 5 6,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 4 5,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 5 6 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 4 5 6 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 5 6 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 4 5 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 4 5,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 4 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 4 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 5 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 6 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 4 6 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 4 5 6 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 5 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 5,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 4 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 4 6 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 6 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 4 6 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 4 5 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 6 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 4 5 6 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 4 6 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 6 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 4 5 6 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 5 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 5 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 4 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 4 6 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 6 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 5 6 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 4 6 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 5 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 5 6 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 6 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 4 5 6 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 4 5 6 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 6 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 4 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 4 5 6 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 4 5 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 4 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 5,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+4 5 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 6 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 5 6 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 4 5 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 4 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 5 6 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 4 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 4 5 6,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 5 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 6 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 5 6 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 4 5 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 5 6 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 4 5 6 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 4 5 6,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 4 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 5 6 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 4 5 6 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 4 6 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+4 5,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 4 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 5 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 4 5 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 4,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 4 5 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 4 5 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 6 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 4 6 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 4 5 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 4 5 6 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 5 6 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 4 5 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 6 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 5 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 4 5 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 4 6 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 4 5 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 5 6 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 4 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 5 6 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 6 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 5 6 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 4 5 6 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 5 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 4 5 6 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 5 6 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 4 6 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 5 6 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 5 6 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 6,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 5,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 5 6 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 5 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 6 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 4 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 4 5 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 5 6,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 4 5 6 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 4 5 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 4 5 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 4 6,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 5 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 5 6 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 6,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 4 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 4 6 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 5 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 4 5 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 5 6,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 4 6 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 4 5 6,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 4 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 4 5 6 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 6 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 4 5 6 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 4 5 6 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 4 5 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 4 5 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 4 5 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 4,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 4 6 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 4 6 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 4 6 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 4 5,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 4 6 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 5 6 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 4 6 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+4 5 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 4 6 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 4 6 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 4 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 4 6,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 4 5 6 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 4 5,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 6 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 4 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 4 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 4 5 6 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 4 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 4,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 5 6 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 5 6 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 6,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 5 6 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 5 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 4 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 4 5 6 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 4 5 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 5 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 4,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 5 6 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 4 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 6,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 4 6 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 4 6 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 6 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 5 6 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 5 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 4 5 6 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 4 6 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 5 6,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 4 6 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 6 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 5 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 5 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 4 6 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 4 5 6 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 4 5 6 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 5 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 6 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 4 5 6 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 4 5 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 6 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 5 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 5 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 6 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 6 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 6 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 6 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 4 5 6 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 6 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 6 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 5 6 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3 4 5,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 5 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 6,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 4 5 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 4 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 4 5 6 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 4 5 6 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 4 5 6,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 6 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 4 5 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 4 5 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 3,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 4 5 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 4 6 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 4 5 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 4 6 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 4 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 4 6,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 5 6 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 4 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 4 6 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 4 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 4 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 4 6,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 4 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 4 5 6 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 4 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 4 5 6 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 5 6 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+3 4,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 5 7 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 4,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3 5 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 5 7 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 5 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 2 3 4 6 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 5 8 9,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 3,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+2 5 6 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 6 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 7 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+1 8,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A

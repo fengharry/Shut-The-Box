@@ -7,7 +7,7 @@ using namespace std;
 
 class LargestNumber: public Strategy {
     public:
-        LargestNumber(uint32_t num_tiles_in=9): Strategy("Largest Number") {}
+        LargestNumber(): Strategy("Largest Number") {}
         virtual void set_to_combination(const uint32_t roll_num, unordered_set<uint32_t> &tile_combination,
             vector<vector<uint32_t>> &tile_combinations_dp) override;
 };

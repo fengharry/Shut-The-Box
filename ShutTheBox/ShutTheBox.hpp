@@ -14,6 +14,10 @@
 
 using namespace std;
 
+enum OptimizedType {
+    WIN_PROBABILITY, AVERAGE_SCORE
+};
+
 struct Results {
     double win_probability = 0;
     double avg_score = 0;
@@ -24,10 +28,9 @@ struct Results {
 
 class ShutTheBox {
     protected:
-        string optimal_win_csv_file_name = "";
-        string optimal_score_csv_file_name = "";
+        string optimal_win_csv_file = "";
+        string optimal_score_csv_file = "";
         
-        string empty_position = "|";
         Results empty_results = {1.0, 0};
 
         unordered_set<string> all_positions;
@@ -60,14 +63,14 @@ class ShutTheBox {
         
         /**
          * Inserts all possible positions with the given tiles into all_positions. 
-         * Each position is a string with a "|" separating each face up tile
+         * Each position is a string with a space separating each face up tile
          * (see get_curr_position for more details on formatting).
          * 
          * @param tile_idx the index of the currently tracked tile in sorted_tiles
          * @param curr_position the string representing the current position,
-         *      may be incomplete (ex. "| 1 |   | 3 | 4 |").
+         *      may be incomplete (ex. "1 3 4").
          */
-        void get_all_positions(uint32_t tile_idx=0, string curr_position="|");
+        void get_all_positions(uint32_t tile_idx=0, string curr_position="");
 
         /**
          * Given a set of positions that have been reached by a simulation,
@@ -103,36 +106,40 @@ class ShutTheBox {
          * @param face_up_tiles_in the set of face up tiles
          */
         virtual void initialize_game(unordered_set<uint32_t> face_up_tiles_in);
-        
+
         /**
          * Constructs a ShutTheBox object. Inserts numbers
-         * from 1 to num_tiles_in into tiles and sorted_tiles,
-         * gets all positions (i.e. runs get_all_positions()),
+         * from 1 to num_tiles_in into tiles and sorted_tiles, as well as
+         * copying optimal_win_csv_file_in into optimal_win_csv_file
+         * and optimal_score_csv_file_in into optimal_score_csv_file.
+         * Also, gets all positions (i.e. runs get_all_positions()),
          * and initializes the game (i.e. runs initialize_game()).
          * 
          * @param num_tiles_in the number of tiles inserted (numbered from 1 to num_tiles_in)
-         * @param strategy_name_in the name of the object's strategy
-         * @param strategy_csv_file_in the path of the object's csv_file
+         * @param optimal_win_csv_file_in the path of the object's win probability-optimized csv file
+         * @param optimal_score_csv_file_in the path of the object's score-optimized csv file
          */
-        ShutTheBox(uint32_t num_tiles_in=9);
+        ShutTheBox(uint32_t num_tiles_in=9, string optimal_win_csv_file_in="", string optimal_score_csv_file_in="");
 
         /**
          * Constructs a ShutTheBox object.
          * Copies tiles_in into tiles, strategy_name_in into strategy_name,
-         * and strategy_csv_file_in into strategy_csv_file.
+         * optimal_win_csv_file_in into optimal_win_csv_file,
+         * and optimal_score_csv_file_in into optimal_score_csv_file.
          * Also, gets all positions (i.e. runs get_all_positions())
          * and initializes the game (i.e. runs initialize_game()).
          * 
          * @param tiles_in the set of tiles to be inserted
-         * @param strategy_name_in the name of the object's strategy
-         * @param strategy_csv_file_in the path of the object's csv_file
+         * @param optimal_win_csv_file_in the path of the object's win probability-optimized csv file
+         * @param optimal_score_csv_file_in the path of the object's score-optimized csv file
          */
-        ShutTheBox(unordered_set<uint32_t> tiles_in);
+        ShutTheBox(unordered_set<uint32_t> tiles_in, string optimal_win_csv_file_in="", string optimal_score_csv_file_in="");
 
         /**
          * Constructs a ShutTheBox object.
          * Copies tiles_in into tiles, strategy_name_in into strategy_name,
-         * and strategy_csv_file_in into strategy_csv_file.
+         * optimal_win_csv_file_in into optimal_win_csv_file,
+         * and optimal_score_csv_file_in into optimal_score_csv_file.
          * Also, gets all positions (i.e. runs get_all_positions()),
          * constructs dice based on single_die_probabilities_in,
          * and initializes the game (i.e. runs initialize_game()).
@@ -140,17 +147,15 @@ class ShutTheBox {
          * @param tiles_in the set of tiles to be inserted
          * @param single_die_probabilities_in the probabilities of rolling 
          *  select values on a single die
-         * @param strategy_name_in the name of the object's strategy
-         * @param strategy_csv_file_in the path of the object's csv_file
+         * @param optimal_win_csv_file_in the path of the object's win probability-optimized csv file
+         * @param optimal_score_csv_file_in the path of the object's score-optimized csv file
          */
-        ShutTheBox(unordered_set<uint32_t> tiles_in, unordered_map<uint32_t, double> single_die_probabilities_in);
+        ShutTheBox(unordered_set<uint32_t> tiles_in, unordered_map<uint32_t, double> single_die_probabilities_in, 
+            string optimal_win_csv_file_in="", string optimal_score_csv_file_in="");
         
         /**
          * Gets the current position of the game as a string.
-         * The format of the string is as follows:
-         * 1. Each tile is separated by a bar ("| 2 | 3 |").
-         * 2. If the tile is face down, the space is blank ("| 2 |   |")
-         * ex. "| 1 |   | 3 | 4 | 5 |   |   | 8 | 9 |"
+         * ex. "1 3 4 5 8 9"
          * 
          * @return a string of the current position
          */
@@ -333,22 +338,25 @@ class ShutTheBox {
          * @param title the display name of the simulation
          * @param out the output stream of the results
          */
-        virtual void print_results(Results results, string title, std::ostream &out=std::cout);
+        virtual void print_results(Results results, string title, uint32_t num_reached_positions, std::ostream &out=std::cout);
 
 
 
-        Results probability_of_strategy_victory(Strategy *strategy, string csv_file_name_in, std::ostream &out=std::cout);
-        Results probability_of_strategy_victory(Strategy *strategy, unordered_set<uint32_t> face_up_tiles_in, string csv_file_name_in, std::ostream &out=std::cout); 
+        Results probability_of_strategy_victory(Strategy *strategy, string csv_file_in, uint32_t progress_check=100, std::ostream &out=std::cout);
+        Results probability_of_strategy_victory(Strategy *strategy, unordered_set<uint32_t> face_up_tiles_in, 
+            string csv_file_in, uint32_t progress_check=100, std::ostream &out=std::cout); 
 
-        virtual Results probability_of_strategy_victory_step(Strategy *strategy, uint32_t score_in, unordered_map<string, Results> &visited);
+        virtual Results probability_of_strategy_victory_step(Strategy *strategy, uint32_t score_in, unordered_map<string, Results> &visited, uint32_t progress_check=100);
         virtual Results probability_of_strategy_victory_step(Strategy *strategy, std::ostream &csv_out, 
-            uint32_t score_in, unordered_map<string, Results> &visited);
+            uint32_t score_in, unordered_map<string, Results> &visited, uint32_t progress_check=100);
 
-        Results probability_of_optimal_victory(std::ostream &out=std::cout, bool is_win_probability=true);
-        Results probability_of_optimal_victory(unordered_set<uint32_t> face_up_tiles_in, std::ostream &out=std::cout, bool is_win_probability=true);
+        Results probability_of_optimal_victory(OptimizedType sim_type=WIN_PROBABILITY, uint32_t progress_check=100, std::ostream &out=std::cout);
+        Results probability_of_optimal_victory(unordered_set<uint32_t> face_up_tiles_in, OptimizedType sim_type=WIN_PROBABILITY, 
+            uint32_t progress_check=100, std::ostream &out=std::cout);
         
-        virtual Results probability_of_optimal_victory_step(uint32_t score_in, unordered_map<string, Results> &visited, bool is_win_probability=true);
-        virtual Results probability_of_optimal_victory_step(std::ostream &csv_out, uint32_t score_in, unordered_map<string, Results> &visited, bool is_win_probability=true);
+        virtual Results probability_of_optimal_victory_step(uint32_t score_in, unordered_map<string, Results> &visited, OptimizedType sim_type=WIN_PROBABILITY, uint32_t progress_check=100);
+        virtual Results probability_of_optimal_victory_step(std::ostream &csv_out, uint32_t score_in, 
+            unordered_map<string, Results> &visited, OptimizedType sim_type=WIN_PROBABILITY, uint32_t progress_check=100);
 };
 
 #endif
