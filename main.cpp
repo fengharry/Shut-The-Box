@@ -4,9 +4,12 @@ using namespace std;
 
 int main() {
     ShutTheBox g;
+    SaveOne o;
     LargestNumber l;
-    // MostNumbers m;
-    g.probability_of_strategy_victory(&l);
-    // g.probability_of_strategy_victory(&m);
+    MostNumbers m;
+    g.probability_of_strategy_victory(&o, "save_one_9.csv");
+    g.probability_of_strategy_victory(&l, "largest_number_9.csv");
+    g.probability_of_strategy_victory(&m, "most_numbers_9.csv");
     // g.probability_of_optimal_victory();
+    // g.probability_of_optimal_victory(cout, false);
 }

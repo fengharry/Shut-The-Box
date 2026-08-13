@@ -10,13 +10,9 @@
 #include <queue>
 #include "Dice.hpp"
 #include "../Strategies/StrategyList.hpp"
-using namespace std;
+#include "../utils/combinations_dp.hpp"
 
-struct CombinationPath {
-    uint32_t start_idx;
-    uint32_t remaining_space;
-    unordered_set<uint32_t> numbers;
-};
+using namespace std;
 
 struct Results {
     double win_probability = 0;
@@ -28,7 +24,8 @@ struct Results {
 
 class ShutTheBox {
     protected:
-        string optimal_csv_file_name = "";
+        string optimal_win_csv_file_name = "";
+        string optimal_score_csv_file_name = "";
         
         string empty_position = "|";
         Results empty_results = {1.0, 0};
@@ -37,8 +34,6 @@ class ShutTheBox {
         vector<uint32_t> sorted_tiles;
         uint32_t largest_tile = 0;
         uint32_t tile_sum = 0;
-
-        
 
         unordered_set<uint32_t> tiles;
         Dice dice;
@@ -242,25 +237,6 @@ class ShutTheBox {
          */
         virtual void set_to_strategy_combination(Strategy *strategy, const uint32_t roll_num, unordered_set<uint32_t> &tile_combination);
 
-
-        /**
-         * Gets all possible combinations that sum to roll_num in the same way
-         * as described in get_strategy_combination.
-         * 
-         * @param roll_num the total value that's been rolled by the dice
-         * @return an vector of unordered_sets containing all possible combinations
-         */
-        vector<unordered_set<uint32_t>> get_all_possible_tile_combinations(const uint32_t roll_num);
-
-        /**
-         * Sets tile_combinations to all possible combinations that sum to roll_num 
-         * in the same way as described in get_strategy_combination.
-         * 
-         * @param roll_num the total value that's been rolled by the dice
-         * @param tile_combinations a reference to a vector of unordered_sets
-         */
-        void set_to_all_possible_tile_combinations(const uint32_t roll_num, vector<unordered_set<uint32_t>> &tile_combinations);
-
         /**
          * Gets a random sequence of numbers that represents the values that
          * the object's dice can roll in a game. The sequence ends once 
@@ -361,17 +337,18 @@ class ShutTheBox {
 
 
 
-        Results probability_of_strategy_victory(Strategy *strategy, std::ostream &out=std::cout);
-        virtual Results probability_of_strategy_victory(Strategy *strategy, unordered_set<uint32_t> face_up_tiles_in, std::ostream &out=std::cout); 
+        Results probability_of_strategy_victory(Strategy *strategy, string csv_file_name_in, std::ostream &out=std::cout);
+        Results probability_of_strategy_victory(Strategy *strategy, unordered_set<uint32_t> face_up_tiles_in, string csv_file_name_in, std::ostream &out=std::cout); 
+
         virtual Results probability_of_strategy_victory_step(Strategy *strategy, uint32_t score_in, unordered_map<string, Results> &visited);
         virtual Results probability_of_strategy_victory_step(Strategy *strategy, std::ostream &csv_out, 
             uint32_t score_in, unordered_map<string, Results> &visited);
 
-        Results probability_of_optimal_victory(std::ostream &out=std::cout);
-        virtual Results probability_of_optimal_victory(unordered_set<uint32_t> face_up_tiles_in, std::ostream &out=std::cout);
+        Results probability_of_optimal_victory(std::ostream &out=std::cout, bool is_win_probability=true);
+        Results probability_of_optimal_victory(unordered_set<uint32_t> face_up_tiles_in, std::ostream &out=std::cout, bool is_win_probability=true);
         
-        virtual Results probability_of_optimal_victory_step(uint32_t score_in, unordered_map<string, Results> &visited);
-        virtual Results probability_of_optimal_victory_step(std::ostream &csv_out, uint32_t score_in, unordered_map<string, Results> &visited);
+        virtual Results probability_of_optimal_victory_step(uint32_t score_in, unordered_map<string, Results> &visited, bool is_win_probability=true);
+        virtual Results probability_of_optimal_victory_step(std::ostream &csv_out, uint32_t score_in, unordered_map<string, Results> &visited, bool is_win_probability=true);
 };
 
 #endif

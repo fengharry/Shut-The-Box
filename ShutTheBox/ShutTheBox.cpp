@@ -83,7 +83,8 @@ void ShutTheBox::initialize_game(unordered_set<uint32_t> face_up_tiles_in) {
     }
 }
 
-ShutTheBox::ShutTheBox(uint32_t num_tiles_in): optimal_csv_file_name("optimal_" + to_string(num_tiles_in) + ".csv") { 
+ShutTheBox::ShutTheBox(uint32_t num_tiles_in): optimal_win_csv_file_name("optimal_win_" + to_string(num_tiles_in) + ".csv"),
+optimal_score_csv_file_name("optimal_score_" + to_string(num_tiles_in) + ".csv") { 
     for (uint32_t tile = 1; tile <= num_tiles_in; tile++) {
         tiles.insert(tile);
         sorted_tiles.push_back(tile);
@@ -97,8 +98,8 @@ ShutTheBox::ShutTheBox(uint32_t num_tiles_in): optimal_csv_file_name("optimal_" 
     initialize_game(); 
 }
 
-ShutTheBox::ShutTheBox(unordered_set<uint32_t> tiles_in): optimal_csv_file_name("custom_optimal_" + to_string(tiles_in.size()) + ".csv"), 
-tiles(tiles_in) { 
+ShutTheBox::ShutTheBox(unordered_set<uint32_t> tiles_in): optimal_win_csv_file_name("optimal_win_" + to_string(tiles_in.size()) + ".csv"),
+optimal_score_csv_file_name("optimal_score_" + to_string(tiles_in.size()) + ".csv"), tiles(tiles_in) { 
     for (const uint32_t tile : tiles) {
         sorted_tiles.push_back(tile);
         empty_position += "   |";
@@ -174,43 +175,6 @@ void ShutTheBox::set_to_strategy_combination(Strategy *strategy, const uint32_t 
     strategy->set_to_combination(roll_num, tile_combination, tile_combinations_dp);
 }
 
-
-
-vector<unordered_set<uint32_t>> ShutTheBox::get_all_possible_tile_combinations(const uint32_t roll_num) {
-    vector<unordered_set<uint32_t>> tile_combinations;
-    set_to_all_possible_tile_combinations(roll_num, tile_combinations);
-    return tile_combinations;
-}
-void ShutTheBox::set_to_all_possible_tile_combinations(const uint32_t roll_num, vector<unordered_set<uint32_t>> &tile_combinations) {
-    tile_combinations.clear();
-    vector<vector<uint32_t>> tile_combinations_dp;
-    set_to_tile_combinations_dp(roll_num, tile_combinations_dp);
-    if (tile_combinations_dp[tiles.size()][roll_num] == 0) return;
-
-    queue<CombinationPath> combinations_queue;
-    
-    for (uint32_t i = tiles.size(); i > 0; i--) {
-        if (tile_combinations_dp[i-1][roll_num] < tile_combinations_dp[i][roll_num]) {
-            combinations_queue.push({i-1, roll_num - i, {i}});
-        }
-    }
-
-    while (combinations_queue.size() > 0) {
-        CombinationPath c = combinations_queue.front();
-        combinations_queue.pop();
-        if (c.remaining_space <= 0) {
-            tile_combinations.push_back(c.numbers);
-            continue;
-        }
-        for (uint32_t i = c.start_idx; i > 0; i--) {
-            if (tile_combinations_dp[i-1][c.remaining_space] < tile_combinations_dp[i][c.remaining_space]) {
-                c.numbers.insert(i);
-                combinations_queue.push({i-1, c.remaining_space - i, c.numbers});
-                c.numbers.erase(i);
-            }
-        }
-    }
-}
 
 
 vector<uint32_t> ShutTheBox::get_generated_sequence() {
@@ -326,11 +290,16 @@ uint32_t ShutTheBox::hindsight_step(vector<uint32_t> &seq, size_t idx, uint32_t 
         return curr_score;
     }
 
+    uint32_t &roll_num = seq[idx];
+
     vector<unordered_set<uint32_t>> tile_combinations;
-    set_to_all_possible_tile_combinations(seq[idx], tile_combinations);
+    vector<vector<uint32_t>> tile_combinations_dp;
+    set_to_tile_combinations_dp(roll_num, tile_combinations_dp);
+
+    set_to_all_possible_tile_combinations(roll_num, tile_combinations, tile_combinations_dp);
 
     if (is_verbose) {
-        cout << "Sequence Number: " << seq[idx] << "\n";
+        cout << "Rolled Number: " << roll_num << "\n";
         
         string position;
         set_to_curr_position(position);
@@ -416,23 +385,28 @@ void ShutTheBox::print_results(Results results, string title, ostream &out) {
     }
 }
 
-Results ShutTheBox::probability_of_strategy_victory(Strategy *strategy, std::ostream &out) {
-    return probability_of_strategy_victory(strategy, tiles, out);
+Results ShutTheBox::probability_of_strategy_victory(Strategy *strategy, string csv_file_name_in, std::ostream &out) {
+    return probability_of_strategy_victory(strategy, tiles, csv_file_name_in, out);
 }
 
-Results ShutTheBox::probability_of_strategy_victory(Strategy *strategy, unordered_set<uint32_t> face_up_tiles_in, std::ostream &out) {
-    std::ofstream csv_out("../results/" + strategy->get_csv_file_name());
+Results ShutTheBox::probability_of_strategy_victory(Strategy *strategy, unordered_set<uint32_t> face_up_tiles_in, string csv_file_name_in, std::ostream &out) {
+    std::ofstream csv_out("../results/" + csv_file_name_in);
     cout << "\033[32mBeginning Strategy Probability Simulation (" << strategy->get_name() << ")...\033[0m\n";
     initialize_game(face_up_tiles_in);
 
-    csv_out << "Position,Win Probability,Average Score,1,2,3,4,5,6,7,8,9,10,11,12\n";
-    unordered_map<string, Results> visited;
-    
-    visited[empty_position] = empty_results;
-    csv_out << empty_position << ",1.0,0";
-
     vector<uint32_t> possible_rolls;
     dice.set_to_possible_rolls(num_dice_min, num_dice_max, possible_rolls);
+
+    csv_out << "Position,Win Probability,Average Score";
+     for (uint32_t roll_num : possible_rolls) {
+        csv_out << "," << roll_num;
+    }
+    csv_out << "\n";
+
+    unordered_map<string, Results> visited;
+    visited[empty_position] = empty_results;
+
+    csv_out << empty_position << ",1.0,0";
     for (uint32_t roll_num : possible_rolls) {
         csv_out << ",N/A";
     }
@@ -609,37 +583,46 @@ Results ShutTheBox::probability_of_strategy_victory_step(Strategy *strategy, std
 
 
 
-Results ShutTheBox::probability_of_optimal_victory(std::ostream &out) {
-    return probability_of_optimal_victory(tiles, out);
+Results ShutTheBox::probability_of_optimal_victory(std::ostream &out, bool is_win_probability) {
+    return probability_of_optimal_victory(tiles, out, is_win_probability);
 }
 
-Results ShutTheBox::probability_of_optimal_victory(unordered_set<uint32_t> face_up_tiles_in, std::ostream &out) {
-    std::ofstream csv_out("../results/" + optimal_csv_file_name);
+Results ShutTheBox::probability_of_optimal_victory(unordered_set<uint32_t> face_up_tiles_in, std::ostream &out, bool is_win_probability) {
+    string csv_file_name = is_win_probability ? "../results/" + optimal_win_csv_file_name : "../results/" + optimal_score_csv_file_name;
+    std::ofstream csv_out(csv_file_name);
+
     cout << "\033[32mBeginning Optimal Probability Simulation...\033[0m\n";
     initialize_game(face_up_tiles_in);
-    csv_out << "Position,Win Probability,Average Score,1,2,3,4,5,6,7,8,9,10,11,12\n";
     
-    unordered_map<string, Results> visited;
-
-    visited[empty_position] = empty_results;
-    csv_out << empty_position << ",1.0,0";
-
     vector<uint32_t> possible_rolls;
     dice.set_to_possible_rolls(num_dice_min, num_dice_max, possible_rolls);
+
+    csv_out << "Position,Win Probability,Average Score";
+     for (uint32_t roll_num : possible_rolls) {
+        csv_out << "," << roll_num;
+    }
+    csv_out << "\n";
+
+    unordered_map<string, Results> visited;
+    visited[empty_position] = empty_results;
+
+    csv_out << empty_position << ",1.0,0";
     for (uint32_t roll_num : possible_rolls) {
         csv_out << ",N/A";
     }
     csv_out << "\n";
 
-    Results results = probability_of_optimal_victory_step(csv_out, initial_score, visited);
+    Results results = probability_of_optimal_victory_step(csv_out, initial_score, visited, is_win_probability);
 
     csv_record_unreachable_positions(csv_out, visited);
 
+    cout << "\033[34mFinished Optimal Simulation.\033[0m\n";
     print_results(results, "Optimal Probability Results", out);
+
     return results;
 }
 
-Results ShutTheBox::probability_of_optimal_victory_step(uint32_t score_in, unordered_map<string, Results> &visited) {
+Results ShutTheBox::probability_of_optimal_victory_step(uint32_t score_in, unordered_map<string, Results> &visited, bool is_win_probability) {
 
     string position;
     set_to_curr_position(position);
@@ -681,7 +664,10 @@ Results ShutTheBox::probability_of_optimal_victory_step(uint32_t score_in, unord
         }
 
         vector<unordered_set<uint32_t>> tile_combinations;
-        set_to_all_possible_tile_combinations(roll_num, tile_combinations);
+        vector<vector<uint32_t>> tile_combinations_dp;
+        set_to_tile_combinations_dp(roll_num, tile_combinations_dp);
+
+        set_to_all_possible_tile_combinations(roll_num, tile_combinations, tile_combinations_dp);
 
         if (tile_combinations.size() == 0) {
             results.avg_score += roll_probability * score_in;
@@ -697,13 +683,14 @@ Results ShutTheBox::probability_of_optimal_victory_step(uint32_t score_in, unord
             string curr_position = get_curr_position();
             Results roll_results;
             if (visited.find(curr_position) != visited.end()) roll_results = visited[curr_position];
-            else roll_results = probability_of_optimal_victory_step(curr_score, visited);
+            else roll_results = probability_of_optimal_victory_step(curr_score, visited, is_win_probability);
 
-            if (roll_results.win_probability > max_prob) {
+            if ((is_win_probability && roll_results.win_probability > max_prob) ||
+                (!is_win_probability && roll_results.avg_score < min_score)) {
                 max_prob = roll_results.win_probability;
                 min_score = roll_results.avg_score;
                 results.next_tile_combinations[roll_num] = tile_combination;
-            }
+            } 
 
             for (const uint32_t &tile : tile_combination) {
                 flip_tile_face_up(tile, curr_score);
@@ -723,7 +710,7 @@ Results ShutTheBox::probability_of_optimal_victory_step(uint32_t score_in, unord
     return results;
 }
 
-Results ShutTheBox::probability_of_optimal_victory_step(ostream &csv_out, uint32_t score_in, unordered_map<string, Results> &visited) {
+Results ShutTheBox::probability_of_optimal_victory_step(ostream &csv_out, uint32_t score_in, unordered_map<string, Results> &visited, bool is_win_probability) {
     
     string position;
     set_to_curr_position(position);
@@ -774,7 +761,10 @@ Results ShutTheBox::probability_of_optimal_victory_step(ostream &csv_out, uint32
         }
 
         vector<unordered_set<uint32_t>> tile_combinations;
-        set_to_all_possible_tile_combinations(roll_num, tile_combinations);
+        vector<vector<uint32_t>> tile_combinations_dp;
+        set_to_tile_combinations_dp(roll_num, tile_combinations_dp);
+
+        set_to_all_possible_tile_combinations(roll_num, tile_combinations, tile_combinations_dp);
 
         if (tile_combinations.size() == 0) {
             results.avg_score += roll_probability * score_in;
@@ -790,13 +780,14 @@ Results ShutTheBox::probability_of_optimal_victory_step(ostream &csv_out, uint32
             string curr_position = get_curr_position();
             Results roll_results;
             if (visited.find(curr_position) != visited.end()) roll_results = visited[curr_position];
-            else roll_results = probability_of_optimal_victory_step(csv_out, curr_score, visited);
+            else roll_results = probability_of_optimal_victory_step(csv_out, curr_score, visited, is_win_probability);
 
-            if (roll_results.win_probability > max_prob) {
+            if ((is_win_probability && roll_results.win_probability > max_prob) ||
+                (!is_win_probability && roll_results.avg_score < min_score)) {
                 max_prob = roll_results.win_probability;
                 min_score = roll_results.avg_score;
                 results.next_tile_combinations[roll_num] = tile_combination;
-            }
+            } 
 
             for (const uint32_t &tile : tile_combination) {
                 flip_tile_face_up(tile, curr_score);

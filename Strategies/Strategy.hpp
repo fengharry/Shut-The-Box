@@ -9,16 +9,15 @@
 #include <vector>
 #include <stdint.h>
 #include <queue>
+#include "../utils/combinations_dp.hpp"
 using namespace std;
 
 class Strategy {
     protected:
         string strategy_name = "";
-        string strategy_csv_file_name = "";
     public:
-        Strategy(string strategy_name_in, string strategy_csv_file_name_in="");
+        Strategy(string strategy_name_in);
         string get_name();
-        string get_csv_file_name();
         
         /**
          * Sets tile_combination to the combination that fits the strategy

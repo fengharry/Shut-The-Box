@@ -7,7 +7,7 @@ using namespace std;
 
 class MostNumbers: public Strategy {
     public:
-        MostNumbers(uint32_t num_tiles_in=9): Strategy("Most Numbers", "most_numbers_" + to_string(num_tiles_in) + ".csv") {}
+        MostNumbers(uint32_t num_tiles_in=9): Strategy("Most Numbers") {}
         virtual void set_to_combination(const uint32_t roll_num, unordered_set<uint32_t> &tile_combination,
             vector<vector<uint32_t>> &tile_combinations_dp) override;
 };
