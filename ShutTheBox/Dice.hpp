@@ -5,6 +5,7 @@
 #include <random>
 #include <vector>
 #include <algorithm>
+#include <climits>
 using namespace std;
 
 class Dice {
@@ -12,7 +13,9 @@ class Dice {
         unordered_map<uint32_t, unordered_map<uint32_t, double>> probabilities;
         vector<double> single_die_probabilities_vector;
         unordered_map<uint32_t, bool> has_probabilities;
+        uint32_t smallest_roll = INT_MAX;
     public:
+
         /**
          * Constructs a dice object using the standard six-sided die.
          */
@@ -35,6 +38,8 @@ class Dice {
          *  each face of the die
          */
         Dice(unordered_map<uint32_t, double> single_die_probabilities_in);
+
+        uint32_t get_smallest_roll();
 
         /**
          * Rolls 'num_dice' dice and returns the total sum of all the rolls.
@@ -59,7 +64,7 @@ class Dice {
          * Gets the probabilities of rolling 'roll_num' using 
          * 'num_dice' dice. If the probabilities have not been set 
          * (a.k.a. has_probabilities[num_dice] == false),
-         * the function calls set_probabilities(num_dice-1).
+         * the function calls set_probabilities(num_dice - 1).
          * 
          * @param roll_num the value of the dice roll
          * @param num_dice the number of dice that've been rolled
@@ -72,7 +77,7 @@ class Dice {
          * rolling any number of dice between 'num_dice_min' and 
          * 'num_dice_max' (inclusive). Returns a sorted vector
          * of all the rolls with no duplicates. 
-         * If num_dice_min > num_dice_max, returns {};
+         * If (num_dice_min > num_dice_max), returns {};
          * 
          * @param num_dice_min the minimum number of dice to roll
          * @param num_dice_max the maximum number of dice to roll
@@ -82,7 +87,7 @@ class Dice {
 
         /**
          * Sets 'possible_rolls' to be equal to the vector
-         * described in get_possible_rolls. 
+         * described in 'get_possible_rolls'. 
          * 
          * @param num_dice_min the minimum number of dice to roll
          * @param num_dice_max the maximum number of dice to roll

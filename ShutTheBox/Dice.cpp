@@ -14,19 +14,21 @@ Dice::Dice() {
             probabilities[1][roll_num] = 1.0/6.0;
         }
     }
+    smallest_roll = 1;
     has_probabilities[1] = true;
 }
 
 Dice::Dice(unordered_set<uint32_t> single_die_faces_in) {
-    uint32_t size = 0;
+    uint32_t vector_size = 0;
     for (const uint32_t roll_num : single_die_faces_in) {
-        if (roll_num > size) size = roll_num;
+        if (roll_num > vector_size) vector_size = roll_num;
+        if (roll_num < smallest_roll) smallest_roll = roll_num;
     }
 
-    single_die_probabilities_vector = vector<double>(size, 0);
+    single_die_probabilities_vector = vector<double>(vector_size, 0);
     for (const auto &roll_num : single_die_faces_in) {
-        single_die_probabilities_vector[roll_num] = 1.0/size;
-        probabilities[1][roll_num] = 1.0/size;
+        single_die_probabilities_vector[roll_num] = 1.0/single_die_faces_in.size();
+        probabilities[1][roll_num] = 1.0/single_die_faces_in.size();
     }
     has_probabilities[1] = true;
 }
@@ -34,16 +36,19 @@ Dice::Dice(unordered_set<uint32_t> single_die_faces_in) {
 Dice::Dice(unordered_map<uint32_t, double> single_die_probabilities_in) {
     probabilities[1] = single_die_probabilities_in;
 
-    uint32_t size = 0;
+    uint32_t vector_size = 0;
     for (const auto &probability : single_die_probabilities_in) {
-        if (probability.first > size) size = probability.first;
+        if (probability.first > vector_size) vector_size = probability.first;
+        if (probability.first < smallest_roll) smallest_roll = probability.first;
     }
-    single_die_probabilities_vector = vector<double>(size, 0);
+    single_die_probabilities_vector = vector<double>(vector_size, 0);
     for (const auto &probability : single_die_probabilities_in) {
         single_die_probabilities_vector[probability.first] = probability.second;
     }
     has_probabilities[1] = true;
 }
+
+uint32_t Dice::get_smallest_roll() { return smallest_roll; }
 
 uint32_t Dice::roll(uint32_t num_dice) {
     std::discrete_distribution<std::mt19937::result_type> dice_roll(single_die_probabilities_vector.begin(), single_die_probabilities_vector.end());

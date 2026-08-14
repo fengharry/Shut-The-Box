@@ -23,23 +23,45 @@ void ShutTheBox::get_all_positions(uint32_t tile_idx, string curr_position) {
     get_all_positions(tile_idx+1, curr_position);
 }
 
-void ShutTheBox::csv_record_unreachable_positions(std::ostream &csv_out, unordered_map<string, Results> &reached_positions) {
+void ShutTheBox::probability_of_unreachable_strategy_positions(Strategy *strategy, std::ostream &csv_out, unordered_map<string, Results> &reached_positions) {
+    unordered_set<string> unreached_positions;
     for (string position : all_positions) {
         if (reached_positions.find(position) == reached_positions.end()) {
-            csv_out << position << ",N/A,N/A";
-            
-            vector<uint32_t> possible_rolls;
-            dice.set_to_possible_rolls(num_dice_min, num_dice_max, possible_rolls);
-            for (uint32_t roll_num : possible_rolls) {
-                csv_out << ",N/A";
-            }
-            csv_out << "\n";
+            unreached_positions.insert(position);
         }
+    }
+    for (string position : unreached_positions) {
+        unordered_set<uint32_t> position_set;
+        set_position_to_set(position, position_set);
+        initialize_game(position_set);
+        probability_of_strategy_victory_step(strategy, initial_score, reached_positions);
+
+        csv_record_position(csv_out, position, reached_positions[position], false);
     }
 }
 
-void ShutTheBox::csv_record_position(std::ostream &csv_out, string curr_position, Results &results) {
-    csv_out << curr_position << "," << results.win_probability << "," << results.avg_score << ",";
+void ShutTheBox::probability_of_unreachable_optimal_positions(OptimizedType sim_type, std::ostream &csv_out, unordered_map<string, Results> &reached_positions) {
+    unordered_set<string> unreached_positions;
+    for (string position : all_positions) {
+        if (reached_positions.find(position) == reached_positions.end()) {
+            unreached_positions.insert(position);
+        }
+    }
+    for (string position : unreached_positions) {
+        unordered_set<uint32_t> position_set;
+        set_position_to_set(position, position_set);
+        initialize_game(position_set);
+        probability_of_optimal_victory_step(sim_type, initial_score, reached_positions);
+
+        csv_record_position(csv_out, position, reached_positions[position], false);
+    }
+}
+
+void ShutTheBox::csv_record_position(std::ostream &csv_out, string curr_position, Results &results, bool was_reached) {
+    csv_out << curr_position << "," << results.win_probability << "," << results.avg_score;
+    if(was_reached) csv_out << ",Yes,";
+    else csv_out << ",No,";
+
     vector<uint32_t> possible_rolls;
     dice.set_to_possible_rolls(num_dice_min, num_dice_max, possible_rolls);
     for (uint32_t roll_idx = 0; roll_idx < possible_rolls.size(); roll_idx++) {
@@ -57,6 +79,19 @@ void ShutTheBox::csv_record_position(std::ostream &csv_out, string curr_position
         if (roll_idx < possible_rolls.size() - 1) csv_out << ",";
     }
     csv_out << "\n";
+}
+
+void ShutTheBox::set_position_to_set(string position, unordered_set<uint32_t> &tiles) {
+    string curr_num_str = "";
+    for (char &c : position) {
+        if (c == ' ' && curr_num_str != "") {
+            tiles.insert(stoi(curr_num_str));
+            curr_num_str = "";
+        } else {
+            curr_num_str += c;
+        }
+    }
+    if (curr_num_str != "") tiles.insert(stoi(curr_num_str));
 }
 
 
@@ -79,7 +114,7 @@ void ShutTheBox::initialize_game(unordered_set<uint32_t> face_up_tiles_in) {
     }
 
     for (uint32_t tile : face_up_tiles_in) {
-        if (tiles.find(tile) == tiles.end()) std::cerr << "Error: Invalid Tile";
+        if (tiles.find(tile) == tiles.end()) std::cerr << "Error: Invalid Tile\n";
         flip_tile_face_up(tile, initial_score);
     }
 }
@@ -410,40 +445,56 @@ Results ShutTheBox::probability_of_strategy_victory(Strategy *strategy, string c
 
 Results ShutTheBox::probability_of_strategy_victory(Strategy *strategy, unordered_set<uint32_t> face_up_tiles_in, 
 string csv_file_in, uint32_t progress_check, std::ostream &out) {
-    std::ofstream csv_out("../results/" + csv_file_in);
     cout << "\033[32mBeginning Strategy Probability Simulation (" << strategy->get_name() << ")...\033[0m\n";
     initialize_game(face_up_tiles_in);
 
     vector<uint32_t> possible_rolls;
     dice.set_to_possible_rolls(num_dice_min, num_dice_max, possible_rolls);
 
-    csv_out << "Position,Win Probability,Average Score";
-     for (uint32_t roll_num : possible_rolls) {
-        csv_out << "," << roll_num;
-    }
-    csv_out << "\n";
-
     unordered_map<string, Results> visited;
     visited[""] = empty_results;
 
-    csv_out << ",1.0,0";
-    for (uint32_t roll_num : possible_rolls) {
-        csv_out << ",N/A";
-    }
-    csv_out << "\n";
+    Results results;
 
-    Results results = probability_of_strategy_victory_step(strategy, csv_out, initial_score, visited, progress_check);
-    
-    csv_record_unreachable_positions(csv_out, visited);
+    uint32_t num_reached_positions;
+
+    if(csv_file_in != "") {
+        std::ofstream csv_out("../results/" + csv_file_in);
+        csv_out << "Position,Win Probability,Average Score,Was Reached?";
+        for (uint32_t roll_num : possible_rolls) {
+            csv_out << "," << roll_num;
+        }
+        csv_out << "\n";
+
+        csv_out << ",1.0,0,";
+        for (uint32_t roll_num : possible_rolls) {
+            csv_out << ",N/A";
+        }
+        csv_out << "\n";
+
+        results = probability_of_strategy_victory_step(strategy, csv_out, initial_score, visited, progress_check);
+        num_reached_positions = visited.size();
+
+        cout << "\033[32mBeginning Unreachable Strategy Probability Simulation (" << strategy->get_name() << ")...\033[0m\n";
+        probability_of_unreachable_strategy_positions(strategy, csv_out, visited);
+    } else {
+        results = probability_of_strategy_victory_step(strategy, initial_score, visited, progress_check);
+        num_reached_positions = visited.size();
+    }
 
     cout << "\033[34mFinished Strategy Probability Simulation.\033[0m\n";
-    print_results(results, "Strategy Probability Results (" + strategy->get_name() + ")", visited.size(), out);
+    print_results(results, "Strategy Probability Results (" + strategy->get_name() + ")", num_reached_positions, out);
     return results;
 }
 
-Results ShutTheBox::probability_of_strategy_victory_step(Strategy *strategy, uint32_t score_in, unordered_map<string, Results> &visited, uint32_t progress_check) {
+Results ShutTheBox::probability_of_strategy_victory_step(Strategy *strategy, uint32_t score_in,
+unordered_map<string, Results> &visited, uint32_t progress_check) {
     string position;
     set_to_curr_position(position);
+
+    if(visited.find(position) != visited.end()) {
+        return visited[position];
+    }
 
     Results results;
 
@@ -451,23 +502,26 @@ Results ShutTheBox::probability_of_strategy_victory_step(Strategy *strategy, uin
         if (visited.find(position) == visited.end()) {
             visited[""] = empty_results;
         }
-        
         return {1.0, 0};
     }
-    if (num_face_up == 1) {
-        if (score_in == 1) {
-            results.win_probability = dice.get_probability(score_in, num_dice_min);
-            results.avg_score = (1 - dice.get_probability(score_in, num_dice_min)) * score_in;
-        } else {
-            results.win_probability = dice.get_probability(score_in, num_dice_max);
-            results.avg_score = (1 - dice.get_probability(score_in, num_dice_max)) * score_in;
-        }
-        results.next_tile_combinations[score_in] = {score_in};
 
+    if (num_face_up == 1) {
         if (visited.find(position) == visited.end()) {
+            if (score_in < dice.get_smallest_roll()) {
+                results.win_probability = 0;
+                results.avg_score = score_in;
+            } else if (score_in == dice.get_smallest_roll()) {
+                results.win_probability = dice.get_probability(score_in, num_dice_min);
+                results.avg_score = (1 - dice.get_probability(score_in, num_dice_min)) * score_in;
+            } else {
+                results.win_probability = dice.get_probability(score_in, num_dice_max);
+                results.avg_score = (1 - dice.get_probability(score_in, num_dice_max)) * score_in;
+            }
+            results.next_tile_combinations[score_in] = {score_in};
+
             visited[position] = results;
             if (visited.size() % progress_check == 0) cout << "Explored " << visited.size() << " Unique Combinations\n";
-        }
+        } 
         return results;
     }
 
@@ -493,7 +547,7 @@ Results ShutTheBox::probability_of_strategy_victory_step(Strategy *strategy, uin
         for (const uint32_t &tile : tile_combination) {
             flip_tile_face_down(tile, curr_score);
         }
-        // cout << curr_score << " " << num_face_up << "\n";
+
         string curr_position = get_curr_position();
         Results roll_results;
         if (visited.find(curr_position) != visited.end()) roll_results = visited[curr_position];
@@ -517,9 +571,14 @@ Results ShutTheBox::probability_of_strategy_victory_step(Strategy *strategy, uin
     return results;
 }
 
-Results ShutTheBox::probability_of_strategy_victory_step(Strategy *strategy, std::ostream &csv_out, uint32_t score_in, unordered_map<string, Results> &visited, uint32_t progress_check) {
+Results ShutTheBox::probability_of_strategy_victory_step(Strategy *strategy, std::ostream &csv_out, uint32_t score_in, 
+unordered_map<string, Results> &visited, uint32_t progress_check) {
     string position;
     set_to_curr_position(position);
+
+    if (visited.find(position) != visited.end()) {
+        return visited[position];
+    }
 
     Results results;
 
@@ -527,7 +586,7 @@ Results ShutTheBox::probability_of_strategy_victory_step(Strategy *strategy, std
         if (visited.find(position) == visited.end()) {
             visited[""] = empty_results;
 
-            csv_out << ",1.0,0";
+            csv_out << ",1.0,0,Yes";
             vector<uint32_t> possible_rolls;
             dice.set_to_possible_rolls(num_dice_min, num_dice_max, possible_rolls);
             for (uint32_t roll_num : possible_rolls) {
@@ -538,8 +597,12 @@ Results ShutTheBox::probability_of_strategy_victory_step(Strategy *strategy, std
         
         return {1.0, 0};
     }
+
     if (num_face_up == 1) {
-        if (score_in == 1) {
+        if (score_in < dice.get_smallest_roll()) {
+            results.win_probability = 0;
+            results.avg_score = score_in;
+        } else if (score_in == dice.get_smallest_roll()) {
             results.win_probability = dice.get_probability(score_in, num_dice_min);
             results.avg_score = (1 - dice.get_probability(score_in, num_dice_min)) * score_in;
         } else {
@@ -605,57 +668,70 @@ Results ShutTheBox::probability_of_strategy_victory_step(Strategy *strategy, std
 
 
 
-Results ShutTheBox::probability_of_optimal_victory(OptimizedType sim_type, uint32_t progress_check, std::ostream &out) {
-    return probability_of_optimal_victory(tiles, sim_type, progress_check, out);
+Results ShutTheBox::probability_of_optimal_victory(OptimizedType sim_type, bool print_csv, uint32_t progress_check, std::ostream &out) {
+    return probability_of_optimal_victory(sim_type, tiles, print_csv, progress_check, out);
 }
 
-Results ShutTheBox::probability_of_optimal_victory(unordered_set<uint32_t> face_up_tiles_in, OptimizedType sim_type, uint32_t progress_check, std::ostream &out) {
-    string csv_file = "";
+Results ShutTheBox::probability_of_optimal_victory(OptimizedType sim_type, unordered_set<uint32_t> face_up_tiles_in, bool print_csv, 
+uint32_t progress_check, std::ostream &out) {
     string title = "Optimal Probability Results ";
     string optimized_type_title = "";
-
-    if (sim_type == WIN_PROBABILITY) {
-        csv_file = "../results/" + optimal_win_csv_file;
-        optimized_type_title = "(Win Probability)";
-    }
-    else if (sim_type == AVERAGE_SCORE) {
-        csv_file = "../results/" + optimal_score_csv_file;
-        optimized_type_title = "(Average Score)";
-    }
-    std::ofstream csv_out(csv_file);
 
     cout << "\033[32mBeginning Optimal Probability Simulation " + optimized_type_title + "...\033[0m\n";
     initialize_game(face_up_tiles_in);
     
     vector<uint32_t> possible_rolls;
     dice.set_to_possible_rolls(num_dice_min, num_dice_max, possible_rolls);
-
-    csv_out << "Position,Win Probability,Average Score";
-     for (uint32_t roll_num : possible_rolls) {
-        csv_out << "," << roll_num;
-    }
-    csv_out << "\n";
-
+    
     unordered_map<string, Results> visited;
     visited[""] = empty_results;
 
-    csv_out << ",1.0,0";
-    for (uint32_t roll_num : possible_rolls) {
-        csv_out << ",N/A";
+    Results results;
+    uint32_t num_reached_positions;
+
+    if (print_csv) {
+        string csv_file = "";
+        if (sim_type == WIN_PROBABILITY) {
+            csv_file = "../results/" + optimal_win_csv_file;
+            optimized_type_title = "(Win Probability)";
+        } else if (sim_type == AVERAGE_SCORE) {
+            csv_file = "../results/" + optimal_score_csv_file;
+            optimized_type_title = "(Average Score)";
+        }
+        std::ofstream csv_out(csv_file);
+
+        csv_out << "Position,Win Probability,Average Score,Was Reached?";
+        for (uint32_t roll_num : possible_rolls) {
+            csv_out << "," << roll_num;
+        }
+        csv_out << "\n";
+
+        csv_out << ",1.0,0,";
+        for (uint32_t roll_num : possible_rolls) {
+            csv_out << ",N/A";
+        }
+        csv_out << "\n";
+
+        results = probability_of_optimal_victory_step(sim_type, csv_out, initial_score, visited, progress_check);
+        num_reached_positions = visited.size();
+
+        cout << "\033[32mBeginning Unreachable Optimal Probability Simulation " + optimized_type_title + "...\033[0m\n";
+        probability_of_unreachable_optimal_positions(sim_type, csv_out, visited);
+
+
+    } else {
+        results = probability_of_optimal_victory_step(sim_type, initial_score, visited, progress_check);
+        num_reached_positions = visited.size();
     }
-    csv_out << "\n";
-
-    Results results = probability_of_optimal_victory_step(csv_out, initial_score, visited, sim_type, progress_check);
-
-    csv_record_unreachable_positions(csv_out, visited);
 
     cout << "\033[34mFinished Optimal Simulation.\033[0m\n";
-    print_results(results, title + optimized_type_title, visited.size(), out);
+    print_results(results, title + optimized_type_title, num_reached_positions, out);
 
     return results;
 }
 
-Results ShutTheBox::probability_of_optimal_victory_step(uint32_t score_in, unordered_map<string, Results> &visited, OptimizedType sim_type, uint32_t progress_check) {
+Results ShutTheBox::probability_of_optimal_victory_step(OptimizedType sim_type, uint32_t score_in, 
+unordered_map<string, Results> &visited, uint32_t progress_check) {
 
     string position;
     set_to_curr_position(position);
@@ -670,14 +746,18 @@ Results ShutTheBox::probability_of_optimal_victory_step(uint32_t score_in, unord
     Results results;
     
     if (num_face_up == 1) {
-        if (score_in == 1) {
+        if (score_in < dice.get_smallest_roll()) {
+            results.win_probability = 0;
+            results.avg_score = score_in;
+        } else if (score_in == dice.get_smallest_roll()) {
             results.win_probability = dice.get_probability(score_in, num_dice_min);
             results.avg_score = (1 - dice.get_probability(score_in, num_dice_min)) * score_in;
+            results.next_tile_combinations[score_in] = {score_in};
         } else {
             results.win_probability = dice.get_probability(score_in, num_dice_max);
             results.avg_score = (1 - dice.get_probability(score_in, num_dice_max)) * score_in;
+            results.next_tile_combinations[score_in] = {score_in};
         }
-        results.next_tile_combinations[score_in] = {score_in};
 
         if (visited.find(position) == visited.end()) {
             visited[position] = results;
@@ -717,7 +797,7 @@ Results ShutTheBox::probability_of_optimal_victory_step(uint32_t score_in, unord
             string curr_position = get_curr_position();
             Results roll_results;
             if (visited.find(curr_position) != visited.end()) roll_results = visited[curr_position];
-            else roll_results = probability_of_optimal_victory_step(curr_score, visited, sim_type, progress_check);
+            else roll_results = probability_of_optimal_victory_step(sim_type, curr_score, visited, progress_check);
 
             if ((sim_type == WIN_PROBABILITY && roll_results.win_probability > max_prob) ||
                 (sim_type == AVERAGE_SCORE && roll_results.avg_score < min_score)) {
@@ -744,8 +824,8 @@ Results ShutTheBox::probability_of_optimal_victory_step(uint32_t score_in, unord
     return results;
 }
 
-Results ShutTheBox::probability_of_optimal_victory_step(ostream &csv_out, uint32_t score_in, 
-unordered_map<string, Results> &visited, OptimizedType sim_type, uint32_t progress_check) {
+Results ShutTheBox::probability_of_optimal_victory_step(OptimizedType sim_type, ostream &csv_out, uint32_t score_in, 
+unordered_map<string, Results> &visited, uint32_t progress_check) {
     
     string position;
     set_to_curr_position(position);
@@ -754,7 +834,7 @@ unordered_map<string, Results> &visited, OptimizedType sim_type, uint32_t progre
         if (visited.find(position) == visited.end()) {
             visited[""] = empty_results;
             
-            csv_out << " ,1.0,0";
+            csv_out << ",1.0,0,Yes";
             vector<uint32_t> possible_rolls;
             dice.set_to_possible_rolls(num_dice_min, num_dice_max, possible_rolls);
             for (uint32_t roll_num : possible_rolls) {
@@ -768,14 +848,18 @@ unordered_map<string, Results> &visited, OptimizedType sim_type, uint32_t progre
     Results results;
     
     if (num_face_up == 1) {
-        if (score_in == 1) {
+        if (score_in < dice.get_smallest_roll()) {
+            results.win_probability = 0;
+            results.avg_score = score_in;
+        } else if (score_in == dice.get_smallest_roll()) {
             results.win_probability = dice.get_probability(score_in, num_dice_min);
             results.avg_score = (1 - dice.get_probability(score_in, num_dice_min)) * score_in;
+            results.next_tile_combinations[score_in] = {score_in};
         } else {
             results.win_probability = dice.get_probability(score_in, num_dice_max);
             results.avg_score = (1 - dice.get_probability(score_in, num_dice_max)) * score_in;
+            results.next_tile_combinations[score_in] = {score_in};
         }
-        results.next_tile_combinations[score_in] = {score_in};
 
         if (visited.find(position) == visited.end()) {
             visited[position] = results;
@@ -816,7 +900,7 @@ unordered_map<string, Results> &visited, OptimizedType sim_type, uint32_t progre
             string curr_position = get_curr_position();
             Results roll_results;
             if (visited.find(curr_position) != visited.end()) roll_results = visited[curr_position];
-            else roll_results = probability_of_optimal_victory_step(csv_out, curr_score, visited, sim_type, progress_check);
+            else roll_results = probability_of_optimal_victory_step(sim_type, csv_out, curr_score, visited, progress_check);
 
             if ((sim_type == WIN_PROBABILITY && roll_results.win_probability > max_prob) ||
                 (sim_type == AVERAGE_SCORE && roll_results.avg_score < min_score)) {

@@ -8,6 +8,7 @@
 #include <unordered_map>
 #include <vector>
 #include <queue>
+#include <climits>
 #include "Dice.hpp"
 #include "../Strategies/StrategyList.hpp"
 #include "../utils/combinations_dp.hpp"
@@ -37,8 +38,8 @@ class ShutTheBox {
         vector<uint32_t> sorted_tiles;
         uint32_t largest_tile = 0;
         uint32_t tile_sum = 0;
-
         unordered_set<uint32_t> tiles;
+
         Dice dice;
         uint32_t num_dice_max = 2;
         uint32_t num_dice_min = 1;
@@ -62,7 +63,7 @@ class ShutTheBox {
         uint32_t roll_single();
         
         /**
-         * Inserts all possible positions with the given tiles into all_positions. 
+         * Inserts all possible positions with the given tiles into 'all_positions'. 
          * Each position is a string with a space separating each face up tile
          * (see get_curr_position for more details on formatting).
          * 
@@ -80,7 +81,17 @@ class ShutTheBox {
          * @param csv_out the output stream of the csv file
          * @param reached_positions an unordered set of valid positions
          */
-        void csv_record_unreachable_positions(std::ostream &csv_out, unordered_map<string, Results> &reached_positions);
+        void probability_of_unreachable_strategy_positions(Strategy *strategy, std::ostream &csv_out, unordered_map<string, Results> &reached_positions);
+
+        /**
+         * Given a set of positions that have been reached by a simulation,
+         * finds all positions that haven't been reached and records them
+         * in a csv file.
+         * 
+         * @param csv_out the output stream of the csv file
+         * @param reached_positions an unordered set of valid positions
+         */
+        void probability_of_unreachable_optimal_positions(OptimizedType sim_type, std::ostream &csv_out, unordered_map<string, Results> &reached_positions);
 
         /**
          * Records a given position and its results in a csv file.
@@ -89,7 +100,9 @@ class ShutTheBox {
          * @param curr_position the current position
          * @param results the results of that position (i.e. win_probability, avg_score, etc.)
          */
-        void csv_record_position(std::ostream &csv_out, string curr_position, Results &results);
+        void csv_record_position(std::ostream &csv_out, string curr_position, Results &results, bool was_reached=true);
+
+        void set_position_to_set(string position, unordered_set<uint32_t> &tiles);
 
     public:
 
@@ -99,7 +112,7 @@ class ShutTheBox {
         virtual void initialize_game();
 
         /**
-         * Resets the tiles in face_up_tiles_in back to face_up.
+         * Resets the tiles in 'face_up_tiles_in' back to face_up.
          * If a tile is not a valid tile for the object,
          * this function will ignore that tile.
          * 
@@ -173,16 +186,16 @@ class ShutTheBox {
          * calculated by Dynamic Programming, the algorithm for which is as follows:
          * 1. The cells at column 0 and/or row 0 are all equal to 0.
          * 2. Each row's index represents the tile of that value (we call this
-         *    value "I") and all the tiles less than that value.
+         *    value 'I') and all the tiles less than that value.
          * 3. Each column's index represents the total sum of the tiles
-         *    (we call this value "J").
+         *    (we call this value 'J').
          * 4. The current cell (I, J) will be set equal to cell (I-1, J) if...
          *      - Tile I is not a valid tile in the object
          *      - Tile I is valid and J < I.
          * 5. If Tile I is valid and J >= I, then we set the current cell equal to
          *    cell (I-1, J) + cell (I-1, J-I).
          * It's worth noting that the value at cell (largest_tile, roll_num) is
-         * equal to the number of valid tile combinations that sum to roll_num.
+         * equal to the number of valid tile combinations that sum to 'roll_num'.
          * 
          * @param roll_num the total value that's been rolled by the dice
          * @return a 2D vector as described above
@@ -191,7 +204,8 @@ class ShutTheBox {
 
         /**
          * Sets a reference to a 2D vector to be a vector of size 
-         * (largest_tile + 1, roll_num + 1) calculated by Dynamic Programming.
+         * (largest_tile + 1, roll_num + 1) calculated with the algorithm
+         * described in 'get_tile_combinations_dp'.
          * 
          * @param roll_num the total value that's been rolled by the dice
          * @param tile_combinations_dp a reference to a 2D vector
@@ -199,9 +213,9 @@ class ShutTheBox {
         void set_to_tile_combinations_dp(const uint32_t roll_num, vector<vector<uint32_t>> &tile_combinations_dp);
 
         /**
-         * Gets the number of tile combinations that will sum to roll_num.
+         * Gets the number of tile combinations that will sum to 'roll_num'.
          * This is done by returning the cell (largest_tile, roll_num)
-         * from the 2D vector as described by get_tile_combinations_dp;
+         * from the 2D vector as described by 'get_tile_combinations_dp';
          * 
          * @param roll_num the total value that's been rolled by the dice
          * @return the number of tile combinations for that roll_num
@@ -210,9 +224,9 @@ class ShutTheBox {
         
         /**
          * Gets the combination that fits the strategy of the 
-         * current class. This function, or more specifically set_to_strategy_combination,
+         * current class. This function, or more specifically 'set_to_strategy_combination',
          * will vary from child to child, and will use the 2D vector 
-         * as described by get_tile_combinations_dp. However, the general
+         * as described by 'get_tile_combinations_dp'. However, the general
          * algorithm for obtaining a combination remains the same:
          * 1. Each row's index represents the tile of that value (we call this
          *    value 'I') and all the tiles less than that value.
@@ -235,7 +249,7 @@ class ShutTheBox {
         unordered_set<uint32_t> get_strategy_combination(Strategy *strategy, const uint32_t roll_num);
 
         /**
-         * Sets tile_combination to the combination as described in get_strategy_combination.
+         * Sets tile_combination to the combination described in 'get_strategy_combination'.
          * 
          * @param roll_num the total value that's been rolled by the dice
          * @param tile_combination a reference to an unordered_set
@@ -245,26 +259,26 @@ class ShutTheBox {
         /**
          * Gets a random sequence of numbers that represents the values that
          * the object's dice can roll in a game. The sequence ends once 
-         * the sum of values >= tile_sum-1. It's worth noting that
-         * if this sum is equal to tile_sum-1, then a single die roll is added
-         * instead of a double dice roll. This function, or more specifically
-         * set_to_generated_sequence, will vary from child to child, depending on
-         * how many dice should be rolled each turn.
+         * the sum of values rolled >= (tile_sum - 1). If this sum is ever equal to 
+         * (tile_sum - 1), then a single die roll is added instead of two. 
+         * This function, or more specifically 'set_to_generated_sequence', will vary 
+         * from child to child, depending on how many dice should be rolled each turn.
          * 
          * @return a vector of each dice roll's values
          */
         vector<uint32_t> get_generated_sequence();
 
         /**
-         * Sets seq to a random sequence of numbers as described in get_generated_sequence.
+         * Sets seq to a random sequence of numbers as described in 'get_generated_sequence'.
          * 
          * @param seq a reference to an empty vector of numbers
          */
         virtual void set_to_generated_sequence(vector<uint32_t> &seq);
 
         /**
-         * Flips the input tile face down. If the tile is already face down,
-         * this function does nothing. Otherwise, tile is subtracted from curr_score.
+         * Flips the input tile face down (face_up_tiles[tile] = false). 
+         * If the tile is already face down, his function does nothing. 
+         * Otherwise, 'tile' is subtracted from curr_score.
          * 
          * @param tile the tile to be flipped face down
          * @param curr_score the current score of the current game
@@ -272,8 +286,9 @@ class ShutTheBox {
         void flip_tile_face_down(const uint32_t tile, uint32_t &curr_score);
 
         /**
-         * Flips the input tile face up. If the tile is already face up,
-         * this function does nothing. Otherwise, tile is added to curr_score.
+         * Flips the input tile face up (face_up_tiles[tile] = true). 
+         * If the tile is already face up, his function does nothing. 
+         * Otherwise, 'tile' is added from curr_score.
          * 
          * @param tile the tile to be flipped face up
          * @param curr_score the current score of the current game
@@ -309,7 +324,7 @@ class ShutTheBox {
         virtual uint32_t hindsight_game_simulation(bool is_verbose=true);
 
         /**
-         * Recursive helper function for hindsight_game_simulation.
+         * Recursive helper function for 'hindsight_game_simulation'.
          * 
          * @param seq a reference to the vector as described in get_generated_sequence
          * @param idx the index of the current roll in seq
@@ -341,22 +356,159 @@ class ShutTheBox {
         virtual void print_results(Results results, string title, uint32_t num_reached_positions, std::ostream &out=std::cout);
 
 
+        /**
+         * Calculates the following based off of the inputted strategy 
+         * and the base starting position:
+         * 1. Win Probability
+         * 2. Average Score
+         * 3. Next Face Down Tiles for every Roll
+         * 4. Next Win Probabilities for every Roll
+         * 5. Next Average Scores for every Roll
+         * These results are them outputted to 'out'.
+         * Also, calls the recursive function 'probability_of_strategy_victory_step',
+         * which saves the results (in the format above) for every position
+         * in 'csv_file_in'.
+         * 
+         * @param strategy a pointer to the inputted strategy
+         * @param csv_file_in the csv file to output results for every position
+         * @param progress_check the number of combinations to check before outputting progress
+         * @param out the output stream of the results
+         */
+        Results probability_of_strategy_victory(Strategy *strategy, string csv_file_in="", uint32_t progress_check=100, std::ostream &out=std::cout);
 
-        Results probability_of_strategy_victory(Strategy *strategy, string csv_file_in, uint32_t progress_check=100, std::ostream &out=std::cout);
+        /**
+         * Calculates the following based off of the inputted strategy 
+         * and position from 'face_up_tiles_in':
+         * 1. Win Probability
+         * 2. Average Score
+         * 3. Next Face Down Tiles for every Roll
+         * 4. Next Win Probabilities for every Roll
+         * 5. Next Average Scores for every Roll
+         * These results are them outputted to 'out'.
+         * Also, calls the recursive function 'probability_of_strategy_victory_step',
+         * which saves the results (in the format above) for every position
+         * in 'csv_file_in'.
+         * 
+         * @param strategy a pointer to the inputted strategy
+         * @param face_up_tiles_in the starting face up tiles
+         * @param csv_file_in the csv file to output results for every position
+         * @param progress_check the number of combinations to check before outputting progress
+         * @param out the output stream of the results
+         */
         Results probability_of_strategy_victory(Strategy *strategy, unordered_set<uint32_t> face_up_tiles_in, 
-            string csv_file_in, uint32_t progress_check=100, std::ostream &out=std::cout); 
-
-        virtual Results probability_of_strategy_victory_step(Strategy *strategy, uint32_t score_in, unordered_map<string, Results> &visited, uint32_t progress_check=100);
-        virtual Results probability_of_strategy_victory_step(Strategy *strategy, std::ostream &csv_out, 
-            uint32_t score_in, unordered_map<string, Results> &visited, uint32_t progress_check=100);
-
-        Results probability_of_optimal_victory(OptimizedType sim_type=WIN_PROBABILITY, uint32_t progress_check=100, std::ostream &out=std::cout);
-        Results probability_of_optimal_victory(unordered_set<uint32_t> face_up_tiles_in, OptimizedType sim_type=WIN_PROBABILITY, 
-            uint32_t progress_check=100, std::ostream &out=std::cout);
+        string csv_file_in="", uint32_t progress_check=100, std::ostream &out=std::cout); 
         
-        virtual Results probability_of_optimal_victory_step(uint32_t score_in, unordered_map<string, Results> &visited, OptimizedType sim_type=WIN_PROBABILITY, uint32_t progress_check=100);
-        virtual Results probability_of_optimal_victory_step(std::ostream &csv_out, uint32_t score_in, 
-            unordered_map<string, Results> &visited, OptimizedType sim_type=WIN_PROBABILITY, uint32_t progress_check=100);
+        /**
+         * Calculates the following based off of the inputted strategy
+         * and the current position in 'is_tile_face_up':
+         * 1. Win Probability
+         * 2. Average Score
+         * 3. Next Face Down Tiles for every Roll
+         * 4. Next Win Probabilities for every Roll
+         * 5. Next Average Scores for every Roll
+         * These results are determined by the function's recursive calls, or in
+         * other words, the results of 'probability_of_strategy_victory_step' after
+         * flipping a certain combination face down.
+         * 
+         * @param strategy a pointer to the inputted strategy
+         * @param score_in the current running score of the position
+         * @param visited a map of positions to their results
+         * @param progress_check the number of combinations to check before outputting progress
+         */
+        virtual Results probability_of_strategy_victory_step(Strategy *strategy, uint32_t score_in, 
+        unordered_map<string, Results> &visited, uint32_t progress_check=100);
+
+        /**
+         * Calculates the following based off of the inputted strategy
+         * and the current position in 'is_tile_face_up':
+         * 1. Win Probability
+         * 2. Average Score
+         * 3. Next Face Down Tiles for every Roll
+         * 4. Next Win Probabilities for every Roll
+         * 5. Next Average Scores for every Roll
+         * These results are determined by the function's recursive calls, or in
+         * other words, the results of 'probability_of_strategy_victory_step' after
+         * flipping a certain combination face down. They are also outputted to
+         * 'csv_out'.
+         * 
+         * @param strategy a pointer to the inputted strategy
+         * @param csv_out output stream of the csv file
+         * @param score_in the current running score of the position
+         * @param visited a map of positions to their results
+         * @param progress_check the number of combinations to check before outputting progress
+         */
+        virtual Results probability_of_strategy_victory_step(Strategy *strategy, std::ostream &csv_out, 
+        uint32_t score_in, unordered_map<string, Results> &visited, uint32_t progress_check=100);
+
+        /**
+         * Calculates the results described in 'probability_of_strategy_victory' 
+         * based off of the inputted optimal strategy setting 'sim_type' 
+         * and the base starting position. Also, calls the 
+         * recursive function 'probability_of_optimal_victory_step',
+         * which saves the results (in the format above) for every position
+         * in either 'optimal_win_csv_file' or 'optimal_score_csv_file', 
+         * depending on 'sim_type'.
+         * 
+         * @param sim_type the kind of statistic the simulation is optimizing
+         *  (i.e. win probability, average score)
+         * @param progress_check the number of combinations to check before outputting progress
+         * @param out the output stream of the results
+         */
+        Results probability_of_optimal_victory(OptimizedType sim_type, bool print_csv=true, uint32_t progress_check=100, std::ostream &out=std::cout);
+
+        /**
+         * Calculates the results described in 'probability_of_strategy_victory' 
+         * based off of the inputted optimal strategy setting 'sim_type' 
+         * and the position from 'face_up_tiles_in'. Also, calls the 
+         * recursive function 'probability_of_optimal_victory_step',
+         * which saves the results (in the format above) for every position
+         * in either 'optimal_win_csv_file' or 'optimal_score_csv_file', 
+         * depending on 'sim_type'.
+         * 
+         * @param sim_type the kind of statistic the simulation is optimizing
+         *  (i.e. win probability, average score)
+         * @param face_up_tiles_in the starting face up tiles
+         * @param progress_check the number of combinations to check before outputting progress
+         * @param out the output stream of the results
+         */
+        Results probability_of_optimal_victory(OptimizedType sim_type, unordered_set<uint32_t> face_up_tiles_in, bool print_csv=true, 
+        uint32_t progress_check=100, std::ostream &out=std::cout);
+        
+        /**
+         * Calculates the results described in 'probability_of_strategy_victory' 
+         * based off of the inputted optimal strategy setting 'sim_type' 
+         * and the current position in 'is_tile_face_up'. 
+         * These results are determined by the function's recursive calls, or in
+         * other words, the results of 'probability_of_optimal_victory_step' after
+         * flipping a certain combination face down. 
+         * 
+         * @param sim_type the statistic the simulation is optimizing
+         *  (i.e. win probability, average score)
+         * @param score_in the current running score of the position
+         * @param visited a map of positions to their results
+         * @param progress_check the number of combinations to check before outputting progress
+         */
+        virtual Results probability_of_optimal_victory_step(OptimizedType sim_type, uint32_t score_in, 
+        unordered_map<string, Results> &visited, uint32_t progress_check=100);
+
+        /**
+         * Calculates the results described in 'probability_of_strategy_victory' 
+         * based off of the inputted optimal strategy setting 'sim_type' 
+         * and the current position in 'is_tile_face_up'. 
+         * These results are determined by the function's recursive calls, or in
+         * other words, the results of 'probability_of_optimal_victory_step' after
+         * flipping a certain combination face down. They are also outputted to
+         * 'csv_out'.
+         * 
+         * @param sim_type the statistic the simulation is optimizing
+         *  (i.e. win probability, average score)
+         * @param csv_out output stream of the csv file
+         * @param score_in the current running score of the position
+         * @param visited a map of positions to their results
+         * @param progress_check the number of combinations to check before outputting progress
+         */
+        virtual Results probability_of_optimal_victory_step(OptimizedType sim_type, std::ostream &csv_out, 
+        uint32_t score_in, unordered_map<string, Results> &visited, uint32_t progress_check=100);
 };
 
 #endif
