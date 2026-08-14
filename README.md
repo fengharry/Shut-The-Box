@@ -128,8 +128,6 @@ If you have a suggestion that would make this better, please fork the repo and c
 
 Harry Feng - harryfeng07@gmail.com
 
-Project Link: [https://github.com/fengharry/Shut-The-Box](https://github.com/fengharry/Shut-The-Box)
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -146,7 +144,7 @@ Project Link: [https://github.com/fengharry/Shut-The-Box](https://github.com/fen
 [license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
 [license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
+[linkedin-url]: https://www.linkedin.com/in/harry-feng-0839b733b/
 [product-screenshot]: images/screenshot.png
 <!-- Shields.io badges. You can a comprehensive list with many more badges at: https://github.com/inttter/md-badges -->
 [Cplusplus]: https://github.com/isocpp/logos/cpp_logo.png
