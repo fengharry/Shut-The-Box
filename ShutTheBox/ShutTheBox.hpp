@@ -104,6 +104,12 @@ class ShutTheBox {
 
         void set_position_to_set(string position, unordered_set<uint32_t> &tiles);
 
+
+
+        bool handle_final_tile(string position, uint32_t score_in, unordered_map<string, Results> &reached_positions, uint32_t progress_check=100);
+
+        void start_csv_file(std::ostream &csv_out);
+
     public:
 
         /**
@@ -412,11 +418,11 @@ class ShutTheBox {
          * 
          * @param strategy a pointer to the inputted strategy
          * @param score_in the current running score of the position
-         * @param visited a map of positions to their results
+         * @param reached_positions a map of positions to their results
          * @param progress_check the number of combinations to check before outputting progress
          */
         virtual Results probability_of_strategy_victory_step(Strategy *strategy, uint32_t score_in, 
-        unordered_map<string, Results> &visited, uint32_t progress_check=100);
+        unordered_map<string, Results> &reached_positions, uint32_t progress_check=100);
 
         /**
          * Calculates the following based off of the inputted strategy
@@ -434,11 +440,11 @@ class ShutTheBox {
          * @param strategy a pointer to the inputted strategy
          * @param csv_out output stream of the csv file
          * @param score_in the current running score of the position
-         * @param visited a map of positions to their results
+         * @param reached_positions a map of positions to their results
          * @param progress_check the number of combinations to check before outputting progress
          */
         virtual Results probability_of_strategy_victory_step(Strategy *strategy, std::ostream &csv_out, 
-        uint32_t score_in, unordered_map<string, Results> &visited, uint32_t progress_check=100);
+        uint32_t score_in, unordered_map<string, Results> &reached_positions, uint32_t progress_check=100);
 
         /**
          * Calculates the results described in 'probability_of_strategy_victory' 
@@ -485,11 +491,11 @@ class ShutTheBox {
          * @param sim_type the statistic the simulation is optimizing
          *  (i.e. win probability, average score)
          * @param score_in the current running score of the position
-         * @param visited a map of positions to their results
+         * @param reached_positions a map of positions to their results
          * @param progress_check the number of combinations to check before outputting progress
          */
         virtual Results probability_of_optimal_victory_step(OptimizedType sim_type, uint32_t score_in, 
-        unordered_map<string, Results> &visited, uint32_t progress_check=100);
+        unordered_map<string, Results> &reached_positions, uint32_t progress_check=100);
 
         /**
          * Calculates the results described in 'probability_of_strategy_victory' 
@@ -504,11 +510,11 @@ class ShutTheBox {
          *  (i.e. win probability, average score)
          * @param csv_out output stream of the csv file
          * @param score_in the current running score of the position
-         * @param visited a map of positions to their results
+         * @param reached_positions a map of positions to their results
          * @param progress_check the number of combinations to check before outputting progress
          */
         virtual Results probability_of_optimal_victory_step(OptimizedType sim_type, std::ostream &csv_out, 
-        uint32_t score_in, unordered_map<string, Results> &visited, uint32_t progress_check=100);
+        uint32_t score_in, unordered_map<string, Results> &reached_positions, uint32_t progress_check=100);
 };
 
 #endif
