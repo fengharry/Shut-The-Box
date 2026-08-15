@@ -9,7 +9,7 @@
 #include <vector>
 #include <stdint.h>
 #include <queue>
-#include "../utils/combinations_dp.hpp"
+#include "../utils/all_combinations.hpp"
 using namespace std;
 
 class Strategy {

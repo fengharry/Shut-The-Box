@@ -1,4 +1,4 @@
-#include "combinations_dp.hpp"
+#include "all_combinations.hpp"
 using namespace std;
 
 vector<unordered_set<uint32_t>> get_all_possible_tile_combinations(const uint32_t roll_num, vector<vector<uint32_t>> &tile_combinations_dp) {
