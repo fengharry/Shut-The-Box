@@ -85,16 +85,16 @@ void ShutTheBox::csv_record_position(std::ostream &csv_out, string curr_position
     csv_out << "\n";
 }
 
-bool ShutTheBox::handle_final_tile(string position, unordered_map<string, Results> &reached_positions, uint32_t &next_progress_num, uint32_t progress_check) {
+bool ShutTheBox::insert_final_tile_position(string position, unordered_map<string, Results> &reached_positions, uint32_t &next_progress_num, uint32_t progress_check) {
     if (num_face_up != 1) return false;
 
     if (reached_positions.find(position) != reached_positions.end()) return false;
 
     Results &results = reached_positions[position];
-    if (curr_score < dice.get_smallest_roll()) {
+    if (curr_score < dice.get_smallest_roll(1)) {
         results.win_probability = 0;
         results.avg_score = curr_score;
-    } else if (curr_score == dice.get_smallest_roll()) {
+    } else if (curr_score == dice.get_smallest_roll(1)) {
         results.win_probability = dice.get_probability(curr_score, num_dice_min);
         results.avg_score = (1 - dice.get_probability(curr_score, num_dice_min)) * curr_score;
     } else {
@@ -130,6 +130,7 @@ void ShutTheBox::start_csv_file(std::ostream &csv_out) {
 
 
 void ShutTheBox::set_position_to_set(string position, unordered_set<uint32_t> &tiles) {
+    tiles.clear();
     string curr_num_str = "";
     for (char &c : position) {
         if (c == ' ' && curr_num_str != "") {
@@ -144,20 +145,12 @@ void ShutTheBox::set_position_to_set(string position, unordered_set<uint32_t> &t
 
 
 
-void ShutTheBox::initialize_game() {
-    curr_score = 0;
-    num_face_up = 0;
-    for (uint32_t tile : tiles) {
-        flip_tile_face_up(tile);
-    }
-}
+void ShutTheBox::initialize_game() { initialize_game(tiles); }
 
 void ShutTheBox::initialize_game(unordered_set<uint32_t> face_up_tiles_in) {
     curr_score = 0;
     num_face_up = 0;
-
     for (uint32_t tile : tiles) {
-        // cout << tile << " ";
         is_tile_face_up[tile] = false;
     }
 
@@ -165,6 +158,25 @@ void ShutTheBox::initialize_game(unordered_set<uint32_t> face_up_tiles_in) {
         if (tiles.find(tile) == tiles.end()) std::cerr << "Error: Invalid Tile\n";
         flip_tile_face_up(tile);
     }
+
+    vector<uint32_t> possible_rolls;
+    uint32_t curr_num_dice = 1;
+    uint32_t largest_roll = dice.get_largest_roll(curr_num_dice);
+    while (largest_roll < largest_tile) {
+        possible_rolls = dice.get_possible_rolls(curr_num_dice, curr_num_dice);
+        for (uint32_t roll : possible_rolls) {
+            score_to_num_dice[roll] = curr_num_dice;
+        }
+        num_dice_max = curr_num_dice;
+        curr_num_dice++;
+        largest_roll = dice.get_largest_roll(curr_num_dice);
+    }
+
+    uint32_t smallest_roll = dice.get_smallest_roll(curr_num_dice);
+    for (uint32_t roll = smallest_roll; roll <= curr_score; roll++) {
+        score_to_num_dice[roll] = curr_num_dice;
+    }
+    num_dice_max = curr_num_dice;
 }
 
 
@@ -183,7 +195,7 @@ ShutTheBox::ShutTheBox(uint32_t num_tiles_in, string optimal_win_csv_file_in, st
         tile_sum += tile;
     }
     sort(sorted_tiles.begin(), sorted_tiles.end());
-
+    
     get_all_positions();
     initialize_game(); 
 }
@@ -273,6 +285,18 @@ void ShutTheBox::set_to_strategy_combination(Strategy *strategy, const uint32_t 
     vector<vector<uint32_t>> tile_combinations_dp;
     set_to_tile_combinations_dp(roll_num, tile_combinations_dp);
     strategy->set_to_combination(roll_num, tile_combination, tile_combinations_dp);
+}
+
+vector<unordered_set<uint32_t>> ShutTheBox::get_all_tile_combinations(const uint32_t roll_num) {
+    vector<unordered_set<uint32_t>> tile_combinations;
+    set_to_all_tile_combinations(roll_num, tile_combinations);
+    return tile_combinations;
+}
+
+void ShutTheBox::set_to_all_tile_combinations(const uint32_t roll_num, vector<unordered_set<uint32_t>> &tile_combinations) {
+    vector<vector<uint32_t>> tile_combinations_dp;
+    set_to_tile_combinations_dp(roll_num, tile_combinations_dp);
+    set_to_all_possible_tile_combinations(roll_num, tile_combinations, tile_combinations_dp);
 }
 
 
@@ -392,10 +416,7 @@ uint32_t ShutTheBox::hindsight_step(vector<uint32_t> &seq, size_t idx, uint32_t 
     uint32_t &roll_num = seq[idx];
 
     vector<unordered_set<uint32_t>> tile_combinations;
-    vector<vector<uint32_t>> tile_combinations_dp;
-    set_to_tile_combinations_dp(roll_num, tile_combinations_dp);
-
-    set_to_all_possible_tile_combinations(roll_num, tile_combinations, tile_combinations_dp);
+    set_to_all_tile_combinations(roll_num, tile_combinations);
 
     if (is_verbose) {
         cout << "Rolled Number: " << roll_num << "\n";
@@ -536,15 +557,16 @@ unordered_map<string, Results> &reached_positions, uint32_t &next_progress_num, 
     if (curr_score == 0 || num_face_up == 0) return {1.0, 0};
 
     if (num_face_up == 1) {
-        handle_final_tile(position, reached_positions, next_progress_num, progress_check);
+        insert_final_tile_position(position, reached_positions, next_progress_num, progress_check);
         return reached_positions[position];
     }
 
     Results &results = reached_positions[position];
     vector<uint32_t> possible_rolls;
-    dice.set_to_possible_rolls(num_dice_max, num_dice_max, possible_rolls);
+    uint32_t num_dice = score_to_num_dice[curr_score];
+    dice.set_to_possible_rolls(num_dice, num_dice, possible_rolls);
     for (uint32_t roll_num : possible_rolls) {
-        double roll_probability = dice.get_probability(roll_num, num_dice_max);
+        double roll_probability = dice.get_probability(roll_num, num_dice);
         if (roll_num > curr_score) {
             results.avg_score += roll_probability * curr_score;
             continue;
@@ -600,16 +622,18 @@ unordered_map<string, Results> &reached_positions, uint32_t &next_progress_num, 
     if (curr_score == 0 || num_face_up == 0) return {1.0, 0};
 
     if (num_face_up == 1) {
-        bool position_was_recorded = handle_final_tile(position, reached_positions, next_progress_num, progress_check);
+        bool position_was_recorded = insert_final_tile_position(position, reached_positions, next_progress_num, progress_check);
         if (position_was_recorded) csv_record_position(csv_out, position, reached_positions[position]);
         return reached_positions[position];
     }
 
     Results &results = reached_positions[position];
     vector<uint32_t> possible_rolls;
-    dice.set_to_possible_rolls(num_dice_max, num_dice_max, possible_rolls);
+    uint32_t num_dice = score_to_num_dice[curr_score];
+
+    dice.set_to_possible_rolls(num_dice, num_dice, possible_rolls);
     for (uint32_t roll_num : possible_rolls) {
-        double roll_probability = dice.get_probability(roll_num, num_dice_max);
+        double roll_probability = dice.get_probability(roll_num, num_dice);
         if (roll_num > curr_score) {
             results.avg_score += roll_probability * curr_score;
             continue;
@@ -720,24 +744,23 @@ unordered_map<string, Results> &reached_positions, uint32_t &next_progress_num, 
     if (curr_score == 0 || num_face_up == 0) return {1.0, 0};
     
     if (num_face_up == 1) {
-        bool position_was_recorded = handle_final_tile(position, reached_positions, next_progress_num, progress_check);        
+        bool position_was_recorded = insert_final_tile_position(position, reached_positions, next_progress_num, progress_check);        
         return reached_positions[position];
     }
     
     Results &results = reached_positions[position];
     vector<uint32_t> possible_rolls;
-    dice.set_to_possible_rolls(num_dice_max, num_dice_max, possible_rolls);
+    uint32_t num_dice = score_to_num_dice[curr_score];
+    dice.set_to_possible_rolls(num_dice, num_dice, possible_rolls);
     for (uint32_t roll_num : possible_rolls) {
-        double roll_probability = dice.get_probability(roll_num, num_dice_max);
+        double roll_probability = dice.get_probability(roll_num, num_dice);
         if (roll_num > curr_score) {
             results.avg_score += roll_probability * curr_score;
             continue;
         }
 
         vector<unordered_set<uint32_t>> tile_combinations;
-        vector<vector<uint32_t>> tile_combinations_dp;
-        set_to_tile_combinations_dp(roll_num, tile_combinations_dp);
-        set_to_all_possible_tile_combinations(roll_num, tile_combinations, tile_combinations_dp);
+        set_to_all_tile_combinations(roll_num, tile_combinations);
 
         if (tile_combinations.size() == 0) {
             results.avg_score += roll_probability * curr_score;
@@ -795,25 +818,24 @@ unordered_map<string, Results> &reached_positions, uint32_t &next_progress_num, 
     if (curr_score == 0 || num_face_up == 0) return {1.0, 0};
         
     if (num_face_up == 1) {
-        bool position_was_recorded = handle_final_tile(position, reached_positions, next_progress_num, progress_check);
+        bool position_was_recorded = insert_final_tile_position(position, reached_positions, next_progress_num, progress_check);
         if (position_was_recorded) csv_record_position(csv_out, position, reached_positions[position]);
         return reached_positions[position];
     }
     
     Results &results = reached_positions[position];
     vector<uint32_t> possible_rolls;
-    dice.set_to_possible_rolls(num_dice_max, num_dice_max, possible_rolls);
+    uint32_t num_dice = score_to_num_dice[curr_score];
+    dice.set_to_possible_rolls(num_dice, num_dice, possible_rolls);
     for (uint32_t roll_num : possible_rolls) {
-        double roll_probability = dice.get_probability(roll_num, num_dice_max);
+        double roll_probability = dice.get_probability(roll_num, num_dice);
         if (roll_num > curr_score) {
             results.avg_score += roll_probability * curr_score;
             continue;
         }
 
         vector<unordered_set<uint32_t>> tile_combinations;
-        vector<vector<uint32_t>> tile_combinations_dp;
-        set_to_tile_combinations_dp(roll_num, tile_combinations_dp);
-        set_to_all_possible_tile_combinations(roll_num, tile_combinations, tile_combinations_dp);
+        set_to_all_tile_combinations(roll_num, tile_combinations);
 
         if (tile_combinations.size() == 0) {
             results.avg_score += roll_probability * curr_score;

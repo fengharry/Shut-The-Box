@@ -13,7 +13,8 @@ class Dice {
         unordered_map<uint32_t, unordered_map<uint32_t, double>> probabilities;
         vector<double> single_die_probabilities_vector;
         unordered_map<uint32_t, bool> has_probabilities;
-        uint32_t smallest_roll = INT_MAX;
+        unordered_map<uint32_t, uint32_t> smallest_rolls;
+        unordered_map<uint32_t, uint32_t> largest_rolls;
     public:
 
         /**
@@ -39,7 +40,9 @@ class Dice {
          */
         Dice(unordered_map<uint32_t, double> single_die_probabilities_in);
 
-        uint32_t get_smallest_roll();
+        uint32_t get_smallest_roll(uint32_t num_dice);
+
+        uint32_t get_largest_roll(uint32_t num_dice);
 
         /**
          * Rolls 'num_dice' dice and returns the total sum of all the rolls.

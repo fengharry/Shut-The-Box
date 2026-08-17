@@ -18,47 +18,6 @@ struct CombinationPath {
 };
 
 /**
- * Gets a 2D vector of size (largest_tile + 1, roll_num + 1)
- * calculated by Dynamic Programming, the algorithm for which is as follows:
- * 1. The cells at column 0 and/or row 0 are all equal to 0.
- * 2. Each row's index represents the tile of that value (we call this
- *    value 'I') and all the tiles less than that value.
- * 3. Each column's index represents the total sum of the tiles
- *    (we call this value 'J').
- * 4. The current cell (I, J) will be set equal to cell (I-1, J) if...
- *      - Tile I is not a valid tile in the object
- *      - Tile I is valid and J < I.
- * 5. If Tile I is valid and J >= I, then we set the current cell equal to
- *    cell (I-1, J) + cell (I-1, J-I).
- * It's worth noting that the value at cell (largest_tile, roll_num) is
- * equal to the number of valid tile combinations that sum to 'roll_num'.
- * 
- * @param roll_num the total value that's been rolled by the dice
- * @return a 2D vector as described above
- */
-vector<vector<uint32_t>> get_tile_combinations_dp(const uint32_t roll_num);
-
-/**
- * Sets a reference to a 2D vector to be a vector of size 
- * (largest_tile + 1, roll_num + 1) calculated with the algorithm
- * described in 'get_tile_combinations_dp'.
- * 
- * @param roll_num the total value that's been rolled by the dice
- * @param tile_combinations_dp a reference to a 2D vector
- */
-void set_to_tile_combinations_dp(const uint32_t roll_num, vector<vector<uint32_t>> &tile_combinations_dp);
-
-/**
- * Gets the number of tile combinations that will sum to 'roll_num'.
- * This is done by returning the cell (largest_tile, roll_num)
- * from the 2D vector as described by 'get_tile_combinations_dp';
- * 
- * @param roll_num the total value that's been rolled by the dice
- * @return the number of tile combinations for that roll_num
- */
-uint32_t get_num_combinations(const uint32_t roll_num);
-
-/**
  * Gets all possible combinations that sum to roll_num by applying
  * the following algorithm to 'tile_combinations_dp'.
  * 1. Each row's index represents the tile of that value (we call this

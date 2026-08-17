@@ -14,7 +14,8 @@ Dice::Dice() {
             probabilities[1][roll_num] = 1.0/6.0;
         }
     }
-    smallest_roll = 1;
+    smallest_rolls[1] = 1;
+    largest_rolls[1] = 6;
     has_probabilities[1] = true;
 }
 
@@ -22,7 +23,8 @@ Dice::Dice(unordered_set<uint32_t> single_die_faces_in) {
     uint32_t vector_size = 0;
     for (const uint32_t roll_num : single_die_faces_in) {
         if (roll_num > vector_size) vector_size = roll_num;
-        if (roll_num < smallest_roll) smallest_roll = roll_num;
+        if (roll_num < smallest_rolls[1]) smallest_rolls[1] = roll_num;
+        if (roll_num > largest_rolls[1]) largest_rolls[1] = roll_num;
     }
 
     single_die_probabilities_vector = vector<double>(vector_size, 0);
@@ -39,7 +41,8 @@ Dice::Dice(unordered_map<uint32_t, double> single_die_probabilities_in) {
     uint32_t vector_size = 0;
     for (const auto &probability : single_die_probabilities_in) {
         if (probability.first > vector_size) vector_size = probability.first;
-        if (probability.first < smallest_roll) smallest_roll = probability.first;
+        if (probability.first < smallest_rolls[1]) smallest_rolls[1] = probability.first;
+        if (probability.first > largest_rolls[1]) largest_rolls[1] = probability.first;
     }
     single_die_probabilities_vector = vector<double>(vector_size, 0);
     for (const auto &probability : single_die_probabilities_in) {
@@ -48,7 +51,14 @@ Dice::Dice(unordered_map<uint32_t, double> single_die_probabilities_in) {
     has_probabilities[1] = true;
 }
 
-uint32_t Dice::get_smallest_roll() { return smallest_roll; }
+uint32_t Dice::get_smallest_roll(uint32_t num_dice) { 
+    if (!has_probabilities[num_dice]) set_probabilities(num_dice);
+    return smallest_rolls[num_dice]; 
+}
+uint32_t Dice::get_largest_roll(uint32_t num_dice) { 
+    if (!has_probabilities[num_dice]) set_probabilities(num_dice);
+    return largest_rolls[num_dice]; 
+}
 
 uint32_t Dice::roll(uint32_t num_dice) {
     std::discrete_distribution<std::mt19937::result_type> dice_roll(single_die_probabilities_vector.begin(), single_die_probabilities_vector.end());
@@ -63,14 +73,21 @@ void Dice::set_probabilities(uint32_t num_dice) {
     if (num_dice <= 1 || has_probabilities[num_dice]) return;
     else set_probabilities(num_dice-1);
 
+    smallest_rolls[num_dice] = INT_MAX;
+    largest_rolls[num_dice] = 0;
+
     for (const auto &prev_dice : probabilities[num_dice-1]) {
         const uint32_t prev_roll_num = prev_dice.first;
         const double prev_probability = prev_dice.second;
         for (const auto &single_die : probabilities[1]) {
             const uint32_t single_roll_num = single_die.first;
+            const uint32_t total_roll = single_roll_num + prev_roll_num;
+            if (total_roll < smallest_rolls[num_dice]) smallest_rolls[num_dice] = total_roll;
+            if (total_roll > largest_rolls[num_dice]) largest_rolls[num_dice] = total_roll;
+
             const double single_probability = single_die.second;
 
-            probabilities[num_dice][prev_roll_num + single_roll_num] += prev_probability * single_probability;
+            probabilities[num_dice][total_roll] += prev_probability * single_probability;
         }
     }
     has_probabilities[num_dice] = true;

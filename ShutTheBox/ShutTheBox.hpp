@@ -41,7 +41,9 @@ class ShutTheBox {
         unordered_set<uint32_t> tiles;
 
         Dice dice;
-        uint32_t num_dice_max = 2;
+        
+        unordered_map<uint32_t, uint32_t> score_to_num_dice;
+        uint32_t num_dice_max = 1;
         uint32_t num_dice_min = 1;
 
         uint32_t curr_score = 0;
@@ -101,14 +103,33 @@ class ShutTheBox {
          * @param csv_out the output stream of the csv file
          * @param curr_position the current position
          * @param results the results of that position (i.e. win_probability, avg_score, etc.)
+         * @param was_reached boolean of if the position is a reached position
          */
         void csv_record_position(std::ostream &csv_out, string curr_position, Results &results, bool was_reached=true);
 
+        /**
+         * Inserts all face up tiles in 'position' into
+         * 'tiles'. If the position has no face up tiles,
+         * 'tiles' will be an empty set.
+         * 
+         * @param position the current position
+         * @param tiles an unordered set
+         */
         void set_position_to_set(string position, unordered_set<uint32_t> &tiles);
 
-
-
-        bool handle_final_tile(string position, unordered_map<string, Results> &reached_positions, uint32_t &next_progress_num, uint32_t progress_check=100);
+        /**
+         * Helper function for 'probability_of_' simulations.
+         * Handles the case where only one tile in the position is face up.
+         * Returns a boolean of whether or not a new position was
+         * inserted into 'reached_positions'.
+         * 
+         * @param position the current position
+         * @param reached_positions a map of positions to their results
+         * @param next_progress_num the next number of reached positions to be logged
+         * @param progress_check the number of combinations to check before outputting progress
+         * @return if a new position was inserted into reached_positions
+         */
+        bool insert_final_tile_position(string position, unordered_map<string, Results> &reached_positions, uint32_t &next_progress_num, uint32_t progress_check=100);
 
         void start_csv_file(std::ostream &csv_out);
 
@@ -265,6 +286,42 @@ class ShutTheBox {
         virtual void set_to_strategy_combination(Strategy *strategy, const uint32_t roll_num, unordered_set<uint32_t> &tile_combination);
 
         /**
+         * Gets all possible combinations that sum to roll_num using the
+         * algorithm described in 'get_all_possible_tile_combinations' in
+         * 'utils/all_combinations.cpp'. The algorithm is copy-pasted here
+         * for convenience:
+         * 1. Each row's index represents the tile of that value (we call this
+         *    value 'I') and all the tiles less than that value.
+         * 2. Each column's index represents the total sum of the tiles
+         *    (we call this value 'J').
+         * 3. If the value at cell (I, J) > cell (I-1, J), then there
+         *    must be a combination that includes Tile I.
+         * 4. Assuming the cell (I, J) is included in the combination
+         *    (Depends on the algorithm), step 3 will then be repeated for
+         *    cell (I-1, J-I).
+         * 5. The algorithm stops once I-1 = 0 or J-I = 0.
+         *      - If the algorithm stops at J-I = 0, then it has reached a
+         *        valid combination, and returns its unordered_set.
+         *      - If it doesn't stop at J-I = 0, then it has reached an
+         *        invalid combination, and returns {};
+         * 
+         * @param roll_num the total value that's been rolled by the dice
+         * @return an vector of unordered_sets containing all possible combinations
+         */
+        vector<unordered_set<uint32_t>> get_all_tile_combinations(const uint32_t roll_num);
+
+        /**
+         * Sets tile_combinations to all possible combinations that sum to roll_num 
+         * in the same way as described in 'get_all_tile_combinations'.
+         * 
+         * @param roll_num the total value that's been rolled by the dice
+         * @param tile_combinations a reference to a vector of unordered_sets
+         */
+        void set_to_all_tile_combinations(const uint32_t roll_num, vector<unordered_set<uint32_t>> &tile_combinations);
+
+
+        
+        /**
          * Gets a random sequence of numbers that represents the values that
          * the object's dice can roll in a game. The sequence ends once 
          * the sum of values rolled >= (tile_sum - 1). If this sum is ever equal to 
@@ -420,6 +477,7 @@ class ShutTheBox {
          * 
          * @param strategy a pointer to the inputted strategy
          * @param reached_positions a map of positions to their results
+         * @param next_progress_num the next number of reached positions to be logged
          * @param progress_check the number of combinations to check before outputting progress
          */
         virtual Results probability_of_strategy_victory_step(Strategy *strategy, 
@@ -441,6 +499,7 @@ class ShutTheBox {
          * @param strategy a pointer to the inputted strategy
          * @param csv_out output stream of the csv file
          * @param reached_positions a map of positions to their results
+         * @param next_progress_num the next number of reached positions to be logged
          * @param progress_check the number of combinations to check before outputting progress
          */
         virtual Results probability_of_strategy_victory_step(Strategy *strategy, std::ostream &csv_out, 
@@ -491,6 +550,7 @@ class ShutTheBox {
          * @param sim_type the statistic the simulation is optimizing
          *  (i.e. win probability, average score)
          * @param reached_positions a map of positions to their results
+         * @param next_progress_num the next number of reached positions to be logged
          * @param progress_check the number of combinations to check before outputting progress
          */
         virtual Results probability_of_optimal_victory_step(OptimizedType sim_type, 
@@ -509,6 +569,7 @@ class ShutTheBox {
          *  (i.e. win probability, average score)
          * @param csv_out output stream of the csv file
          * @param reached_positions a map of positions to their results
+         * @param next_progress_num the next number of reached positions to be logged
          * @param progress_check the number of combinations to check before outputting progress
          */
         virtual Results probability_of_optimal_victory_step(OptimizedType sim_type, std::ostream &csv_out, 
