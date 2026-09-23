@@ -32,31 +32,51 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This is an in-depth compilation of results involving the board game "Shut the Box".
+This is an in-depth compilation of results and programs involving the board game "Shut the Box".
 
-The general rules for the game are as follows:
+As an example variant, the rules for the standard Shut The Box (size 9) are as follows:
 * The board consists of numbers from 1-9 (I call these tiles)
 * At the start of the game, all tiles are "face-up", and to win, the player must flip all of these tiles "face-down"
 * Each turn, the player rolls two standard six-sided dice
 * Then, the player flips down tiles that sum to the total value rolled by the two dice
 * If the player cannot flip down any more tiles, the player loses
 * The score of the game is calculated by the sum of the face-up tiles at the end of the game (win = 0)
-* If the board only has Tile 1 on it, then the player will roll a single die for turn instead of 2
+* If the board does not have tiles 7, 8, and 9 still available, then the player can choose whether to roll a single dice or two.
 
 However, there are also several different variants to this game, some of which are described below:
 * The board consists of different numbers (ex. 1-10, 1-12, etc.)
-* The player rolls a single die for turn once their score is 6 or below
+* The player can only roll a single die for turn once their score is below a certain threshold
 * The player isn't rolling two D6's, but rather one D12 (or other die variations)
+
+As an aside, the variant I've played the most is one where the player cannot roll just a single die per turn unless their score is exactly 1. This also happens to be the default setting of the program.
 
 This repository is dedicated to compiling the results of every single position of virtually every single Shut the Box variant, including results using the most optimal strategy and results using other common strategies.
 
-For each position we will store (in /results):
+### Run Types
+
+#### Simulations
+
+Simulates a number of games, each from start to finish, as if a real player was playing the game. 
+
+The following data points are outputted:
+* The number of games that were simulated
+* How many games were won
+* The overall win probability
+* The average score 
+
+#### Calculations
+
+Calculates specific data points for every possible position (using recursion).
+
+For each possible position, the following data points are outputted (into a csv file):
 * The probability of victory
 * The average final score
-* Whether the position can be reached by following the strategy
-* The next tiles to be flipped for every roll
-* The probabilities of winning for every roll
-* The average score for every roll
+* Whether the position can be reached by following strategy X
+* The next tiles that should be flipped for every next roll
+
+For the initial position, the following data points are also outputted:
+* The probabilities of winning for every next roll
+* The average score for every next roll
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -64,7 +84,8 @@ For each position we will store (in /results):
 
 ### Built With
 
-[C++](Cplusplus-url)
+[C++](Cplusplus-url),
+[CMake](CMake-url)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -76,6 +97,7 @@ For each position we will store (in /results):
 ### Prerequisites
 
  * [C++](Cplusplus-url) is installed.
+ * [CMake](CMake-url) is installed
  * VSCode is configured with C++ (optional).
 
 ### Installation + Running
@@ -84,23 +106,52 @@ For each position we will store (in /results):
    ```
    git clone https://github.com/fengharry/Shut-The-Box.git
    ```
-   To run the default program in main.cpp,
+   To build the program,
    ```
    cd build
    cmake ..
    cmake --build .
-   ./main
    ```
-   Other command line arguments may be added in a future update.
+   To run the example program with tiles 1-9 (example9.cpp),
+   ```
+   ./example9
+   ```
+   To run a simulation of a game and a strategy,
+   ```
+   ./main -r SIMULATION -g [GAME_SIZE] -s [STRATEGY] -f [SIM_FILE]
+   ```
+   * GAME_SIZE: the maximum tile on the board (ex. GAME_SIZE=6 -> Tiles 1-6)
+   * STRATEGY: the name of the strategy to be used (see List of Names)
+   * SIM_FILE: the name of the file to print out the results (leave blank to output to the terminal)
+
+   To run a calculation of a game and a strategy,
+   ```
+   ./main -r CALCULATION -g [GAME_SIZE] -s [STRATEGY] -c [CALC_CSV_FILE]
+   ```
+   * GAME_SIZE: the maximum tile on the board (ex. GAME_SIZE=6 -> Tiles 1-6)
+   * STRATEGY: the name of the strategy to be used (see List of Names)
+   * CALC_CSV_FILE: the name of the file to print out the results
+   
     
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
-<!-- ROADMAP
 ## Roadmap
 
-See the [open issues](https://github.com/fengharry/Shut-The-Box/issues) for a full list of proposed features. -->
+   The current program does not support all variants of Shut The Box. Below are some of the in progress variants being implemented:
+   * The ability for the player to CHOOSE between rolling 1 or 2 dice for a turn
+   * Rolling different-sided dice 
+   * Setting the order of which dice to roll in specific scenarios
+     * Scenario A: minimum score threshold
+     * Scenario B: specific face-down (or face-up) numbers
+     * Scenario C: Player choice
+
+  Please note that the above variants, when implemented, might not be able to run with command-line arguments. For example, it is possible to set custom initial tiles and custom dice, but these are not possible to run through the command-line, or more specifically, main.cpp. These commands may be added in future updates, but it's not guaranteed.
+   
+   The variants that will NOT be covered are listed below:
+   * Events occurring in one game being influenced by the events of a previous one
+   * Characteristics/Rules of a variant changing from game to game
+   * Scores/Tiles with non-integer values
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -149,3 +200,4 @@ Harry Feng - harryfeng07@gmail.com
 <!-- Shields.io badges. You can a comprehensive list with many more badges at: https://github.com/inttter/md-badges -->
 [Cplusplus]: https://github.com/isocpp/logos/cpp_logo.png
 [Cplusplus-url]: https://cplusplus.com/
+[CMake-url]: https://cmake.org/
