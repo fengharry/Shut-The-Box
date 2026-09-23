@@ -23,7 +23,7 @@ void ShutTheBox::get_all_positions(uint32_t tile_idx, string curr_position) {
     get_all_positions(tile_idx+1, curr_position);
 }
 
-void ShutTheBox::probability_of_unreachable_strategy_positions(Strategy *strategy, std::ostream &csv_out,
+void ShutTheBox::unreached_strategy_calculation(Strategy *strategy, std::ostream &csv_out,
 unordered_map<string, Results> &reached_positions, uint32_t progress_check) {
     unordered_set<string> unreached_positions;
     for (string position : all_positions) {
@@ -36,13 +36,13 @@ unordered_map<string, Results> &reached_positions, uint32_t progress_check) {
         set_position_to_set(position, position_set);
         initialize_game(position_set);
         uint32_t next_progress_num = reached_positions.size() - (reached_positions.size() % progress_check) + progress_check;
-        probability_of_strategy_victory_step(strategy, reached_positions, next_progress_num, progress_check);
+        strategy_calculation_step(strategy, reached_positions, next_progress_num, progress_check);
 
         csv_record_position(csv_out, position, reached_positions[position], false);
     }
 }
 
-void ShutTheBox::probability_of_unreachable_optimal_positions(OptimizedType sim_type, std::ostream &csv_out, 
+void ShutTheBox::unreached_optimal_calculation(OptimizedType sim_type, std::ostream &csv_out, 
 unordered_map<string, Results> &reached_positions, uint32_t progress_check) {
     unordered_set<string> unreached_positions;
     for (string position : all_positions) {
@@ -55,7 +55,7 @@ unordered_map<string, Results> &reached_positions, uint32_t progress_check) {
         set_position_to_set(position, position_set);
         initialize_game(position_set);
         uint32_t next_progress_num = reached_positions.size() - (reached_positions.size() % progress_check) + progress_check;
-        probability_of_optimal_victory_step(sim_type, reached_positions, next_progress_num, progress_check);
+        optimal_calculation_step(sim_type, reached_positions, next_progress_num, progress_check);
 
         csv_record_position(csv_out, position, reached_positions[position], false);
     }
@@ -180,12 +180,12 @@ void ShutTheBox::initialize_game(unordered_set<uint32_t> face_up_tiles_in) {
 }
 
 
-ShutTheBox::ShutTheBox(uint32_t num_tiles_in, string optimal_win_csv_file_in, string optimal_score_csv_file_in) { 
-    if (optimal_win_csv_file_in == "") optimal_win_csv_file = "optimal_win_" + to_string(num_tiles_in) + ".csv";
-    else optimal_win_csv_file = optimal_win_csv_file_in;
+ShutTheBox::ShutTheBox(uint32_t num_tiles_in, string optimal_win_csv_file_out, string optimal_score_csv_file_out) { 
+    if (optimal_win_csv_file_out == "") optimal_win_csv_file = "optimal_win_" + to_string(num_tiles_in) + ".csv";
+    else optimal_win_csv_file = optimal_win_csv_file_out;
 
     if (optimal_score_csv_file == "") optimal_score_csv_file = "optimal_score_" + to_string(num_tiles_in) + ".csv";
-    else optimal_score_csv_file = optimal_score_csv_file_in;
+    else optimal_score_csv_file = optimal_score_csv_file_out;
 
     for (uint32_t tile = 1; tile <= num_tiles_in; tile++) {
         tiles.insert(tile);
@@ -200,12 +200,12 @@ ShutTheBox::ShutTheBox(uint32_t num_tiles_in, string optimal_win_csv_file_in, st
     initialize_game(); 
 }
 
-ShutTheBox::ShutTheBox(unordered_set<uint32_t> tiles_in, string optimal_win_csv_file_in, string optimal_score_csv_file_in): tiles(tiles_in) { 
-    if (optimal_win_csv_file_in == "") optimal_win_csv_file = "optimal_win_" + to_string(tiles_in.size()) + ".csv";
-    else optimal_win_csv_file = optimal_win_csv_file_in;
+ShutTheBox::ShutTheBox(unordered_set<uint32_t> tiles_in, string optimal_win_csv_file_out, string optimal_score_csv_file_out): tiles(tiles_in) { 
+    if (optimal_win_csv_file_out == "") optimal_win_csv_file = "optimal_win_" + to_string(tiles_in.size()) + ".csv";
+    else optimal_win_csv_file = optimal_win_csv_file_out;
 
     if (optimal_score_csv_file == "") optimal_score_csv_file = "optimal_score_" + to_string(tiles_in.size()) + ".csv";
-    else optimal_score_csv_file = optimal_score_csv_file_in;
+    else optimal_score_csv_file = optimal_score_csv_file_out;
 
     for (const uint32_t tile : tiles) {
         sorted_tiles.push_back(tile);
@@ -220,7 +220,7 @@ ShutTheBox::ShutTheBox(unordered_set<uint32_t> tiles_in, string optimal_win_csv_
 }
 
 ShutTheBox::ShutTheBox(unordered_set<uint32_t> tiles_in, unordered_map<uint32_t, double> single_die_probabilities_in, 
-string optimal_win_csv_file_in, string optimal_score_csv_file_in): ShutTheBox(tiles_in, optimal_win_csv_file, optimal_score_csv_file) { 
+string optimal_win_csv_file_out, string optimal_score_csv_file_out): ShutTheBox(tiles_in, optimal_win_csv_file, optimal_score_csv_file) { 
     dice = Dice(single_die_probabilities_in);
 }
 
@@ -370,7 +370,11 @@ uint32_t ShutTheBox::strategy_game_simulation(Strategy *strategy, bool is_verbos
     return curr_score;
 }
 
-void ShutTheBox::full_strategy_simulation(Strategy *strategy, uint32_t num_games, uint32_t progress_check, ostream &out) {
+void ShutTheBox::full_strategy_simulation(Strategy *strategy, ostream &results_out) {
+    full_strategy_simulation(strategy, 100000, 10000, results_out);
+}
+
+void ShutTheBox::full_strategy_simulation(Strategy *strategy, uint32_t num_games, uint32_t progress_check, ostream &results_out) {
     if (num_games <= 0) return;
 
     cout << "\033[32mBeginning Strategy Simulation (" << strategy->get_name() << ")...\033[0m\n";
@@ -385,12 +389,12 @@ void ShutTheBox::full_strategy_simulation(Strategy *strategy, uint32_t num_games
     }
     cout << "\033[34mFinished Strategy Simulation.\033[0m\n";
 
-    out << "----- Strategy Simulation Results -----\n";
-    out << "Strategy: " << strategy->get_name() << "\n";
-    out << "Number of Games Simulated: " << num_games << "\n";
-    out << "Number of Wins: " << num_wins << "\n";
-    out << "Win Probability: " << double(num_wins) / double(num_games) * 100 << "%\n";
-    out << "Average Score: " << total_score / double(num_games) << "\n";
+    results_out << "----- Strategy Simulation Results -----\n";
+    results_out << "Strategy: " << strategy->get_name() << "\n";
+    results_out << "Number of Games Simulated: " << num_games << "\n";
+    results_out << "Number of Wins: " << num_wins << "\n";
+    results_out << "Win Probability: " << double(num_wins) / double(num_games) * 100 << "%\n";
+    results_out << "Average Score: " << total_score / double(num_games) << "\n";
 }
 
 
@@ -399,10 +403,10 @@ uint32_t ShutTheBox::hindsight_game_simulation(bool is_verbose) {
     initialize_game();
     vector<uint32_t> seq;
     set_to_generated_sequence(seq);
-    return hindsight_step(seq, 0, curr_score, is_verbose);
+    return hindsight_step(seq, 0, is_verbose);
 }
 
-uint32_t ShutTheBox::hindsight_step(vector<uint32_t> &seq, size_t idx, uint32_t curr_score, bool is_verbose) {
+uint32_t ShutTheBox::hindsight_step(vector<uint32_t> &seq, size_t idx, bool is_verbose) {
     if (curr_score == 0 || num_face_up == 0 || curr_score == seq[idx]) {
         if (is_verbose) cout << "Won!!\n";
         return 0;
@@ -445,7 +449,7 @@ uint32_t ShutTheBox::hindsight_step(vector<uint32_t> &seq, size_t idx, uint32_t 
         for (const uint32_t &tile : tile_combination) {
             flip_tile_face_down(tile);
         }
-        uint32_t score = hindsight_step(seq, idx+1, curr_score, is_verbose);
+        uint32_t score = hindsight_step(seq, idx+1, is_verbose);
         if (score < min_score) min_score = score;
 
         if (is_verbose) cout << "Minimum Score: " << min_score << "\n";
@@ -457,7 +461,11 @@ uint32_t ShutTheBox::hindsight_step(vector<uint32_t> &seq, size_t idx, uint32_t 
     return min_score;
 }
 
-void ShutTheBox::full_hindsight_simulation(uint32_t num_games, uint32_t progress_check, ostream &out) {
+void ShutTheBox::full_hindsight_simulation(ostream &results_out) {
+    full_hindsight_simulation(100000, 10000, results_out);
+}
+
+void ShutTheBox::full_hindsight_simulation(uint32_t num_games, uint32_t progress_check, ostream &results_out) {
     if (num_games <= 0) return;
 
     cout << "\033[32mBeginning Hindsight Simulation...\033[0m\n";
@@ -472,47 +480,47 @@ void ShutTheBox::full_hindsight_simulation(uint32_t num_games, uint32_t progress
     }
     cout << "\033[34mFinished Hindsight Simulation.\033[0m\n";
 
-    out << "----- Hindsight Simulation Results -----\n";
-    out << "Number of Games Simulated: " << num_games << "\n";
-    out << "Number of Wins: " << num_wins << "\n";
-    out << "Win Probability: " << double(num_wins) / double(num_games) * 100 << "%\n";
-    out << "Average Score: " << total_score / double(num_games) << "\n";
+    results_out << "----- Hindsight Simulation Results -----\n";
+    results_out << "Number of Games Simulated: " << num_games << "\n";
+    results_out << "Number of Wins: " << num_wins << "\n";
+    results_out << "Win Probability: " << double(num_wins) / double(num_games) * 100 << "%\n";
+    results_out << "Average Score: " << total_score / double(num_games) << "\n";
 }
 
 
-void ShutTheBox::print_results(Results results, string title, uint32_t num_reached_positions, ostream &out) {
-    out << "----- " << title << " -----\n";
-    out << "Number of Reached Positions: " << num_reached_positions << "\n";
-    out << "Number of Unreached Positions: " << all_positions.size() - num_reached_positions << "\n";
-    out << "Average Score: " << results.avg_score << "\n";
-    out << "Win Probability: " << results.win_probability * 100 << "%\n";
-    out << "Best Next Decisions:\n";
+void ShutTheBox::print_results(Results results, string title, uint32_t num_reached_positions, ostream &results_out) {
+    results_out << "----- " << title << " -----\n";
+    results_out << "Number of Reached Positions: " << num_reached_positions << "\n";
+    results_out << "Number of Unreached Positions: " << all_positions.size() - num_reached_positions << "\n";
+    results_out << "Average Score: " << results.avg_score << "\n";
+    results_out << "Win Probability: " << results.win_probability * 100 << "%\n";
+    results_out << "Best Next Decisions:\n";
 
     vector<uint32_t> possible_rolls;
     dice.set_to_possible_rolls(num_dice_min, num_dice_max, possible_rolls);
     for (uint32_t roll_num : possible_rolls) {
         if (roll_num == 1 && results.next_tile_combinations[1].size() == 0) continue;
         
-        out << "Roll " << roll_num << " --> ";
-        if (results.next_tile_combinations[roll_num].size() == 0) out << "Lose\n";
+        results_out << "Roll " << roll_num << " --> ";
+        if (results.next_tile_combinations[roll_num].size() == 0) results_out << "Lose\n";
         else {
-            out << "Take ";
+            results_out << "Take ";
             for (const uint32_t &tile : results.next_tile_combinations[roll_num]) {
-                out << tile << " ";
+                results_out << tile << " ";
             }
-            out << "\n";
-            out << "  Average Score: " << results.next_avg_scores[roll_num] << "\n";
-            out << "  Win Probability: " << results.next_win_probabilities[roll_num] * 100 << "%\n";
+            results_out << "\n";
+            results_out << "  Average Score: " << results.next_avg_scores[roll_num] << "\n";
+            results_out << "  Win Probability: " << results.next_win_probabilities[roll_num] * 100 << "%\n";
         }
     }
 }
 
-Results ShutTheBox::probability_of_strategy_victory(Strategy *strategy, string csv_file_in, uint32_t progress_check, std::ostream &out) {
-    return probability_of_strategy_victory(strategy, tiles, csv_file_in, progress_check, out);
+Results ShutTheBox::strategy_calculation(Strategy *strategy, string csv_file_out, uint32_t progress_check, std::ostream &out) {
+    return strategy_calculation(strategy, tiles, csv_file_out, progress_check, out);
 }
 
-Results ShutTheBox::probability_of_strategy_victory(Strategy *strategy, unordered_set<uint32_t> face_up_tiles_in, 
-string csv_file_in, uint32_t progress_check, std::ostream &out) {
+Results ShutTheBox::strategy_calculation(Strategy *strategy, unordered_set<uint32_t> face_up_tiles_in, 
+string csv_file_out, uint32_t progress_check, std::ostream &out) {
     cout << "\033[32mBeginning Strategy Probability Simulation (" << strategy->get_name() << ")...\033[0m\n";
     initialize_game(face_up_tiles_in);
 
@@ -523,19 +531,19 @@ string csv_file_in, uint32_t progress_check, std::ostream &out) {
     Results results;
     uint32_t num_reached_positions;
 
-    if(csv_file_in != "") {
-        std::ofstream csv_out("../results/" + csv_file_in);
+    if(csv_file_out != "") {
+        std::ofstream csv_out("../results/" + csv_file_out);
         start_csv_file(csv_out);
 
-        results = probability_of_strategy_victory_step(strategy, csv_out, reached_positions, next_progress_num, progress_check);
+        results = strategy_calculation_step(strategy, csv_out, reached_positions, next_progress_num, progress_check);
         num_reached_positions = reached_positions.size();
 
         cout << "\033[34mFinished Reachable Position Calculations...\033[0m\n";
 
-        cout << "\033[33mBeginning Unreachable Position Calculations...\033[0m\n";
-        probability_of_unreachable_strategy_positions(strategy, csv_out, reached_positions, progress_check);
+        cout << "\033[33mBeginning unreached Position Calculations...\033[0m\n";
+        unreached_strategy_calculation(strategy, csv_out, reached_positions, progress_check);
     } else {
-        results = probability_of_strategy_victory_step(strategy, reached_positions, next_progress_num, progress_check);
+        results = strategy_calculation_step(strategy, reached_positions, next_progress_num, progress_check);
         num_reached_positions = reached_positions.size();
     }
 
@@ -544,7 +552,7 @@ string csv_file_in, uint32_t progress_check, std::ostream &out) {
     return results;
 }
 
-Results ShutTheBox::probability_of_strategy_victory_step(Strategy *strategy,
+Results ShutTheBox::strategy_calculation_step(Strategy *strategy,
 unordered_map<string, Results> &reached_positions, uint32_t &next_progress_num, uint32_t progress_check) {
     string position;
     set_to_curr_position(position);
@@ -590,7 +598,7 @@ unordered_map<string, Results> &reached_positions, uint32_t &next_progress_num, 
 
         auto next_pos_iterator = reached_positions.find(next_position);
         if (next_pos_iterator != reached_positions.end()) roll_results = next_pos_iterator->second;
-        else roll_results = probability_of_strategy_victory_step(strategy, reached_positions, next_progress_num, progress_check);
+        else roll_results = strategy_calculation_step(strategy, reached_positions, next_progress_num, progress_check);
 
         for (const uint32_t &tile : tile_combination) {
             flip_tile_face_up(tile);
@@ -609,7 +617,7 @@ unordered_map<string, Results> &reached_positions, uint32_t &next_progress_num, 
     return results;
 }
 
-Results ShutTheBox::probability_of_strategy_victory_step(Strategy *strategy, std::ostream &csv_out,
+Results ShutTheBox::strategy_calculation_step(Strategy *strategy, std::ostream &csv_out,
 unordered_map<string, Results> &reached_positions, uint32_t &next_progress_num, uint32_t progress_check) {
     string position;
     set_to_curr_position(position);
@@ -657,7 +665,7 @@ unordered_map<string, Results> &reached_positions, uint32_t &next_progress_num, 
 
         auto next_pos_iterator = reached_positions.find(next_position);
         if (next_pos_iterator != reached_positions.end()) roll_results = next_pos_iterator->second;
-        else roll_results = probability_of_strategy_victory_step(strategy, csv_out, reached_positions, next_progress_num, progress_check);
+        else roll_results = strategy_calculation_step(strategy, csv_out, reached_positions, next_progress_num, progress_check);
 
         for (const uint32_t &tile : tile_combination) {
             flip_tile_face_up(tile);
@@ -680,11 +688,11 @@ unordered_map<string, Results> &reached_positions, uint32_t &next_progress_num, 
 
 
 
-Results ShutTheBox::probability_of_optimal_victory(OptimizedType sim_type, bool print_csv, uint32_t progress_check, std::ostream &out) {
-    return probability_of_optimal_victory(sim_type, tiles, print_csv, progress_check, out);
+Results ShutTheBox::optimal_calculation(OptimizedType sim_type, string csv_file_out, bool print_csv, uint32_t progress_check, std::ostream &out) {
+    return optimal_calculation(sim_type, tiles, csv_file_out, print_csv, progress_check, out);
 }
 
-Results ShutTheBox::probability_of_optimal_victory(OptimizedType sim_type, unordered_set<uint32_t> face_up_tiles_in, bool print_csv, 
+Results ShutTheBox::optimal_calculation(OptimizedType sim_type, unordered_set<uint32_t> face_up_tiles_in, string csv_file_out, bool print_csv, 
 uint32_t progress_check, std::ostream &out) {
     string title = "Optimal Probability Results ";
     string optimized_type_title = "";
@@ -703,25 +711,20 @@ uint32_t progress_check, std::ostream &out) {
     uint32_t num_reached_positions;
 
     if (print_csv) {
-        string csv_file = "";
-        if (sim_type == WIN_PROBABILITY) csv_file = "../results/" + optimal_win_csv_file;
-        else if (sim_type == AVERAGE_SCORE) csv_file = "../results/" + optimal_score_csv_file;
-        
-
-        std::ofstream csv_out(csv_file);
+        std::ofstream csv_out("../results/" + csv_file_out);
         start_csv_file(csv_out);
 
-        results = probability_of_optimal_victory_step(sim_type, csv_out, reached_positions, next_progress_num, progress_check);
+        results = optimal_calculation_step(sim_type, csv_out, reached_positions, next_progress_num, progress_check);
         num_reached_positions = reached_positions.size();
 
         cout << "\033[34mFinished Reachable Position Calculations...\033[0m\n";
 
-        cout << "\033[33mBeginning Unreachable Position Calculations...\033[0m\n";
-        probability_of_unreachable_optimal_positions(sim_type, csv_out, reached_positions, progress_check);
+        cout << "\033[33mBeginning unreached Position Calculations...\033[0m\n";
+        unreached_optimal_calculation(sim_type, csv_out, reached_positions, progress_check);
 
 
     } else {
-        results = probability_of_optimal_victory_step(sim_type, reached_positions, next_progress_num, progress_check);
+        results = optimal_calculation_step(sim_type, reached_positions, next_progress_num, progress_check);
         num_reached_positions = reached_positions.size();
     }
 
@@ -731,7 +734,7 @@ uint32_t progress_check, std::ostream &out) {
     return results;
 }
 
-Results ShutTheBox::probability_of_optimal_victory_step(OptimizedType sim_type, 
+Results ShutTheBox::optimal_calculation_step(OptimizedType sim_type, 
 unordered_map<string, Results> &reached_positions, uint32_t &next_progress_num, uint32_t progress_check) {
     string position;
     set_to_curr_position(position);
@@ -778,7 +781,7 @@ unordered_map<string, Results> &reached_positions, uint32_t &next_progress_num, 
 
             auto next_pos_iterator = reached_positions.find(next_position);
             if (next_pos_iterator != reached_positions.end()) roll_results = next_pos_iterator->second;
-            else roll_results = probability_of_optimal_victory_step(sim_type, reached_positions, next_progress_num, progress_check);
+            else roll_results = optimal_calculation_step(sim_type, reached_positions, next_progress_num, progress_check);
 
             if ((sim_type == WIN_PROBABILITY && roll_results.win_probability > max_prob) ||
                 (sim_type == AVERAGE_SCORE && roll_results.avg_score < min_score)) {
@@ -805,7 +808,7 @@ unordered_map<string, Results> &reached_positions, uint32_t &next_progress_num, 
     return results;
 }
 
-Results ShutTheBox::probability_of_optimal_victory_step(OptimizedType sim_type, ostream &csv_out, 
+Results ShutTheBox::optimal_calculation_step(OptimizedType sim_type, ostream &csv_out, 
 unordered_map<string, Results> &reached_positions, uint32_t &next_progress_num, uint32_t progress_check) {
     
     string position;
@@ -853,7 +856,7 @@ unordered_map<string, Results> &reached_positions, uint32_t &next_progress_num, 
 
             auto next_pos_iterator = reached_positions.find(next_position);
             if (next_pos_iterator != reached_positions.end()) roll_results = next_pos_iterator->second;
-            else roll_results = probability_of_optimal_victory_step(sim_type, csv_out, reached_positions, next_progress_num, progress_check);
+            else roll_results = optimal_calculation_step(sim_type, csv_out, reached_positions, next_progress_num, progress_check);
 
             if ((sim_type == WIN_PROBABILITY && roll_results.win_probability > max_prob) ||
                 (sim_type == AVERAGE_SCORE && roll_results.avg_score < min_score)) {

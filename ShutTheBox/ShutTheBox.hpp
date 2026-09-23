@@ -83,7 +83,7 @@ class ShutTheBox {
          * @param csv_out the output stream of the csv file
          * @param reached_positions an unordered set of valid positions
          */
-        void probability_of_unreachable_strategy_positions(Strategy *strategy, std::ostream &csv_out, 
+        void unreached_strategy_calculation(Strategy *strategy, std::ostream &csv_out, 
         unordered_map<string, Results> &reached_positions, uint32_t progress_check=100);
 
         /**
@@ -94,7 +94,7 @@ class ShutTheBox {
          * @param csv_out the output stream of the csv file
          * @param reached_positions an unordered set of valid positions
          */
-        void probability_of_unreachable_optimal_positions(OptimizedType sim_type, std::ostream &csv_out, 
+        void unreached_optimal_calculation(OptimizedType sim_type, std::ostream &csv_out, 
             unordered_map<string, Results> &reached_positions, uint32_t progress_check=100);
 
         /**
@@ -118,7 +118,7 @@ class ShutTheBox {
         void set_position_to_set(string position, unordered_set<uint32_t> &tiles);
 
         /**
-         * Helper function for 'probability_of_' simulations.
+         * Helper function for '_calculation' simulations.
          * Handles the case where only one tile in the position is face up.
          * Returns a boolean of whether or not a new position was
          * inserted into 'reached_positions'.
@@ -152,36 +152,36 @@ class ShutTheBox {
         /**
          * Constructs a ShutTheBox object. Inserts numbers
          * from 1 to num_tiles_in into tiles and sorted_tiles, as well as
-         * copying optimal_win_csv_file_in into optimal_win_csv_file
-         * and optimal_score_csv_file_in into optimal_score_csv_file.
+         * copying optimal_win_csv_file_out into optimal_win_csv_file
+         * and optimal_score_csv_file_out into optimal_score_csv_file.
          * Also, gets all positions (i.e. runs get_all_positions()),
          * and initializes the game (i.e. runs initialize_game()).
          * 
          * @param num_tiles_in the number of tiles inserted (numbered from 1 to num_tiles_in)
-         * @param optimal_win_csv_file_in the path of the object's win probability-optimized csv file
-         * @param optimal_score_csv_file_in the path of the object's score-optimized csv file
+         * @param optimal_win_csv_file_out the path of the object's win probability-optimized csv file
+         * @param optimal_score_csv_file_out the path of the object's score-optimized csv file
          */
-        ShutTheBox(uint32_t num_tiles_in=9, string optimal_win_csv_file_in="", string optimal_score_csv_file_in="");
+        ShutTheBox(uint32_t num_tiles_in=9, string optimal_win_csv_file_out="", string optimal_score_csv_file_out="");
 
         /**
          * Constructs a ShutTheBox object.
          * Copies tiles_in into tiles, strategy_name_in into strategy_name,
-         * optimal_win_csv_file_in into optimal_win_csv_file,
-         * and optimal_score_csv_file_in into optimal_score_csv_file.
+         * optimal_win_csv_file_out into optimal_win_csv_file,
+         * and optimal_score_csv_file_out into optimal_score_csv_file.
          * Also, gets all positions (i.e. runs get_all_positions())
          * and initializes the game (i.e. runs initialize_game()).
          * 
          * @param tiles_in the set of tiles to be inserted
-         * @param optimal_win_csv_file_in the path of the object's win probability-optimized csv file
-         * @param optimal_score_csv_file_in the path of the object's score-optimized csv file
+         * @param optimal_win_csv_file_out the path of the object's win probability-optimized csv file
+         * @param optimal_score_csv_file_out the path of the object's score-optimized csv file
          */
-        ShutTheBox(unordered_set<uint32_t> tiles_in, string optimal_win_csv_file_in="", string optimal_score_csv_file_in="");
+        ShutTheBox(unordered_set<uint32_t> tiles_in, string optimal_win_csv_file_out="", string optimal_score_csv_file_out="");
 
         /**
          * Constructs a ShutTheBox object.
          * Copies tiles_in into tiles, strategy_name_in into strategy_name,
-         * optimal_win_csv_file_in into optimal_win_csv_file,
-         * and optimal_score_csv_file_in into optimal_score_csv_file.
+         * optimal_win_csv_file_out into optimal_win_csv_file,
+         * and optimal_score_csv_file_out into optimal_score_csv_file.
          * Also, gets all positions (i.e. runs get_all_positions()),
          * constructs dice based on single_die_probabilities_in,
          * and initializes the game (i.e. runs initialize_game()).
@@ -189,11 +189,11 @@ class ShutTheBox {
          * @param tiles_in the set of tiles to be inserted
          * @param single_die_probabilities_in the probabilities of rolling 
          *  select values on a single die
-         * @param optimal_win_csv_file_in the path of the object's win probability-optimized csv file
-         * @param optimal_score_csv_file_in the path of the object's score-optimized csv file
+         * @param optimal_win_csv_file_out the path of the object's win probability-optimized csv file
+         * @param optimal_score_csv_file_out the path of the object's score-optimized csv file
          */
         ShutTheBox(unordered_set<uint32_t> tiles_in, unordered_map<uint32_t, double> single_die_probabilities_in, 
-            string optimal_win_csv_file_in="", string optimal_score_csv_file_in="");
+            string optimal_win_csv_file_out="", string optimal_score_csv_file_out="");
         
         /**
          * Gets the current position of the game as a string.
@@ -369,6 +369,14 @@ class ShutTheBox {
         uint32_t strategy_game_simulation(Strategy *strategy, bool is_verbose=true);
 
         /**
+         * Simulates 100000 games based on the strategy of the current class.
+         * Prints out the results to out.
+         * 
+         * @param out the output stream of the final results
+         */
+        void full_strategy_simulation(Strategy *strategy, std::ostream &results_out);
+
+        /**
          * Simulates a number of games based on the strategy of the current class.
          * Prints out the results to out.
          * 
@@ -377,7 +385,7 @@ class ShutTheBox {
          *  will let the user know how many games have been simulated so far
          * @param out the output stream of the final results
          */
-        void full_strategy_simulation(Strategy *strategy, uint32_t num_games=100000, uint32_t progress_check=10000, std::ostream &out=std::cout);
+        void full_strategy_simulation(Strategy *strategy, uint32_t num_games=100000, uint32_t progress_check=10000, std::ostream &results_out=std::cout);
 
         /**
          * Simulates a game assuming that the player has full knowledge
@@ -393,11 +401,18 @@ class ShutTheBox {
          * 
          * @param seq a reference to the vector as described in get_generated_sequence
          * @param idx the index of the current roll in seq
-         * @param curr_score the current score of the game
          * @param is_verbose a boolean of whether or not the simulation should print
          *  out a comprehensive log of the game
          */
-        uint32_t hindsight_step(vector<uint32_t> &seq, size_t idx, uint32_t curr_score, bool is_verbose=true);
+        uint32_t hindsight_step(vector<uint32_t> &seq, size_t idx, bool is_verbose=true);
+
+        /**
+         * Simulates a number of games assuming that the player has full knowledge
+         * of every roll that will happen in each game.
+         * 
+         * @param out the output stream of the final results
+         */
+        void full_hindsight_simulation(std::ostream &results_out);
 
         /**
          * Simulates a number of games assuming that the player has full knowledge
@@ -408,7 +423,7 @@ class ShutTheBox {
          *  will let the user know how many games have been simulated so far
          * @param out the output stream of the final results
          */
-        void full_hindsight_simulation(uint32_t num_games=100000, uint32_t progress_check=10000, std::ostream &out=std::cout);
+        void full_hindsight_simulation(uint32_t num_games=100000, uint32_t progress_check=10000, std::ostream &results_out=std::cout);
 
         /**
          * Prints the data in results to the output stream out. 
@@ -418,7 +433,7 @@ class ShutTheBox {
          * @param title the display name of the simulation
          * @param out the output stream of the results
          */
-        virtual void print_results(Results results, string title, uint32_t num_reached_positions, std::ostream &out=std::cout);
+        virtual void print_results(Results results, string title, uint32_t num_reached_positions, std::ostream &results_out=std::cout);
 
 
         /**
@@ -430,16 +445,16 @@ class ShutTheBox {
          * 4. Next Win Probabilities for every Roll
          * 5. Next Average Scores for every Roll
          * These results are them outputted to 'out'.
-         * Also, calls the recursive function 'probability_of_strategy_victory_step',
+         * Also, calls the recursive function 'strategy_calculation_step',
          * which saves the results (in the format above) for every position
-         * in 'csv_file_in'.
+         * in 'csv_file_out'.
          * 
          * @param strategy a pointer to the inputted strategy
-         * @param csv_file_in the csv file to output results for every position
+         * @param csv_file_out the csv file to output results for every position
          * @param progress_check the number of combinations to check before outputting progress
          * @param out the output stream of the results
          */
-        Results probability_of_strategy_victory(Strategy *strategy, string csv_file_in="", uint32_t progress_check=100, std::ostream &out=std::cout);
+        Results strategy_calculation(Strategy *strategy, string csv_file_out="", uint32_t progress_check=100, std::ostream &out=std::cout);
 
         /**
          * Calculates the following based off of the inputted strategy 
@@ -450,18 +465,18 @@ class ShutTheBox {
          * 4. Next Win Probabilities for every Roll
          * 5. Next Average Scores for every Roll
          * These results are them outputted to 'out'.
-         * Also, calls the recursive function 'probability_of_strategy_victory_step',
+         * Also, calls the recursive function 'strategy_calculation_step',
          * which saves the results (in the format above) for every position
-         * in 'csv_file_in'.
+         * in 'csv_file_out'.
          * 
          * @param strategy a pointer to the inputted strategy
          * @param face_up_tiles_in the starting face up tiles
-         * @param csv_file_in the csv file to output results for every position
+         * @param csv_file_out the csv file to output results for every position
          * @param progress_check the number of combinations to check before outputting progress
          * @param out the output stream of the results
          */
-        Results probability_of_strategy_victory(Strategy *strategy, unordered_set<uint32_t> face_up_tiles_in, 
-        string csv_file_in="", uint32_t progress_check=100, std::ostream &out=std::cout); 
+        Results strategy_calculation(Strategy *strategy, unordered_set<uint32_t> face_up_tiles_in, 
+        string csv_file_out="", uint32_t progress_check=100, std::ostream &out=std::cout); 
         
         /**
          * Calculates the following based off of the inputted strategy
@@ -472,7 +487,7 @@ class ShutTheBox {
          * 4. Next Win Probabilities for every Roll
          * 5. Next Average Scores for every Roll
          * These results are determined by the function's recursive calls, or in
-         * other words, the results of 'probability_of_strategy_victory_step' after
+         * other words, the results of 'strategy_calculation_step' after
          * flipping a certain combination face down.
          * 
          * @param strategy a pointer to the inputted strategy
@@ -480,7 +495,7 @@ class ShutTheBox {
          * @param next_progress_num the next number of reached positions to be logged
          * @param progress_check the number of combinations to check before outputting progress
          */
-        virtual Results probability_of_strategy_victory_step(Strategy *strategy, 
+        virtual Results strategy_calculation_step(Strategy *strategy, 
         unordered_map<string, Results> &reached_positions, uint32_t &next_progress_num, uint32_t progress_check=100);
 
         /**
@@ -492,7 +507,7 @@ class ShutTheBox {
          * 4. Next Win Probabilities for every Roll
          * 5. Next Average Scores for every Roll
          * These results are determined by the function's recursive calls, or in
-         * other words, the results of 'probability_of_strategy_victory_step' after
+         * other words, the results of 'strategy_calculation_step' after
          * flipping a certain combination face down. They are also outputted to
          * 'csv_out'.
          * 
@@ -502,14 +517,14 @@ class ShutTheBox {
          * @param next_progress_num the next number of reached positions to be logged
          * @param progress_check the number of combinations to check before outputting progress
          */
-        virtual Results probability_of_strategy_victory_step(Strategy *strategy, std::ostream &csv_out, 
+        virtual Results strategy_calculation_step(Strategy *strategy, std::ostream &csv_out, 
         unordered_map<string, Results> &reached_positions, uint32_t &next_progress_num, uint32_t progress_check=100);
 
         /**
-         * Calculates the results described in 'probability_of_strategy_victory' 
+         * Calculates the results described in 'strategy_calculation' 
          * based off of the inputted optimal strategy setting 'sim_type' 
          * and the base starting position. Also, calls the 
-         * recursive function 'probability_of_optimal_victory_step',
+         * recursive function 'optimal_calculation_step',
          * which saves the results (in the format above) for every position
          * in either 'optimal_win_csv_file' or 'optimal_score_csv_file', 
          * depending on 'sim_type'.
@@ -519,13 +534,14 @@ class ShutTheBox {
          * @param progress_check the number of combinations to check before outputting progress
          * @param out the output stream of the results
          */
-        Results probability_of_optimal_victory(OptimizedType sim_type, bool print_csv=true, uint32_t progress_check=100, std::ostream &out=std::cout);
+        Results optimal_calculation(OptimizedType sim_type, string csv_file_out="", 
+        bool print_csv=true, uint32_t progress_check=100, std::ostream &out=std::cout);
 
         /**
-         * Calculates the results described in 'probability_of_strategy_victory' 
+         * Calculates the results described in 'strategy_calculation' 
          * based off of the inputted optimal strategy setting 'sim_type' 
          * and the position from 'face_up_tiles_in'. Also, calls the 
-         * recursive function 'probability_of_optimal_victory_step',
+         * recursive function 'optimal_calculation_step',
          * which saves the results (in the format above) for every position
          * in either 'optimal_win_csv_file' or 'optimal_score_csv_file', 
          * depending on 'sim_type'.
@@ -536,15 +552,15 @@ class ShutTheBox {
          * @param progress_check the number of combinations to check before outputting progress
          * @param out the output stream of the results
          */
-        Results probability_of_optimal_victory(OptimizedType sim_type, unordered_set<uint32_t> face_up_tiles_in, bool print_csv=true, 
-        uint32_t progress_check=100, std::ostream &out=std::cout);
+        Results optimal_calculation(OptimizedType sim_type, unordered_set<uint32_t> face_up_tiles_in, 
+        string csv_file_out="", bool print_csv=true, uint32_t progress_check=100, std::ostream &out=std::cout);
         
         /**
-         * Calculates the results described in 'probability_of_strategy_victory' 
+         * Calculates the results described in 'strategy_calculation' 
          * based off of the inputted optimal strategy setting 'sim_type' 
          * and the current position in 'is_tile_face_up'. 
          * These results are determined by the function's recursive calls, or in
-         * other words, the results of 'probability_of_optimal_victory_step' after
+         * other words, the results of 'optimal_calculation_step' after
          * flipping a certain combination face down. 
          * 
          * @param sim_type the statistic the simulation is optimizing
@@ -553,15 +569,15 @@ class ShutTheBox {
          * @param next_progress_num the next number of reached positions to be logged
          * @param progress_check the number of combinations to check before outputting progress
          */
-        virtual Results probability_of_optimal_victory_step(OptimizedType sim_type, 
+        virtual Results optimal_calculation_step(OptimizedType sim_type, 
         unordered_map<string, Results> &reached_positions, uint32_t &next_progress_num, uint32_t progress_check=100);
 
         /**
-         * Calculates the results described in 'probability_of_strategy_victory' 
+         * Calculates the results described in 'strategy_calculation' 
          * based off of the inputted optimal strategy setting 'sim_type' 
          * and the current position in 'is_tile_face_up'. 
          * These results are determined by the function's recursive calls, or in
-         * other words, the results of 'probability_of_optimal_victory_step' after
+         * other words, the results of 'optimal_calculation_step' after
          * flipping a certain combination face down. They are also outputted to
          * 'csv_out'.
          * 
@@ -572,7 +588,7 @@ class ShutTheBox {
          * @param next_progress_num the next number of reached positions to be logged
          * @param progress_check the number of combinations to check before outputting progress
          */
-        virtual Results probability_of_optimal_victory_step(OptimizedType sim_type, std::ostream &csv_out, 
+        virtual Results optimal_calculation_step(OptimizedType sim_type, std::ostream &csv_out, 
         unordered_map<string, Results> &reached_positions, uint32_t &next_progress_num, uint32_t progress_check=100);
 };
 

@@ -19,5 +19,10 @@ target_link_libraries(main PUBLIC ShutTheBox)
 target_link_libraries(main PUBLIC Strategies)
 target_link_libraries(main PUBLIC Utils)
 
+add_executable(example9 example9.cpp)
+target_link_libraries(example9 PUBLIC ShutTheBox)
+target_link_libraries(example9 PUBLIC Strategies)
+target_link_libraries(example9 PUBLIC Utils)
+
 # Force the generation of a compile_commands.json file to provide autocompletion for IDEs
 set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE CACHE BOOL "" FORCE)
