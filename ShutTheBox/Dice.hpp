@@ -1,21 +1,34 @@
 #ifndef DICE_HPP
 #define DICE_HPP
-#include <unordered_set>
-#include <unordered_map>
-#include <random>
-#include <vector>
-#include <algorithm>
-#include <climits>
+#include "Die.hpp"
 using namespace std;
 
 class Dice {
     protected:
-        unordered_map<uint32_t, unordered_map<uint32_t, double>> probabilities;
-        vector<double> single_die_probabilities_vector;
-        unordered_map<uint32_t, bool> has_probabilities;
-        unordered_map<uint32_t, uint32_t> smallest_rolls;
-        unordered_map<uint32_t, uint32_t> largest_rolls;
+        // unordered_map<uint32_t, unordered_map<uint32_t, double>> probabilities;
+        // vector<double> single_die_probabilities_vector;
+        // unordered_map<uint32_t, bool> has_probabilities;
+        // unordered_map<uint32_t, uint32_t> smallest_rolls;
+        // unordered_map<uint32_t, uint32_t> largest_rolls;
+
+        vector<Die> dice;
+        vector<string> all_dice_names;
+        unordered_map<string, uint32_t> dice_idx;
+
+        unordered_map<string, unordered_map<uint32_t, double>> m_probabilities;
+        vector<vector<double>> single_die_probability_vectors;
+        unordered_map<string, bool> m_has_probabilities;
+        unordered_map<string, uint32_t> m_smallest_rolls;
+        unordered_map<string, uint32_t> m_largest_rolls;
+
+        struct DiceQueueElement {
+            uint32_t total_value;
+            double probability;
+        };
+
     public:
+
+        string dice_names_to_key(const vector<string> &dice_names);
 
         /**
          * Constructs a dice object using the standard six-sided die.
@@ -23,26 +36,27 @@ class Dice {
         Dice();
 
         /**
-         * Constructs a dice object with its faces being the same as
-         * faces_in, each with equal probability.
+         * Constructs a dice object, adds the die 'die_in' via 'add_die(die_in)'.
          * 
-         * @param faces_in the faces of the die
+         * @param die_in a Die object
          */
-        Dice(unordered_set<uint32_t> faces_in);
+        Dice(Die die_in);
 
         /**
-         * Constructs a dice object with its faces and probabilities being
-         * the (key, value) pairs in single_die_probabilities_in 
-         * (faces = key, probabilities = value).
+         * Adds the die 'die_in' to 'dice', records it's index in 'dice_idx'.
+         * If 'die_in' is already recorded, this function does nothing.
          * 
-         * @param single_die_probabilities_in the probabilities of rolling
-         *  each face of the die
+         * @param die_in a Die object
          */
-        Dice(unordered_map<uint32_t, double> single_die_probabilities_in);
+        void add_die(Die die_in);
 
-        uint32_t get_smallest_roll(uint32_t num_dice);
+        const vector<string> &get_all_dice_names() const;
 
-        uint32_t get_largest_roll(uint32_t num_dice);
+        uint32_t get_num_dice() const;
+
+        uint32_t get_smallest_roll(const vector<string> &dice_names);
+
+        uint32_t get_largest_roll(const vector<string> &dice_names);
 
         /**
          * Rolls 'num_dice' dice and returns the total sum of all the rolls.
@@ -50,7 +64,7 @@ class Dice {
          * @param num_dice the number of dice to roll
          * @return the total sum of dice rolls
          */
-        uint32_t roll(uint32_t num_dice);
+        uint32_t roll(const vector<string> &dice_names);
 
         /**
          * Sets the probabilities of rolling all possible values using 
@@ -61,7 +75,9 @@ class Dice {
          * 
          * @param num_dice the number of dice to roll
          */
-        void set_probabilities(uint32_t num_dice);
+        void set_probabilities(const vector<string> &dice_names);
+
+        void set_probabilities_step(queue<DiceQueueElement> &roll_queue, const vector<string> &dice_names, uint32_t name_idx);
 
         /**
          * Gets the probabilities of rolling 'roll_num' using 
@@ -73,7 +89,7 @@ class Dice {
          * @param num_dice the number of dice that've been rolled
          * @return the probability of rolling 'roll_num' with 'num_dice' dice
          */
-        double get_probability(uint32_t roll_num, uint32_t num_dice);
+        double get_probability(uint32_t roll_num, const vector<string> &dice_names);
 
         /**
          * Gets all the possible values that can be rolled by
@@ -86,7 +102,9 @@ class Dice {
          * @param num_dice_max the maximum number of dice to roll
          * @return a sorted vector of all possible values that can be rolled
          */
-        vector<uint32_t> get_possible_rolls(uint32_t num_dice_min, uint32_t num_dice_max);
+        vector<uint32_t> get_possible_rolls(const vector<string> &dice_names, bool include_subsets=false);
+
+        vector<uint32_t> get_possible_rolls(bool include_subsets=false);
 
         /**
          * Sets 'possible_rolls' to be equal to the vector
@@ -96,7 +114,9 @@ class Dice {
          * @param num_dice_max the maximum number of dice to roll
          * @param possible_rolls a reference to a vector of rolls
          */
-        void set_to_possible_rolls(uint32_t num_dice_min, uint32_t num_dice_max, vector<uint32_t> &possible_rolls);
+        void set_to_possible_rolls(const vector<string> &dice_names, vector<uint32_t> &possible_rolls, bool include_subsets=false);
+
+        void set_to_possible_rolls(vector<uint32_t> &possible_rolls, bool include_subsets=false);
 };
 
 #endif

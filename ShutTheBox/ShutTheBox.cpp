@@ -4,11 +4,11 @@ using namespace std;
 
 
 uint32_t ShutTheBox::roll_double() {
-    return dice.roll(2);
+    return dice.roll({"D6", "D6"});
 }
 
 uint32_t ShutTheBox::roll_single() {
-    return dice.roll(1);
+    return dice.roll({"D6"});
 }
 
 void ShutTheBox::get_all_positions(uint32_t tile_idx, string curr_position) {
@@ -67,7 +67,7 @@ void ShutTheBox::csv_record_position(std::ostream &csv_out, string curr_position
     else csv_out << ",No,";
 
     vector<uint32_t> possible_rolls;
-    dice.set_to_possible_rolls(num_dice_min, num_dice_max, possible_rolls);
+    dice.set_to_possible_rolls(possible_rolls, true);
     for (uint32_t roll_idx = 0; roll_idx < possible_rolls.size(); roll_idx++) {
         uint32_t &roll_num = possible_rolls[roll_idx];
         auto it = results.next_tile_combinations.find(roll_num);
@@ -91,15 +91,18 @@ bool ShutTheBox::insert_final_tile_position(string position, unordered_map<strin
     if (reached_positions.find(position) != reached_positions.end()) return false;
 
     Results &results = reached_positions[position];
-    if (curr_score < dice.get_smallest_roll(1)) {
+
+    vector<string> &dice_names = score_to_dice_names[curr_score];
+
+    if (curr_score < dice.get_smallest_roll(dice_names)) {
         results.win_probability = 0;
         results.avg_score = curr_score;
-    } else if (curr_score == dice.get_smallest_roll(1)) {
-        results.win_probability = dice.get_probability(curr_score, num_dice_min);
-        results.avg_score = (1 - dice.get_probability(curr_score, num_dice_min)) * curr_score;
+    } else if (curr_score == dice.get_smallest_roll(dice_names)) {
+        results.win_probability = dice.get_probability(curr_score, dice_names);
+        results.avg_score = (1 - dice.get_probability(curr_score, dice_names)) * curr_score;
     } else {
-        results.win_probability = dice.get_probability(curr_score, num_dice_max);
-        results.avg_score = (1 - dice.get_probability(curr_score, num_dice_max)) * curr_score;
+        results.win_probability = dice.get_probability(curr_score, dice_names);
+        results.avg_score = (1 - dice.get_probability(curr_score, dice_names)) * curr_score;
     }
     
     results.next_tile_combinations[curr_score] = {curr_score};
@@ -113,7 +116,7 @@ bool ShutTheBox::insert_final_tile_position(string position, unordered_map<strin
 
 void ShutTheBox::start_csv_file(std::ostream &csv_out) {
     vector<uint32_t> possible_rolls;
-    dice.set_to_possible_rolls(num_dice_min, num_dice_max, possible_rolls);
+    dice.set_to_possible_rolls(possible_rolls, true);
 
     csv_out << "Position,Win Probability,Average Score,Was Reached?";
     for (uint32_t roll_num : possible_rolls) {
@@ -160,23 +163,33 @@ void ShutTheBox::initialize_game(unordered_set<uint32_t> face_up_tiles_in) {
     }
 
     vector<uint32_t> possible_rolls;
-    uint32_t curr_num_dice = 1;
-    uint32_t largest_roll = dice.get_largest_roll(curr_num_dice);
-    while (largest_roll < largest_tile) {
-        possible_rolls = dice.get_possible_rolls(curr_num_dice, curr_num_dice);
+    const vector<string> &all_dice_names = dice.get_all_dice_names();
+    vector<string> curr_dice_names;
+    for (const string &dice_name : all_dice_names) {
+        curr_dice_names.push_back(dice_name);
+        // cout << curr_dice_names.size() << ": ";
+        // for (string name : curr_dice_names) {
+        //     cout << name << "|";
+        // }
+        // cout << "\n";
+        possible_rolls = dice.get_possible_rolls(curr_dice_names);
         for (uint32_t roll : possible_rolls) {
-            score_to_num_dice[roll] = curr_num_dice;
+            score_to_dice_names[roll] = curr_dice_names;
         }
-        num_dice_max = curr_num_dice;
-        curr_num_dice++;
-        largest_roll = dice.get_largest_roll(curr_num_dice);
     }
 
-    uint32_t smallest_roll = dice.get_smallest_roll(curr_num_dice);
+    uint32_t smallest_roll = dice.get_smallest_roll(curr_dice_names);
     for (uint32_t roll = smallest_roll; roll <= curr_score; roll++) {
-        score_to_num_dice[roll] = curr_num_dice;
+        score_to_dice_names[roll] = curr_dice_names;
     }
-    num_dice_max = curr_num_dice;
+
+    // for (uint32_t roll = 1; roll <= curr_score; roll++) {
+    //     cout << roll << ":\n";
+    //     for (string name : score_to_dice_names[roll]) {
+    //         cout << name << " ";
+    //     }
+    //     cout << "\n";
+    // }
 }
 
 
@@ -219,9 +232,10 @@ ShutTheBox::ShutTheBox(unordered_set<uint32_t> tiles_in, string optimal_win_csv_
     initialize_game(); 
 }
 
-ShutTheBox::ShutTheBox(unordered_set<uint32_t> tiles_in, unordered_map<uint32_t, double> single_die_probabilities_in, 
-string optimal_win_csv_file_out, string optimal_score_csv_file_out): ShutTheBox(tiles_in, optimal_win_csv_file, optimal_score_csv_file) { 
-    dice = Dice(single_die_probabilities_in);
+ShutTheBox::ShutTheBox(unordered_set<uint32_t> tiles_in, Dice dice_in, string optimal_win_csv_file_out, 
+string optimal_score_csv_file_out): ShutTheBox(tiles_in, optimal_win_csv_file, optimal_score_csv_file) { 
+    dice = dice_in;
+    initialize_game(); 
 }
 
 
@@ -497,7 +511,7 @@ void ShutTheBox::print_results(Results results, string title, uint32_t num_reach
     results_out << "Best Next Decisions:\n";
 
     vector<uint32_t> possible_rolls;
-    dice.set_to_possible_rolls(num_dice_min, num_dice_max, possible_rolls);
+    dice.set_to_possible_rolls(possible_rolls, true);
     for (uint32_t roll_num : possible_rolls) {
         if (roll_num == 1 && results.next_tile_combinations[1].size() == 0) continue;
         
@@ -571,10 +585,12 @@ unordered_map<string, Results> &reached_positions, uint32_t &next_progress_num, 
 
     Results &results = reached_positions[position];
     vector<uint32_t> possible_rolls;
-    uint32_t num_dice = score_to_num_dice[curr_score];
-    dice.set_to_possible_rolls(num_dice, num_dice, possible_rolls);
+
+    vector<string> &dice_names = score_to_dice_names[curr_score];
+
+    dice.set_to_possible_rolls(dice_names, possible_rolls);
     for (uint32_t roll_num : possible_rolls) {
-        double roll_probability = dice.get_probability(roll_num, num_dice);
+        double roll_probability = dice.get_probability(roll_num, dice_names);
         if (roll_num > curr_score) {
             results.avg_score += roll_probability * curr_score;
             continue;
@@ -637,11 +653,11 @@ unordered_map<string, Results> &reached_positions, uint32_t &next_progress_num, 
 
     Results &results = reached_positions[position];
     vector<uint32_t> possible_rolls;
-    uint32_t num_dice = score_to_num_dice[curr_score];
+    vector<string> &dice_names = score_to_dice_names[curr_score];
 
-    dice.set_to_possible_rolls(num_dice, num_dice, possible_rolls);
+    dice.set_to_possible_rolls(dice_names, possible_rolls);
     for (uint32_t roll_num : possible_rolls) {
-        double roll_probability = dice.get_probability(roll_num, num_dice);
+        double roll_probability = dice.get_probability(roll_num, dice_names);
         if (roll_num > curr_score) {
             results.avg_score += roll_probability * curr_score;
             continue;
@@ -753,10 +769,12 @@ unordered_map<string, Results> &reached_positions, uint32_t &next_progress_num, 
     
     Results &results = reached_positions[position];
     vector<uint32_t> possible_rolls;
-    uint32_t num_dice = score_to_num_dice[curr_score];
-    dice.set_to_possible_rolls(num_dice, num_dice, possible_rolls);
+
+    vector<string> &dice_names = score_to_dice_names[curr_score];
+
+    dice.set_to_possible_rolls(dice_names, possible_rolls);
     for (uint32_t roll_num : possible_rolls) {
-        double roll_probability = dice.get_probability(roll_num, num_dice);
+        double roll_probability = dice.get_probability(roll_num, dice_names);
         if (roll_num > curr_score) {
             results.avg_score += roll_probability * curr_score;
             continue;
@@ -828,10 +846,12 @@ unordered_map<string, Results> &reached_positions, uint32_t &next_progress_num, 
     
     Results &results = reached_positions[position];
     vector<uint32_t> possible_rolls;
-    uint32_t num_dice = score_to_num_dice[curr_score];
-    dice.set_to_possible_rolls(num_dice, num_dice, possible_rolls);
+    
+    vector<string> &dice_names = score_to_dice_names[curr_score];
+
+    dice.set_to_possible_rolls(dice_names, possible_rolls);
     for (uint32_t roll_num : possible_rolls) {
-        double roll_probability = dice.get_probability(roll_num, num_dice);
+        double roll_probability = dice.get_probability(roll_num, dice_names);
         if (roll_num > curr_score) {
             results.avg_score += roll_probability * curr_score;
             continue;

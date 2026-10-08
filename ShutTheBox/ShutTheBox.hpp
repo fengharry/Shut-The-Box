@@ -4,11 +4,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include <unordered_set>
-#include <unordered_map>
-#include <vector>
 #include <queue>
-#include <climits>
 #include "Dice.hpp"
 #include "../Strategies/StrategyList.hpp"
 #include "../utils/all_combinations.hpp"
@@ -39,10 +35,14 @@ class ShutTheBox {
         uint32_t largest_tile = 0;
         uint32_t tile_sum = 0;
         unordered_set<uint32_t> tiles;
+        bool is_player_choice = false;
 
         Dice dice;
         
         unordered_map<uint32_t, uint32_t> score_to_num_dice;
+
+        unordered_map<uint32_t, vector<string>> score_to_dice_names;
+
         uint32_t num_dice_max = 1;
         uint32_t num_dice_min = 1;
 
@@ -192,7 +192,7 @@ class ShutTheBox {
          * @param optimal_win_csv_file_out the path of the object's win probability-optimized csv file
          * @param optimal_score_csv_file_out the path of the object's score-optimized csv file
          */
-        ShutTheBox(unordered_set<uint32_t> tiles_in, unordered_map<uint32_t, double> single_die_probabilities_in, 
+        ShutTheBox(unordered_set<uint32_t> tiles_in, Dice dice_in, 
             string optimal_win_csv_file_out="", string optimal_score_csv_file_out="");
         
         /**
